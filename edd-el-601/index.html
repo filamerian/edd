@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EdD EL 601 - Educational Planning, Policy and Management</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f6f9;
+    color:#222;
+    line-height:1.7;
+}
+
+/* HEADER */
+
+header{
+    background:#0b1f3a;
+    color:white;
+    padding:20px 50px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:50%;
+    background:white;
+}
+
+.school-info h1{
+    font-size:24px;
+}
+
+.school-info p{
+    color:#ddd;
+    font-size:14px;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#d4a017;
+}
+
+
+
+table td{
+    padding:18px;
+    vertical-align:top;
+}
+
+table strong{
+    display:block;
+    margin-bottom:10px;
+}
+
+table ul{
+    margin-left:20px;
+    padding-left:20px;
+}
+
+/* HERO */
+
+.hero{
+    background:
+    linear-gradient(rgba(11,31,58,0.82), rgba(11,31,58,0.82)),
+    url('images/filamer.jpg')
+    center/cover no-repeat;
+
+    height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h2{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.hero-btn{
+    display:inline-block;
+    padding:14px 30px;
+    background:#d4a017;
+    color:#0b1f3a;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.hero-btn:hover{
+    background:#f0be37;
+}
+
+/* SECTIONS */
+
+section{
+    padding:70px 50px;
+	scroll-margin-top:100px;
+
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h3{
+    font-size:38px;
+    color:#0b1f3a;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#666;
+}
+
+/* CARDS */
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom:30px;
+}
+
+.card h4{
+    color:#0b1f3a;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.card ul{
+    margin-left:20px;
+}
+
+.card li{
+    margin-bottom:10px;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+table th{
+    background:#0b1f3a;
+    color:white;
+    padding:15px;
+    text-align:left;
+}
+
+table td{
+    padding:18px;
+    border-bottom:1px solid #ddd;
+    vertical-align:top;
+}
+
+table tr:hover{
+    background:#f9f9f9;
+}
+
+/* VMG */
+
+.vmg-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+    gap:25px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0b1f3a;
+    color:white;
+    padding:50px;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:30px;
+}
+
+footer h4{
+    color:#d4a017;
+    margin-bottom:15px;
+}
+
+footer p{
+    color:#ddd;
+    margin-bottom:10px;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:40px;
+    border-top:1px solid rgba(255,255,255,0.2);
+    padding-top:20px;
+    color:#ccc;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    header{
+        padding:20px;
+    }
+
+    .header-container{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h2{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    section{
+        padding:60px 20px;
+    }
+
+    table{
+        font-size:14px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="header-container">
+
+<div class="logo-area">
+<img src="images/grad-school-logo-lowres.png" alt="Graduate School Logo" class="logo">
+
+<div class="school-info">
+<h1>Filamer Christian University, Inc.</h1>
+<p>Graduate School | EdD EL 601</p>
+</div>
+</div>
+
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#description">Course</a></li>
+<li><a href="#vmg">VMG</a></li>
+<li><a href="#content">Content</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+
+<div class="hero-content">
+
+<h2>EdD EL 601 - Educational Planning, Policy and Management</h2>
+
+<p>
+Doctor of Education Major in Educational Leadership
+</p>
+
+<a href="#content" class="hero-btn">View Course Content</a>
+
+</div>
+
+</section>
+
+<!-- COURSE DESCRIPTION -->
+
+<section id="description">
+
+<div class="section-title">
+<h3>Course Description</h3>
+<p>Advanced Studies in Educational Planning and Management</p>
+</div>
+
+<div class="card">
+
+<p>
+The course introduces the student to the literature of educational
+planning to help in the acquisition of knowledge, skills, and tools
+required for the formulation of educational plans and strategies;
+the development of competence in conceptualizing the educational
+planning process; and the anticipation and determination of
+approaches and solutions to technical and practical problems of planning.
+</p>
+
+</div>
+
+</section>
+
+<!-- VMG -->
+
+<section id="vmg" style="background:#eef2f7;">
+
+<div class="section-title">
+<h3>Vision, Mission, Goals and Core Values</h3>
+<p>Filamer Christian University, Inc.</p>
+</div>
+
+<div class="vmg-grid">
+
+<div class="card">
+<h4>Vision</h4>
+<p>
+A Christian University for Transformative Leadership
+</p>
+</div>
+
+<div class="card">
+<h4>Mission</h4>
+
+<p>FCU commits to 3I's:</p>
+
+<ul>
+<li>Instill Christian Values</li>
+<li>Innovate Models of Development</li>
+<li>Initiate Collaborative Linkages</li>
+</ul>
+</div>
+
+<div class="card">
+<h4>Goals (PRAISE)</h4>
+
+<ul>
+<li><strong>P</strong>erpetuate the Christian heritage and maintain the ecumenical stance of the school</li>
+<li><strong>R</strong>epresent Christian love in everyday life</li>
+<li><strong>A</strong>dvocate stewardship and integrity of creation</li>
+<li><strong>I</strong>ntegrate research-based developmental models</li>
+<li><strong>S</strong>trengthen collaborative partnership and linkages</li>
+<li><strong>E</strong>stablish institutional self-sufficiency and sustainability</li>
+</ul>
+</div>
+
+<div class="card">
+<h4>Core Values</h4>
+
+<ul>
+<li><strong>Spirituality</strong><br>
+  Commitment to Christian Faith</li>
+<li><strong>Service Excellence</strong><br>
+  Commitment to academic and administrative excellence</li>
+<li><strong>Social Responsibility</strong><br>
+  Commitment to research and community development</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COURSE CONTENT -->
+
+<section id="content">
+
+<div class="section-title">
+<h3>Course Content</h3>
+<p>Topics and Time Allocation</p>
+</div>
+
+<table>
+
+<tr>
+<th width="20%">Time Frame</th>
+<th>Topic / Content</th>
+<th>Reporter</th>
+</tr>
+
+<tr>
+<td>9 hrs</td>
+<td>
+<strong>Orientation Week</strong>
+<ul>
+<li>Discussion of FCU and GS VMG</li>
+<li>Levelling of Expectations</li>
+<li>Giving of Topics for Discussion</li>
+</ul></td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>6 hrs</td>
+<td>
+<strong>Educational Planning Management: Its Beginning and Development</strong>
+<ul>
+<li>Define Educational Planning and Management</li>
+<li>The Development of education planning and management systems in Philippine schools</li>
+</ul>
+</br>
+<strong>Educational Planning and Human Resource Development</strong></td>
+<td>Acta, Elyn Joy F. </td>
+</tr>
+
+<tr>
+<td>6 hrs</td>
+<td>
+<strong>The Problem of Teacher Education</strong>
+<ul>
+<li>As a Training Problem</li>
+<li>As a Learning Problem</li>
+<li>As a Policy Problem</li>
+</ul>
+</br>
+<strong>School Effectiveness and Ineffectiveness: As Assessment</strong>
+<ul>
+
+<li>The Effective School, Educational Reform, and the Cooperative School</li>
+<li>Diagnosis of Classroom Climate</li>
+<li>Problems in the Twenty-first Century: Educator Accountability and Youth Violence</li>
+</ul></td>
+<td>Mayabason, Sharme D.</td>
+</tr>
+
+<tr>
+<td>3 hrs</td>
+<td>
+<strong>Explaining School Management: Levels of Understanding</strong>
+<ul>
+<li>The Macro-Level: Transformational and Development Theories</li>
+<li>The Meso-Level: School Management in Prismatic Society</li>
+<li>The Micro Level: Script, Discourses, and the Individual Agent</li>
+</ul></td>
+<td>Tejada, Jearold E.</td>
+</tr>
+
+<tr>
+<td>3 hrs</td>
+<td>
+<strong>Planning and Management for Excellence and Efficiency</strong>
+<ul>
+<li>In Basic Education</li>
+<li>In Higher Education</li>
+</ul></td>
+<td>Delfin, Lezette</td>
+</tr>
+
+<tr>
+<td>3 hrs</td>
+<td>
+<strong>Teaching Quality Matters</strong>
+<ul>
+<li>Does Teaching Quality Make A Difference?</li>
+<li>How do we Define Teaching Quality and Highly Qualified Teachers?</li>
+</ul></td>
+<td>Bereber, Mary Joy D.</td>
+</tr>
+
+<tr>
+<td>3 hrs</td>
+<td>
+<strong>Assessing Teacher Education</strong>
+<ul>
+<li>The Problem of Teacher Education</li>
+<li>Studying Teacher Education: What We Know and Needed to Know</li>
+<li>The Politics of Teacher Education and the Curse of Complexity</li>
+</ul></td>
+<td>Bereber, Mary Joy D.</td>
+</tr>
+
+<tr>
+<td>3 hrs</td>
+<td>
+<strong>Planning and Management on Non-Formal Education</strong>
+</br>
+<strong>Evaluation and follow-up of educational policies, plans, and reforms for formal and non-formal education</strong></td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>6 hrs</td>
+<td>
+<strong>The Uses of Microcomputers in Educational Planning and Management</strong>
+</br>
+<strong>Educational Planning and the planning of educational facilities</strong>
+</br>
+<strong>Modernization and Development of Educational Administration and Management Systems</strong></td>
+<td>Suganob, Bitu-in Z.<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  Egida, Clifton D. </td>
+</tr>
+
+<tr>
+<td>3 hrs</td>
+<td>
+<strong>Reforming Teacher Education</strong>
+<ul>
+<li>Higher Standards for Prospective Teachers</li>
+<li>The questions that drives Reform<br>
+- What are the teaching strategies and processes used by effective  teachers?<br>
+- What teachers' education processes ensure that prospective teachers  learn the teaching strategies?</li>
+</ul></td>
+<td>Montilla, Danica Marie B. </td>
+</tr>
+
+<tr>
+<td>3 hrs</td>
+<td>
+<strong>Planning and Management for Excellence and Efficiency in Teacher Education</strong>
+<ul>
+<li>Sometimes It's Not the Money: Teaching and Heart</li>
+<li>Stayers, Leavers, Lovers, and Dreamers: Insights about Teacher Retention</li>
+</ul>
+</br>
+<strong>The Future of Teacher Education: Promises and Pitfalls</strong></td>
+<td>Patricio, Garrett P. </td>
+</tr>
+
+<tr>
+<td>3 hrs</td>
+<td>
+<strong>Inclusive Education in the Philippine Educational System</strong>
+<ul>
+<li>Accommodation</li>
+<li>Modification</li>
+</ul></td>
+<td>Garcia, Jessie P.</td>
+</tr>
+
+<tr>
+<td>Weeks 16-18</td>
+<td>
+<strong>Presentation of Outputs / Final Examination</strong></td>
+<td>&nbsp;</td>
+</tr>
+</table>
+
+</section>
+
+<!-- REQUIREMENTS -->
+
+<section id="requirements" style="background:#eef2f7;">
+
+<div class="section-title">
+<h3>Course Requirements</h3>
+<p>Assessment and Evaluation</p>
+</div>
+
+<div class="card">
+
+<ul>
+<li>Oral Reports with Appropriate Activities</li>
+<li>Self-Assessment on Being a Teacher or School Head</li>
+<li>Assessment of Work Environment</li>
+<li>Final Examination</li>
+</ul>
+
+</div>
+
+</section>
+
+<!-- REFERENCES -->
+
+<section>
+
+<div id="references" class="section-title">
+<h3>Suggested Readings and References</h3>
+<p>Selected Books and Academic References</p>
+</div>
+
+<div class="card">
+
+<ul>
+<li>
+  <p>Turlington,  S. (2020). The Unofficial Guide to Distance Learning</p>
+</li>
+<li>
+  <p>Kettner,  P. (2017). Designing and Managing Programs: An Effectiveness-Based Approach, 5th  Edition.</p>
+</li>
+<li>
+  <p>Wadell,  D. (2017). Organizational Change: Development and Transformation, 6th  Edition.</p>
+</li>
+<li>
+  <p>Stredwick, J.K. (2016). Human Resource Management  in Business Context, 3rd Edition.</p>
+</li>
+<li>
+  <p>Marchington, M. (2016). Human Resource Management  at Work, 6th Edition.</p>
+</li>
+<li>
+  <p>Sarmiento, U. (2015). Compendium of School Laws  in the Philippines: The Manual of Regulations for Private Higher Education, Vol  1, 1st Revised Edition.</p>
+</li>
+<li>
+  <p>Saidali, M. (2015). Values and Work Ethics.</p>
+</li>
+<li>
+  <p>Shepherd, T.L. (2015). Behavior and Classroom  Management in the Multicultural Classroom: Proactive, Active and Reactive  Strategies.</p>
+</li>
+<li>
+  <p>Cochran-Smith, M., &ldquo;Policy, Practice, and  Politics in Teacher Education&rdquo;; Corwin Press, USA, 2006.</p>
+</li>
+<li>
+  <p>Shmuck, R&amp;Smuck P., &ldquo;Group Processes on the Classroom&rdquo;; McGraw-Hill, New  York, NY, 10020, 2001.</p>
+</li>
+<li>
+  <p>Walker, J., et.al., &ldquo;Behavior Management: A  Practical Approach for Educators&rdquo;, 7th Edition, Prentice-Hall, Inc.,  1999</p>
+</li>
+<li>
+  <p>Zirpole, T., &ldquo;Behavior Management Application for  Teachers&rdquo;; 3rd Edition, Merill Prentice-Hall, Inc., Upper Saddle  River, New Jersey 07458, 2003.<br>
+      <a href="https://www.unescap.org/resources/what-good-governance" target="_blank">http://www.unescap.org/pdd/prs/ProjectActivities/Ongoing/gg/governance.asp</a> <br>
+      <a href="http://www.gdrc.org/u-gov/doc-oecd_ggov.html" target="_blank">http://www.gdrc.org/u-gov/doc-oecd_ggov.html</a></p>
+</li>
+</ul>
+</div>
+
+</section>
+
+<!-- PREPARED -->
+
+<section style="background:#eef2f7;">
+
+
+
+<div class="vmg-grid">
+
+<div class="card">
+<p>
+<strong>MINNIE P. CHAN, PhD</strong><br>
+Professor
+</p>
+
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-container">
+
+<div>
+<h4>Graduate School</h4>
+<p>Filamer Christian University, Inc.</p>
+<p>Roxas Avenue, Roxas City, Capiz, Philippines</p>
+</div>
+
+<div>
+<h4>Course</h4>
+<p>Educational Planning, Policy and Management</p>
+<p>EdD EL 601</p>
+</div>
+
+<div>
+<h4>Summer, Academic Year 2025-2026 </h4>
+<p>Doctor of Education Program</p>
+<p>Educational Leadership</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+&#xA9; AY 2025-2026 Filamer Christian University, Inc. Graduate School
+</div>
+
+</footer>
+
+</body>
+</html>
