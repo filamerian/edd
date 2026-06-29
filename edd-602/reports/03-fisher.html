@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 03 - Fisher's Formula</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i> EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 03
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Fisher's Formula
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Sample Size Estimation Based on Population Proportion
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Introduction -->
+
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Fisher's Formula is a widely accepted statistical method for
+                determining the required sample size when estimating a population
+                proportion. It is commonly used in educational research, public
+                health studies, and survey research where researchers aim to
+                estimate the proportion of individuals possessing a particular
+                characteristic.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Explain the purpose of Fisher's Formula.</li>
+
+                <li>Identify the variables used in the formula.</li>
+
+                <li>Compute the required sample size.</li>
+
+                <li>Interpret the computed result.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Fisher's Formula is based on statistical principles developed by
+                Sir Ronald A. Fisher, one of the pioneers of modern statistics.
+                The formula is frequently applied when estimating population
+                proportions, especially in large populations.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Fisher's Formula estimates the minimum sample size required to
+                achieve a specified confidence level and margin of error when
+                estimating a population proportion.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Formula -->
+
+        <h2>Formula</h2>
+
+        <div class="alert alert-primary text-center">
+
+            <h3>
+
+                n = (Z<sup>2</sup> * p * q) / d<sup>2</sup>
+
+            </h3>
+
+        </div>
+
+        <br>
+
+        <!-- Variables -->
+
+        <h2>Variables</h2>
+
+        <table class="table table-bordered">
+
+            <thead class="table-primary">
+
+                <tr>
+
+                    <th>Symbol</th>
+
+                    <th>Description</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Z</td>
+
+                    <td>Z-score corresponding to the selected confidence level.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>p</td>
+
+                    <td>Estimated population proportion.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>q</td>
+
+                    <td>1 - p.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>d</td>
+
+                    <td>Desired margin of error.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>n</td>
+
+                    <td>Required sample size.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Common Values -->
+
+        <h2>Common Values</h2>
+
+        <table class="table table-striped">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Confidence Level</th>
+
+                    <th>Z Value</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>90%</td>
+
+                    <td>1.645</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>95%</td>
+
+                    <td>1.96</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>99%</td>
+
+                    <td>2.576</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Worked Example -->
+
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h5>Given:</h5>
+
+            <ul>
+
+                <li>Z = 1.96</li>
+
+                <li>p = 0.50</li>
+
+                <li>q = 0.50</li>
+
+                <li>d = 0.05</li>
+
+            </ul>
+
+            <hr>
+
+            <p><strong>Step 1</strong></p>
+
+            <p>
+
+                n = (1.96<sup>2</sup> * 0.50 * 0.50) / 0.05<sup>2</sup>
+
+            </p>
+
+            <p><strong>Step 2</strong></p>
+
+            <p>
+
+                1.96<sup>2</sup> = 3.8416
+
+            </p>
+
+            <p><strong>Step 3</strong></p>
+
+            <p>
+
+                3.8416 * 0.50 * 0.50 = 0.9604
+
+            </p>
+
+            <p><strong>Step 4</strong></p>
+
+            <p>
+
+                0.05<sup>2</sup> = 0.0025
+
+            </p>
+
+            <p><strong>Step 5</strong></p>
+
+            <p>
+
+                n = 0.9604 / 0.0025 = 384.16
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <strong>Required Sample Size = 384 Respondents</strong>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Educational surveys</li>
+
+                <li>Health and medical research</li>
+
+                <li>Community-based studies</li>
+
+                <li>Market research</li>
+
+                <li>Social science research</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Advantages -->
+
+        <h2>Advantages</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Simple and widely accepted.</li>
+
+                <li>Produces reliable sample size estimates.</li>
+
+                <li>Suitable for estimating population proportions.</li>
+
+                <li>Applicable across various research fields.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Limitations -->
+
+        <h2>Limitations</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Requires an estimate of the population proportion.</li>
+
+                <li>Assumes random sampling.</li>
+
+                <li>May require adjustment for finite populations.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Comparison -->
+
+        <h2>Comparison with Cochran Formula</h2>
+
+        <table class="table table-bordered">
+
+            <thead class="table-primary">
+
+                <tr>
+
+                    <th>Fisher's Formula</th>
+
+                    <th>Cochran Formula</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Uses margin of error represented by d.</td>
+
+                    <td>Uses margin of error represented by e.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Commonly used in health and survey research.</td>
+
+                    <td>Widely applied in educational and social research.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Both estimate sample size using population proportion.</td>
+
+                    <td>Both produce nearly identical results under the same assumptions.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Summary -->
+
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Fisher's Formula is an effective method for determining sample
+                size when estimating a population proportion. It is particularly
+                useful for surveys involving large populations and provides
+                statistically sound estimates when appropriate values are chosen.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <h2>References</h2>
+
+        <div class="card-custom">
+
+            <ol>
+
+                <li>Creswell, J. W., and Creswell, J. D. (2018). <em>Research Design: Qualitative, Quantitative, and Mixed Methods Approaches.</em> 5th Edition. SAGE Publications.</li>
+
+                <li>Fisher, R. A. (1925). <em>Statistical Methods for Research Workers.</em> Oliver and Boyd.</li>
+
+                <li>Kothari, C. R. (2004). <em>Research Methodology: Methods and Techniques.</em> New Age International Publishers.</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+
+        <div class="d-flex justify-content-between">
+
+            <a href="02-cochran.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="04-krejcie-morgan.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

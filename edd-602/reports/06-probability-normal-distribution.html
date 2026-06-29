@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>06 - Probability and the Normal Distribution</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-mortarboard-fill"></i>
+
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <h1>Probability and the Normal Distribution</h1>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Learning Objectives -->
+
+        <div class="card-custom">
+
+            <h2>Learning Objectives</h2>
+
+            <p>
+
+                At the end of this lesson, you should be able to:
+
+            </p>
+
+            <ul>
+
+                <li>Define probability and explain its role in statistics.</li>
+
+                <li>Differentiate theoretical and empirical probability.</li>
+
+                <li>Compute simple probabilities.</li>
+
+                <li>Describe the characteristics of the normal distribution.</li>
+
+                <li>Interpret areas under the normal curve.</li>
+
+                <li>Explain why the normal distribution is important in educational research.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Introduction -->
+
+        <div class="card-custom">
+
+            <h2>Introduction</h2>
+
+            <p>
+
+                Probability provides the mathematical foundation for inferential statistics.
+                Every statistical test, confidence interval, and hypothesis test is based on
+                probability theory.
+
+            </p>
+
+            <p>
+
+                In educational research, probability helps researchers estimate the likelihood
+                of events and determine whether observed results are likely due to chance or to
+                real differences and relationships.
+
+            </p>
+
+            <p>
+
+                Closely related to probability is the <strong>normal distribution</strong>, one
+                of the most important concepts in statistics. Many educational variables such as
+                intelligence, achievement scores, height, and standardized test scores tend to
+                follow this distribution.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <strong>Remember:</strong>
+
+                Understanding probability and the normal distribution is essential before
+                learning hypothesis testing and parametric statistical procedures.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Probability -->
+
+        <div class="card-custom">
+
+            <h2>What is Probability?</h2>
+
+            <p>
+
+                <strong>Probability</strong> is the numerical measure of how likely an event is
+                to occur. It ranges from 0 to 1.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Probability Value</th>
+                        <th>Meaning</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>0</td>
+
+                        <td>The event can never occur.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>0.50</td>
+
+                        <td>The event has an equal chance of occurring or not occurring.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>1</td>
+
+                        <td>The event is certain to occur.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Types of Probability -->
+
+        <div class="card-custom">
+
+            <h2>Types of Probability</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Theoretical Probability</td>
+
+                        <td>
+
+                            Based on mathematical reasoning assuming all outcomes are equally
+                            likely.
+
+                        </td>
+
+                        <td>
+
+                            Probability of getting a 4 when rolling a fair die.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Empirical Probability</td>
+
+                        <td>
+
+                            Based on actual observations or experimental results.
+
+                        </td>
+
+                        <td>
+
+                            The proportion of students who passed an examination.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Formula -->
+
+        <div class="card-custom">
+
+            <h2>Basic Probability Formula</h2>
+
+            <p>
+
+                Probability is computed by dividing the number of favorable outcomes by the total
+                number of possible outcomes.
+
+            </p>
+
+            <div class="alert alert-primary text-center">
+
+                P(Event) = Number of Favorable Outcomes / Total Number of Possible Outcomes
+
+            </div>
+
+            <p>
+
+                The computed probability must always be between 0 and 1.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Example -->
+
+        <div class="card-custom">
+
+            <h2>Example 1</h2>
+
+            <p>
+
+                A box contains 10 balls: 6 red and 4 blue. One ball is selected at random.
+
+            </p>
+
+            <p>
+
+                What is the probability of selecting a red ball?
+
+            </p>
+
+            <div class="alert alert-secondary">
+
+                Number of favorable outcomes = 6
+
+                <br>
+
+                Total possible outcomes = 10
+
+            </div>
+
+            <div class="alert alert-primary text-center">
+
+                P(Red) = 6 / 10 = 0.60
+
+            </div>
+
+            <p>
+
+                Therefore, there is a 60% chance of selecting a red ball.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Complement -->
+
+        <div class="card-custom">
+
+            <h2>Complement of an Event</h2>
+
+            <p>
+
+                Sometimes researchers are interested in the probability that an event does
+                <strong>not</strong> occur. This is called the complement of an event.
+
+            </p>
+
+            <div class="alert alert-primary text-center">
+
+                P(Not A) = 1 - P(A)
+
+            </div>
+
+            <div class="alert alert-info">
+
+                <strong>Example</strong>
+
+                <br><br>
+
+                If the probability of passing an examination is 0.85, then the probability of
+                failing is:
+
+                <br><br>
+
+                P(Fail) = 1 - 0.85 = 0.15
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Normal Distribution -->
+
+        <div class="card-custom">
+
+            <h2>What is the Normal Distribution?</h2>
+
+            <p>
+
+                The <strong>normal distribution</strong>, also called the
+                <strong>Gaussian distribution</strong>, is a continuous probability distribution
+                that is symmetrical around its mean.
+
+            </p>
+
+            <p>
+
+                In a normal distribution, most observations cluster near the center, while fewer
+                observations occur farther from the mean.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                Many educational variables approximately follow a normal distribution, making it
+                one of the most widely used assumptions in statistical analysis.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Characteristics -->
+
+        <div class="card-custom">
+
+            <h2>Characteristics of the Normal Distribution</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Characteristic</th>
+                        <th>Description</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Bell-Shaped</td>
+
+                        <td>The graph resembles a symmetrical bell.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Symmetrical</td>
+
+                        <td>The left and right sides are mirror images.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Mean = Median = Mode</td>
+
+                        <td>All measures of central tendency are equal.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Total Area = 1</td>
+
+                        <td>The total probability under the curve equals 1.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Tails Extend Indefinitely</td>
+
+                        <td>The curve approaches but never touches the horizontal axis.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+		        <!-- Empirical Rule -->
+
+        <div class="card-custom">
+
+            <h2>The Empirical Rule (68-95-99.7 Rule)</h2>
+
+            <p>
+
+                One of the most important characteristics of the normal distribution is the
+                <strong>Empirical Rule</strong>. It describes the percentage of observations that
+                fall within one, two, and three standard deviations from the mean.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Distance from the Mean</th>
+                        <th>Percentage of Observations</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>&plusmn;1 Standard Deviation</td>
+
+                        <td>Approximately 68%</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&plusmn;2 Standard Deviations</td>
+
+                        <td>Approximately 95%</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&plusmn;3 Standard Deviations</td>
+
+                        <td>Approximately 99.7%</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="alert alert-info">
+
+                This rule allows researchers to estimate how many observations are expected to
+                fall within specific ranges around the mean.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Example -->
+
+        <div class="card-custom">
+
+            <h2>Example 2</h2>
+
+            <p>
+
+                Suppose students' examination scores have:
+
+            </p>
+
+            <ul>
+
+                <li>Mean (&mu;) = 80</li>
+
+                <li>Standard Deviation (&sigma;) = 5</li>
+
+            </ul>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Range</th>
+                        <th>Scores</th>
+                        <th>Expected Percentage</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>&plusmn;1&sigma;</td>
+
+                        <td>75 to 85</td>
+
+                        <td>68%</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&plusmn;2&sigma;</td>
+
+                        <td>70 to 90</td>
+
+                        <td>95%</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&plusmn;3&sigma;</td>
+
+                        <td>65 to 95</td>
+
+                        <td>99.7%</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Importance -->
+
+        <div class="card-custom">
+
+            <h2>Why is the Normal Distribution Important?</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Importance</th>
+                        <th>Explanation</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Foundation of Parametric Tests</td>
+
+                        <td>
+
+                            Many statistical tests assume that the data are normally distributed.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Supports Hypothesis Testing</td>
+
+                        <td>
+
+                            Critical values and probability values are based on probability
+                            distributions.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Predicts Expected Outcomes</td>
+
+                        <td>
+
+                            Researchers can estimate the proportion of observations within
+                            specific score ranges.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Standardizes Scores</td>
+
+                        <td>
+
+                            Used in computing z-scores and standardized test scores.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Widely Used in Educational Research</td>
+
+                        <td>
+
+                            Achievement tests, aptitude tests, and intelligence scores often
+                            approximate the normal distribution.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Educational Applications -->
+
+        <div class="card-custom">
+
+            <h2>Applications in Educational Research</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Research Situation</th>
+                        <th>Application</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Achievement Tests</td>
+
+                        <td>
+
+                            Determine the percentage of students scoring above or below average.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Teacher Performance Evaluation</td>
+
+                        <td>
+
+                            Compare performance ratings across schools.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Admission Tests</td>
+
+                        <td>
+
+                            Identify students who qualify for scholarships or special programs.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Educational Assessment</td>
+
+                        <td>
+
+                            Standardize scores for fair comparison.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Common Mistakes -->
+
+        <div class="card-custom">
+
+            <h2>Common Mistakes</h2>
+
+            <ul>
+
+                <li>Assuming every dataset follows a normal distribution.</li>
+
+                <li>Confusing probability with percentage.</li>
+
+                <li>Ignoring the assumptions required for parametric statistical tests.</li>
+
+                <li>Interpreting probability as certainty.</li>
+
+                <li>Using probability values greater than 1 or less than 0.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <div class="card-custom">
+
+            <h2>Lesson Summary</h2>
+
+            <ul>
+
+                <li>Probability measures the likelihood that an event will occur.</li>
+
+                <li>Probability values range from 0 to 1.</li>
+
+                <li>Probability may be theoretical or empirical.</li>
+
+                <li>The normal distribution is a symmetrical, bell-shaped probability distribution.</li>
+
+                <li>The Empirical Rule states that approximately 68%, 95%, and 99.7% of observations fall within one, two, and three standard deviations from the mean.</li>
+
+                <li>Probability and the normal distribution provide the foundation for hypothesis testing and most parametric statistical procedures.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Self-Check -->
+
+        <div class="card-custom">
+
+            <h2>Self-Check Questions</h2>
+
+            <ol>
+
+                <li>Define probability in your own words.</li>
+
+                <li>Differentiate theoretical probability from empirical probability.</li>
+
+                <li>What are the major characteristics of the normal distribution?</li>
+
+                <li>Explain the 68-95-99.7 Empirical Rule.</li>
+
+                <li>Why is the normal distribution important in educational research?</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <div class="card-custom">
+
+            <h2>References</h2>
+
+            <ul>
+
+                <li>Gravetter, F. J., & Wallnau, L. B. (2021). <em>Statistics for the Behavioral Sciences.</em> Cengage Learning.</li>
+
+                <li>Triola, M. F. (2022). <em>Elementary Statistics.</em> Pearson Education.</li>
+
+                <li>Field, A. (2024). <em>Discovering Statistics Using IBM SPSS Statistics.</em> Sage Publications.</li>
+
+                <li>Moore, D. S., McCabe, G. P., & Craig, B. A. (2021). <em>Introduction to the Practice of Statistics.</em> W. H. Freeman.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Bottom Navigation -->
+
+        <div class="text-center">
+
+            <a href="05-data-collection-tabulation.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Previous
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house-fill"></i>
+
+                Home
+
+            </a>
+
+            <a href="07-hypothesis-testing.html" class="btn btn-primary">
+
+                Next
+
+                <i class="bi bi-arrow-right-circle"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+		

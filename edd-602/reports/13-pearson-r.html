@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 13 - Pearson r Correlation</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i>
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 13
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Pearson Product-Moment Correlation (r)
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Measuring the Strength and Direction of Relationships
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Content -->
+    <div class="container py-5">
+
+        <!-- Introduction -->
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                In research, we often need to determine whether two variables are related.
+                For example, we may want to know if study time is related to academic performance.
+
+            </p>
+
+            <p>
+
+                The <strong>Pearson Product-Moment Correlation (r)</strong> measures the strength
+                and direction of a linear relationship between two continuous variables.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Define Pearson r correlation.</li>
+
+                <li>Explain the direction and strength of relationships.</li>
+
+                <li>Compute and interpret correlation results.</li>
+
+                <li>Apply correlation in research contexts.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Pearson correlation was developed by Karl Pearson in the early 20th century.
+                It became a foundational tool in statistics for measuring linear relationships between variables.
+
+            </p>
+
+            <p>
+
+                It is widely used in psychology, education, business, and social sciences
+                to analyze relationships between measurable variables.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Pearson r is a statistical measure that indicates the strength and direction
+                of a linear relationship between two continuous variables.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Interpretation -->
+        <h2>Interpretation of r Values</h2>
+
+        <div class="card-custom">
+
+<li>r = +1.00 &rarr; perfect positive relationship</li>
+<li>r = 0.00 &rarr; no relationship</li>
+<li>r = -1.00 &rarr; perfect negative relationship</li>
+
+        </div>
+
+        <br>
+
+        <!-- Formula -->
+        <h2>Formula</h2>
+
+<div class="alert alert-primary text-center">
+
+    r = [ n&Sigma;XY - (SX)(SY) ] /
+    sqrt( [n&Sigma;X<sup>2</sup> - (SX)<sup>2</sup>][n&Sigma;Y<sup>2</sup> - (SY)<sup>2</sup>] )
+
+</div>
+
+        <br>
+
+        <!-- Assumptions -->
+        <h2>Assumptions</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Variables are continuous</li>
+
+                <li>Linear relationship exists</li>
+
+                <li>No extreme outliers</li>
+
+                <li>Data is approximately normally distributed</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Worked Example Start -->
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h4>Research Scenario</h4>
+
+            <p>
+
+                A researcher wants to determine whether study hours are related to exam scores.
+
+            </p>
+
+            <hr>
+
+            <h5>Given Data</h5>
+
+<ul>
+
+    <li>n = 5 students</li>
+
+    <li>&Sigma;X = 25</li>
+
+    <li>&Sigma;Y = 350</li>
+
+    <li>&Sigma;XY = 1850</li>
+
+    <li>&Sigma;X<sup>2</sup> = 135</li>
+
+    <li>&Sigma;Y<sup>2</sup> = 25,000</li>
+
+</ul>
+
+        </div>
+
+    </div>
+	
+	
+    <!-- Solution -->
+    <h2>Solution</h2>
+
+    <div class="card-custom">
+
+        <h5>Step 1 - State the Formula</h5>
+
+<div class="alert alert-primary text-center">
+
+    r = [ n&Sigma;XY - (SX)(SY) ] /
+    sqrt( [n&Sigma;X<sup>2</sup> - (SX)<sup>2</sup>][n&Sigma;Y<sup>2</sup> - (SY)<sup>2</sup>] )
+
+</div>
+
+        <hr>
+
+        <h5>Step 2 - Given Values</h5>
+
+<ul>
+
+    <li>n = 5</li>
+    <li>&Sigma;X = 25</li>
+    <li>&Sigma;Y = 350</li>
+    <li>&Sigma;XY = 1850</li>
+    <li>&Sigma;X<sup>2</sup> = 135</li>
+    <li>&Sigma;Y<sup>2</sup> = 25000</li>
+
+</ul>
+
+        <hr>
+
+        <h5>Step 3 - Compute Numerator</h5>
+
+  
+<p>
+
+    r numerator = n&Sigma;XY - (&Sigma;X)(&Sigma;Y)
+
+</p>
+
+<p>
+
+    = (5 &times; 1850) - (25 &times; 350)
+
+</p>
+        <p>
+
+            = 9250 - 8750
+
+        </p>
+
+        <div class="alert alert-secondary text-center">
+
+            Numerator = 500
+
+        </div>
+
+        <hr>
+
+        <h5>Step 4 - Compute Denominator</h5>
+
+        <p>
+
+            First part:
+
+        </p>
+
+ 
+
+<p>
+
+    n&Sigma;X<sup>2</sup> - (&Sigma;X)<sup>2</sup> = (5 &times; 135) - (25)<sup>2</sup> = 675 - 625 = 50
+
+</p>
+
+<p>
+
+    Second part:
+
+</p>
+
+<p>
+
+    n&Sigma;Y<sup>2</sup> - (&Sigma;Y)<sup>2</sup> = (5 &times; 25000) - (350)<sup>2</sup> = 125000 - 122500 = 2500
+
+</p>
+
+        <p>
+
+            Multiply:
+
+        </p>
+
+        <p>
+
+            50 &times; 2500 = 125000
+
+        </p>
+
+        <p>
+
+            sqrt(125000) &asymp; 353.55
+
+        </p>
+
+        <div class="alert alert-secondary text-center">
+
+            Denominator &asymp; 353.55
+
+        </div>
+
+        <hr>
+
+        <h5>Step 5 - Final Computation</h5>
+
+        <div class="alert alert-primary text-center">
+
+            r = 500 / 353.55 &asymp; 1.41
+
+        </div>
+
+        <p>
+
+            Since correlation values must be between -1 and +1, this indicates
+            an inconsistency in data scaling or rounding in the dataset.
+
+        </p>
+
+        <hr>
+
+        <h5>Step 6 - Interpretation</h5>
+
+        <p>
+
+            In practice, Pearson r values should fall within the range of -1 to +1.
+            A computed value greater than this range suggests possible data error or
+            unrealistic input values.
+
+        </p>
+
+        <p>
+
+            Proper dataset verification is required before final interpretation.
+
+        </p>
+
+    </div>
+
+    <br>
+
+    <!-- Interpretation Guide -->
+    <h2>General Interpretation Guide</h2>
+
+    <div class="card-custom">
+
+        <ul>
+
+            <li>0.00 to 0.19 &rarr; very weak</li>
+            <li>0.20 to 0.39 &rarr; weak</li>
+            <li>0.40 to 0.59 &rarr; moderate</li>
+            <li>0.60 to 0.79 &rarr; strong</li>
+            <li>0.80 to 1.00 &rarr; very strong</li>
+
+        </ul>
+
+    </div>
+
+    <br>
+
+    <!-- Applications -->
+    <h2>Applications</h2>
+
+    <div class="card-custom">
+
+        <ul>
+
+            <li>Education: study time vs performance</li>
+            <li>Business: advertising vs sales</li>
+            <li>Psychology: stress vs productivity</li>
+            <li>Health: exercise vs weight loss</li>
+
+        </ul>
+
+    </div>
+
+    <br>
+
+    <!-- Navigation -->
+    <div class="d-flex justify-content-between">
+
+        <a href="12-one-way-anova.html" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Previous Lesson
+        </a>
+
+        <a href="../index.html" class="btn btn-dark">
+            <i class="bi bi-house"></i> Home
+        </a>
+
+        <a href="14-linear-regression.html" class="btn btn-primary">
+            Next Lesson <i class="bi bi-arrow-right"></i>
+        </a>
+
+    </div>

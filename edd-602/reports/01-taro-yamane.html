@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 01 - Taro Yamane's Formula</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i> EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+    <div class="container text-center">
+
+        <div class="lesson-number">
+
+            Lesson 01
+
+        </div>
+
+        <h1 class="lesson-title">
+
+            Taro Yamane's Formula
+
+        </h1>
+
+        <p class="lesson-subtitle">
+
+            Sample Size Determination for Finite Populations
+
+        </p>
+
+
+
+    </div>
+
+</div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Introduction -->
+
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Determining the correct sample size is one of the most important
+                steps in quantitative research. A sample that is too small may
+                not represent the population, while a sample that is too large
+                may require unnecessary time and resources.
+
+            </p>
+
+            <p>
+
+                Taro Yamane's Formula provides a simple and practical method for
+                determining the required sample size when the total population
+                is known.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Explain the purpose of Taro Yamane's Formula.</li>
+
+                <li>Identify the variables used in the formula.</li>
+
+                <li>Compute the required sample size.</li>
+
+                <li>Interpret the computed result.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Taro Yamane introduced this formula in his book
+                <strong>Statistics: An Introductory Analysis</strong>
+                published in 1967.
+
+            </p>
+
+            <p>
+
+                Because of its simplicity, the formula has become one of the
+                most commonly used methods for determining sample size in
+                educational, business, and social science research.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Taro Yamane's Formula is a statistical formula used to estimate
+                the minimum sample size needed from a known population while
+                maintaining a desired margin of error.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Formula -->
+
+        <h2>Formula</h2>
+
+        <div class="alert alert-primary text-center">
+
+            <h3>
+
+                n = N / (1 + N(e<sup>2</sup>))
+
+            </h3>
+
+        </div>
+
+        <br>
+
+        <!-- Variables -->
+
+        <h2>Variables</h2>
+
+        <table class="table table-bordered">
+
+            <thead class="table-primary">
+
+                <tr>
+
+                    <th>Symbol</th>
+
+                    <th>Description</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td><strong>n</strong></td>
+
+                    <td>Required sample size</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>N</strong></td>
+
+                    <td>Total population size</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>e</strong></td>
+
+                    <td>Margin of error expressed as a decimal</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Example -->
+
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h5>Given:</h5>
+
+            <ul>
+
+                <li>Population (N) = 2500</li>
+
+                <li>Margin of Error (e) = 0.05</li>
+
+            </ul>
+
+            <hr>
+
+            <p><strong>Step 1</strong></p>
+
+            <p>
+
+                n = 2500 / (1 + 2500(0.05<sup>2</sup>))
+
+            </p>
+
+            <p><strong>Step 2</strong></p>
+
+            <p>
+
+                0.05<sup>2</sup> = 0.0025
+
+            </p>
+
+            <p><strong>Step 3</strong></p>
+
+            <p>
+
+                2500 x 0.0025 = 6.25
+
+            </p>
+
+            <p><strong>Step 4</strong></p>
+
+            <p>
+
+                1 + 6.25 = 7.25
+
+            </p>
+
+            <p><strong>Step 5</strong></p>
+
+            <p>
+
+                2500 / 7.25 = 344.83
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <strong>Required Sample Size = 345 Respondents</strong>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Educational Research</li>
+
+                <li>Business Research</li>
+
+                <li>Market Research</li>
+
+                <li>Community Surveys</li>
+
+                <li>Government Research</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Advantages -->
+
+        <h2>Advantages</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Simple to understand.</li>
+
+                <li>Easy to compute manually.</li>
+
+                <li>Suitable for finite populations.</li>
+
+                <li>Widely accepted by researchers.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Limitations -->
+
+        <h2>Limitations</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Population size must be known.</li>
+
+                <li>Assumes random sampling.</li>
+
+                <li>Does not account for population variability.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Taro Yamane's Formula provides researchers with a quick and
+                practical way to determine sample size for finite populations.
+                It is commonly used in educational research because of its
+                simplicity and ease of application.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <h2>References</h2>
+
+        <div class="card-custom">
+
+            <ol>
+
+                <li>Creswell, J. W., &amp; Creswell, J. D. (2018). <em>Research Design: Qualitative, Quantitative, and Mixed Methods Approaches</em> (5th ed.). SAGE Publications.</li>
+
+                <li>Israel, G. D. (1992). <em>Determining Sample Size.</em> University of Florida.</li>
+
+                <li>Yamane, T. (1967). <em>Statistics: An Introductory Analysis</em> (2nd ed.). Harper and Row.</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+
+        <div class="d-flex justify-content-between">
+
+            <a href="../index.html" class="btn btn-secondary">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="02-cochran.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

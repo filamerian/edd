@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 08 - Z-Test for Sample and Population Means</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i>
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 08
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Z-Test for Sample and Population Means
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Comparing a Sample Mean with a Known Population Mean
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+
+        <!-- Introduction -->
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                In research, we often need to determine whether a sample mean is significantly different from a known
+                population mean. This situation commonly occurs when researchers want to evaluate performance,
+                outcomes, or measurements against an established standard.
+
+            </p>
+
+            <p>
+
+                The <strong>Z-test for sample and population means</strong> is a statistical method used when the
+                population standard deviation is known and the sample size is large (typically n = 30).
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Define the Z-test for a single sample mean.</li>
+
+                <li>Identify when to use the Z-test.</li>
+
+                <li>Explain the assumptions of the Z-test.</li>
+
+                <li>Compute and interpret Z-test results.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The Z-test is rooted in the development of the normal distribution by Carl Friedrich Gauss in the 18th
+                and 19th centuries. The standard normal distribution, often called the Z-distribution, became a
+                foundation for modern inferential statistics.
+
+            </p>
+
+            <p>
+
+                Later, statisticians formalized the use of Z-scores to compare individual or sample values against a
+                population distribution. This method became widely used in education, psychology, and quality control
+                research to evaluate whether observed differences are statistically significant.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The Z-test for a single sample mean is a statistical test used to determine whether the mean of a
+                sample differs significantly from a known population mean when the population standard deviation is
+                known.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- When to Use -->
+        <h2>When to Use the Z-Test</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>The population standard deviation (s) is known.</li>
+
+                <li>The sample size is large (n = 30).</li>
+
+                <li>The data is approximately normally distributed or the sample is large enough.</li>
+
+                <li>You are comparing a sample mean to a known population mean.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Formula -->
+        <h2>Z-Test Formula</h2>
+
+<div class="alert alert-primary text-center">
+
+    Z = (X&#772; - &mu;) / (&sigma; / &radic;n)
+
+</div>
+
+        <div class="card-custom">
+
+            <p>
+
+                Where:
+
+            </p>
+
+            <ul>
+
+                <li><strong>X&#772;</strong> = sample mean</li>
+
+                <li><strong>&mu;</strong> = population mean</li>
+
+                <li><strong>&sigma;</strong> = population standard deviation</li>
+
+                <li><strong>n</strong> = sample size</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Assumptions -->
+        <h2>Assumptions</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>The sample is randomly selected.</li>
+
+                <li>The population standard deviation is known.</li>
+
+                <li>The sample size is sufficiently large (n = 30).</li>
+
+                <li>The observations are independent.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Worked Example (start) -->
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h4>Research Scenario</h4>
+
+            <p>
+
+                A researcher wants to determine whether the average score of students in a statistics class is
+                different from the university's known average performance score.
+
+            </p>
+
+            <p>
+
+                The university has a known population mean score, and the researcher collects a sample of students to
+                compare their performance against this benchmark.
+
+            </p>
+
+            <hr>
+
+            <h5>Given Information</h5>
+
+<ul>
+
+    <li>Population Mean (&mu;) = 75</li>
+
+    <li>Population Standard Deviation (&sigma;) = 10</li>
+
+    <li>Sample Mean (X&#772;) = 78</li>
+
+    <li>Sample Size (n) = 40</li>
+
+</ul>
+			
+			
+			        <!-- Step-by-Step Solution -->
+        <h2>Solution</h2>
+
+        <div class="card-custom">
+
+            <h5>Step 1 - State the Hypotheses</h5>
+
+            <p>
+
+                Before computing the Z-test, we establish the hypotheses.
+
+            </p>
+
+            <ul>
+
+                <li><strong>Null Hypothesis (H0):</strong> There is no significant difference between the sample mean and the population mean.</li>
+
+                <li><strong>Alternative Hypothesis (H1):</strong> There is a significant difference between the sample mean and the population mean.</li>
+
+            </ul>
+
+<div class="alert alert-secondary">
+
+    H0: X&#772; = &mu; <br>
+    H1: X&#772; != &mu;
+
+</div>
+
+            <hr>
+
+            <h5>Step 2 - Identify the Formula</h5>
+
+            <p>
+
+                We use the Z-test formula for a single sample mean:
+
+            </p>
+
+<div class="alert alert-primary text-center">
+
+    Z = (X&#772; - &mu;) / (&sigma; / &radic;n)
+
+</div>
+
+            <hr>
+
+            <h5>Step 3 - Substitute the Given Values</h5>
+
+            <p>
+
+                Given:
+
+            </p>
+
+<ul>
+
+    <li>X&#772; = 78</li>
+    <li>&mu; = 75</li>
+    <li>&sigma; = 10</li>
+    <li>n = 40</li>
+
+</ul>
+
+            <p>
+
+                Substitute into the formula:
+
+            </p>
+
+            <p>
+
+                Z = (78 - 75) / (10 / v40)
+
+            </p>
+
+            <hr>
+
+            <h5>Step 4 - Compute the Values</h5>
+
+            <p>
+
+                First compute the numerator:
+
+            </p>
+
+            <p>
+
+                78 - 75 = 3
+
+            </p>
+
+            <p>
+
+                Next compute the denominator:
+
+            </p>
+
+            <p>
+
+                v40 = 6.32 (approx)<br>
+                10 / 6.32 = 1.58 (approx)
+
+            </p>
+
+            <p>
+
+                Now compute Z:
+
+            </p>
+
+            <p>
+
+                Z = 3 / 1.58
+
+            </p>
+
+            <div class="alert alert-success text-center">
+
+                <h3>Z = 1.90 (approx)</h3>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 5 - Decision Rule</h5>
+
+            <p>
+
+                At a = 0.05 (two-tailed test), the critical values are:
+
+            </p>
+
+<div class="alert alert-secondary text-center">
+
+    Z critical = &plusmn;1.96
+
+</div>
+
+            <p>
+
+                Decision rule:
+
+            </p>
+
+            <ul>
+
+                <li>If |Z computed| > 1.96, reject H0</li>
+
+                <li>If |Z computed| = 1.96, fail to reject H0</li>
+
+            </ul>
+
+            <hr>
+
+            <h5>Step 6 - Decision</h5>
+
+            <p>
+
+                The computed Z value is:
+
+            </p>
+
+            <div class="alert alert-primary text-center">
+
+                Z = 1.90
+
+            </div>
+
+            <p>
+
+                Since 1.90 is less than 1.96, we fail to reject the null hypothesis.
+
+            </p>
+
+            <hr>
+
+            <h5>Step 7 - Interpretation</h5>
+
+            <p>
+
+                There is no sufficient evidence to conclude that the mean score of the sample is significantly different
+                from the population mean of 75.
+
+            </p>
+
+            <p>
+
+                This suggests that the students' performance is statistically similar to the university's expected
+                average.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Comparing student performance to institutional standards</li>
+
+                <li>Quality control in manufacturing processes</li>
+
+                <li>Educational assessment evaluation</li>
+
+                <li>Benchmark testing in organizations</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The Z-test for a single sample mean is used to compare a sample mean against a known population mean
+                when the population standard deviation is known. In this example, the computed value of Z = 1.90 was
+                less than the critical value of &plusmn;1.96, leading to the conclusion that there is no significant
+                difference between the sample and population means.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between">
+
+            <a href="07-gpower.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="09-z-test-proportions.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

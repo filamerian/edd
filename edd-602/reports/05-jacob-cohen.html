@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 05 - Jacob Cohen's Formula</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i> EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 05
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Jacob Cohen's Formula
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Sample Size Determination Using Effect Size and Statistical Power
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Introduction -->
+
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Jacob Cohen's approach to sample size determination is based on
+                the concept of <strong>statistical power</strong>. Rather than
+                relying only on the size of the population, Cohen proposed that
+                researchers should also consider the expected effect size,
+                significance level, and desired statistical power when deciding
+                how many participants are needed.
+
+            </p>
+
+            <p>
+
+                Today, Cohen's method is widely used in educational,
+                psychological, and social science research. Modern statistical
+                software such as G*Power is built upon the principles introduced
+                by Cohen.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Explain the purpose of Cohen's sample size approach.</li>
+
+                <li>Define effect size, significance level, and statistical power.</li>
+
+                <li>Interpret Cohen's guidelines for effect size.</li>
+
+                <li>Estimate an appropriate sample size for a research study.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Jacob Cohen (1923-1998) was an American statistician and
+                psychologist who made significant contributions to statistical
+                analysis in behavioral sciences. His book,
+                <em>Statistical Power Analysis for the Behavioral Sciences</em>,
+                introduced practical methods for determining sample size based
+                on statistical power and effect size.
+
+            </p>
+
+            <p>
+
+                Cohen emphasized that researchers should not only determine
+                whether a result is statistically significant but should also
+                ensure that their study includes enough participants to detect
+                meaningful differences or relationships.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Cohen's approach determines the required sample size by
+                considering four important factors:
+
+            </p>
+
+            <ul>
+
+                <li>Effect Size</li>
+
+                <li>Significance Level (Alpha)</li>
+
+                <li>Statistical Power</li>
+
+                <li>Type of Statistical Test</li>
+
+            </ul>
+
+            <p>
+
+                Unlike Taro Yamane or Cochran, Cohen's method does not rely on a
+                single equation. Instead, the required sample size depends on
+                the statistical procedure that will be used in the study.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Key Concepts -->
+
+        <h2>Key Concepts</h2>
+
+        <table class="table table-bordered">
+
+            <thead class="table-primary">
+
+                <tr>
+
+                    <th>Concept</th>
+
+                    <th>Description</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Effect Size</td>
+
+                    <td>The magnitude of the difference or relationship expected in the study.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Alpha (a)</td>
+
+                    <td>The probability of making a Type I Error. A value of 0.05 is commonly used.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Statistical Power</td>
+
+                    <td>The probability of detecting a true effect. A value of 0.80 is generally recommended.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Sample Size</td>
+
+                    <td>The number of participants required to achieve the desired statistical power.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Cohen's Effect Size Guidelines -->
+
+        <h2>Cohen's Effect Size Guidelines</h2>
+
+        <table class="table table-striped">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Effect Size</th>
+
+                    <th>Cohen's d</th>
+
+                    <th>Interpretation</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Small</td>
+
+                    <td>0.20</td>
+
+                    <td>A small but noticeable difference.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Medium</td>
+
+                    <td>0.50</td>
+
+                    <td>A moderate difference that is commonly expected.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Large</td>
+
+                    <td>0.80</td>
+
+                    <td>A substantial difference between groups.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Worked Example -->
+
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h4>Research Scenario</h4>
+
+            <p>
+
+                A doctoral student at <strong>Filamer Christian University,
+                Inc.</strong> wants to determine whether an
+                <strong>interactive teaching strategy</strong> improves the
+                statistics performance of graduate students compared with the
+                traditional lecture method.
+
+            </p>
+
+            <p>
+
+                The researcher plans to compare the scores of two independent
+                groups using an <strong>Independent Samples t-Test</strong>.
+
+            </p>
+
+            <h5>Research Decisions</h5>
+
+            <table class="table table-bordered">
+
+                <tr>
+
+                    <th>Parameter</th>
+
+                    <th>Selected Value</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Significance Level (Alpha)</td>
+
+                    <td>0.05</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Statistical Power</td>
+
+                    <td>0.80</td>
+
+
+                </tr>
+
+                <tr>
+
+                    <td>Expected Effect Size</td>
+
+                    <td>0.50 (Medium)</td>
+
+                </tr>
+
+            </table>
+			
+			            <h5>Step 1 - Identify the Statistical Test</h5>
+
+            <p>
+
+                The researcher wants to compare the mean scores of two
+                independent groups: one group taught using the traditional
+                lecture method and another group taught using an interactive
+                teaching strategy.
+
+            </p>
+
+            <div class="alert alert-secondary">
+
+                Statistical Test:
+                <strong>Independent Samples t-Test</strong>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 2 - Select the Significance Level</h5>
+
+            <p>
+
+                The researcher selects an alpha level of
+                <strong>0.05</strong>. This means there is a 5 percent chance
+                of concluding that the new teaching strategy is effective when
+                it is actually not.
+
+            </p>
+
+            <div class="alert alert-secondary">
+
+                Alpha = <strong>0.05</strong>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 3 - Choose the Statistical Power</h5>
+
+            <p>
+
+                The researcher wants to have an 80 percent chance of detecting
+                a real difference if the interactive teaching strategy truly
+                improves student performance.
+
+            </p>
+
+            <div class="alert alert-secondary">
+
+                Statistical Power = <strong>0.80</strong>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 4 - Estimate the Effect Size</h5>
+
+            <p>
+
+                Since no previous study is available, the researcher follows
+                Cohen's recommendation and assumes a
+                <strong>medium effect size (0.50)</strong>. This represents a
+                moderate difference between the two teaching methods.
+
+            </p>
+
+            <div class="alert alert-secondary">
+
+                Effect Size (Cohen's d) = <strong>0.50</strong>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 5 - Determine the Sample Size</h5>
+
+            <p>
+
+                Using Cohen's sample size tables or software such as G*Power,
+                the recommended sample size for an Independent Samples t-Test
+                with these parameters is approximately:
+
+            </p>
+
+            <div class="alert alert-primary text-center">
+
+                <h3>
+
+                    64 Participants per Group
+
+                </h3>
+
+            </div>
+
+            <p>
+
+                Since there are two groups, the total required sample size is:
+
+            </p>
+
+            <div class="alert alert-success text-center">
+
+                <h3>
+
+                    Total Sample Size = 128 Participants
+
+                </h3>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Interpretation -->
+
+        <h2>Interpretation</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The researcher should recruit approximately
+                <strong>128 graduate students</strong>, with
+                <strong>64 students assigned to each teaching method</strong>.
+
+            </p>
+
+            <p>
+
+                This sample size provides sufficient statistical power to
+                detect a medium-sized difference between the two teaching
+                strategies at the 0.05 significance level.
+
+            </p>
+
+            <p>
+
+                If fewer participants are included, the study may fail to
+                detect an actual difference even when one truly exists.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Educational research</li>
+
+                <li>Experimental studies</li>
+
+                <li>Psychological research</li>
+
+                <li>Behavioral science</li>
+
+                <li>Medical and health research</li>
+
+                <li>Graduate thesis and dissertation studies</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Advantages -->
+
+        <h2>Advantages</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Produces scientifically justified sample sizes.</li>
+
+                <li>Considers the expected magnitude of the effect.</li>
+
+                <li>Reduces the likelihood of conducting underpowered studies.</li>
+
+                <li>Applicable to many statistical procedures.</li>
+
+                <li>Forms the basis of modern power analysis software.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Limitations -->
+
+        <h2>Limitations</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Requires researchers to estimate the expected effect size.</li>
+
+                <li>Different statistical tests require different calculations.</li>
+
+                <li>Usually performed using statistical tables or specialized software.</li>
+
+                <li>May be difficult for beginning researchers without prior statistical knowledge.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Jacob Cohen introduced an approach to determining sample size
+                based on statistical power rather than population size alone.
+                By considering the significance level, effect size, statistical
+                power, and research design, researchers can collect enough data
+                to detect meaningful differences or relationships. Cohen's
+                concepts remain the foundation of modern sample size analysis
+                and are widely implemented in software such as G*Power.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <h2>References</h2>
+
+        <div class="card-custom">
+
+            <ol>
+
+                <li>Cohen, J. (1988). <em>Statistical Power Analysis for the Behavioral Sciences.</em> 2nd Edition. Lawrence Erlbaum Associates.</li>
+
+                <li>Creswell, J. W., and Creswell, J. D. (2018). <em>Research Design: Qualitative, Quantitative, and Mixed Methods Approaches.</em> 5th Edition. SAGE Publications.</li>
+
+                <li>Field, A. (2018). <em>Discovering Statistics Using IBM SPSS Statistics.</em> 5th Edition. SAGE Publications.</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+
+        <div class="d-flex justify-content-between">
+
+            <a href="04-krejcie-morgan.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="06-samuel-green.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

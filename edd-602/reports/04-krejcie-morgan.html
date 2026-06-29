@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 04 - Krejcie and Morgan Formula</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i> EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 04
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Krejcie and Morgan Formula
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Determining Sample Size Using a Standard Reference Table
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="container py-5">
+
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Krejcie and Morgan developed one of the most widely used methods
+                for determining sample size in educational and social science
+                research. Rather than performing lengthy statistical
+                computations, researchers simply refer to the Krejcie and
+                Morgan Sample Size Table to identify the recommended sample
+                size for a known population.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Explain the purpose of the Krejcie and Morgan Formula.</li>
+
+                <li>Use the Krejcie and Morgan Table correctly.</li>
+
+                <li>Interpret the recommended sample size.</li>
+
+                <li>Identify situations where this method is appropriate.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                In 1970, Robert V. Krejcie and Daryle W. Morgan published
+                a sample size table in the journal
+                <em>Educational and Psychological Measurement</em>.
+                Their work became one of the most frequently cited references
+                for determining sample size in educational research.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The Krejcie and Morgan Formula is used to determine the
+                recommended sample size for a finite population. In practice,
+                researchers usually use the published table instead of
+                calculating the formula manually.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <h2>Formula</h2>
+
+        <div class="alert alert-primary text-center">
+
+            <h3>
+
+                s = X<sup>2</sup> * N * P (1 - P) / d<sup>2</sup> (N - 1) + X<sup>2</sup> * P (1 - P)
+
+            </h3>
+
+        </div>
+
+        <br>
+
+        <h2>Variables</h2>
+
+        <table class="table table-bordered">
+
+            <thead class="table-primary">
+
+                <tr>
+
+                    <th>Symbol</th>
+
+                    <th>Description</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>s</td>
+
+                    <td>Required sample size</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>X<sup>2</sup></td>
+
+                    <td>Chi-square value for 1 degree of freedom</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>N</td>
+
+                    <td>Population size</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>P</td>
+
+                    <td>Population proportion (usually 0.50)</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>d</td>
+
+                    <td>Margin of error</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <h2>Using the Krejcie and Morgan Table</h2>
+
+        <table class="table table-striped">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Population</th>
+
+                    <th>Recommended Sample</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr><td>100</td><td>80</td></tr>
+                <tr><td>200</td><td>132</td></tr>
+                <tr><td>300</td><td>169</td></tr>
+                <tr><td>500</td><td>217</td></tr>
+                <tr><td>1000</td><td>278</td></tr>
+                <tr><td>5000</td><td>357</td></tr>
+                <tr><td>10000</td><td>370</td></tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Suppose the total population consists of
+                <strong>1,000 teachers</strong>.
+
+            </p>
+
+            <p>
+
+                Looking at the Krejcie and Morgan Table,
+                the recommended sample size is
+
+                <strong>278 respondents.</strong>
+
+            </p>
+
+            <div class="alert alert-success">
+
+                Required Sample Size = 278 Respondents
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Educational research</li>
+
+                <li>Graduate thesis and dissertation studies</li>
+
+                <li>Community surveys</li>
+
+                <li>Business research</li>
+
+                <li>Government studies</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <h2>Advantages</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Very easy to use.</li>
+
+                <li>No calculator is required when using the table.</li>
+
+                <li>Widely accepted in academic research.</li>
+
+                <li>Suitable for known populations.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <h2>Limitations</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Applicable only to finite populations.</li>
+
+                <li>Based on fixed statistical assumptions.</li>
+
+                <li>Less flexible than software-based methods.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The Krejcie and Morgan method simplifies sample size
+                determination by providing a ready-to-use reference table.
+                Because of its simplicity and reliability, it remains one of
+                the most frequently cited methods in educational research.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <h2>References</h2>
+
+        <div class="card-custom">
+
+            <ol>
+
+                <li>Krejcie, R. V., and Morgan, D. W. (1970). Determining Sample Size for Research Activities. <em>Educational and Psychological Measurement</em>, 30, 607-610.</li>
+
+                <li>Creswell, J. W., and Creswell, J. D. (2018). <em>Research Design.</em> 5th Edition. SAGE Publications.</li>
+
+                <li>Israel, G. D. (1992). <em>Determining Sample Size.</em> University of Florida.</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <div class="d-flex justify-content-between">
+
+            <a href="03-fisher.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="05-jacob-cohen.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

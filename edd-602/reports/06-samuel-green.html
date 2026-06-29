@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 06 - Samuel B. Green Formula</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i> EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 06
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Samuel B. Green Formula
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Determining Sample Size for Multiple Regression Analysis
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Introduction -->
+
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                When conducting multiple regression analysis, researchers must
+                ensure that they collect enough data to produce reliable and
+                meaningful results. Unlike formulas that determine sample size
+                based on population size, Samuel B. Green's Formula estimates
+                the minimum number of participants required based on the number
+                of predictor variables included in a regression model.
+
+            </p>
+
+            <p>
+
+                The formula is widely used in educational, behavioral, business,
+                and social science research because it provides a simple rule
+                for planning regression studies.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Explain the purpose of Samuel B. Green's Formula.</li>
+
+                <li>Differentiate between the two formulas proposed by Green.</li>
+
+                <li>Compute the required sample size for regression analysis.</li>
+
+                <li>Interpret the computed sample size.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Samuel B. Green is an American educational psychologist whose
+                work has contributed significantly to educational research and
+                quantitative methodology. In 1991, Green published practical
+                guidelines for determining sample size in multiple regression
+                analysis. His recommendations were based on statistical power
+                analysis and extensive simulation studies.
+
+            </p>
+
+            <p>
+
+                Green recognized that many researchers either collected too few
+                participants, resulting in unreliable findings, or collected
+                more data than necessary. To address this problem, he proposed
+                two simple formulas that estimate the minimum sample size based
+                on the number of independent variables included in a regression
+                model.
+
+            </p>
+
+            <p>
+
+                Today, Green's formulas remain among the most frequently cited
+                guidelines for planning regression studies and are commonly
+                referenced in graduate theses, dissertations, and journal
+                articles.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Samuel B. Green's Formula is a rule-of-thumb used to estimate
+                the minimum sample size required for multiple regression
+                analysis. Rather than depending on the total population size,
+                the formula uses the number of predictor (independent)
+                variables included in the regression model.
+
+            </p>
+
+            <p>
+
+                Green proposed two different formulas depending on the research
+                objective.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Green's Formulas -->
+
+        <h2>Green's Formulas</h2>
+
+        <div class="alert alert-primary">
+
+            <h4>Formula 1 - Testing the Overall Regression Model</h4>
+
+            <h3 class="text-center">
+
+                N = 50 + 8m
+
+            </h3>
+
+            <hr>
+
+            <h4>Formula 2 - Testing Individual Predictors</h4>
+
+            <h3 class="text-center">
+
+                N = 104 + m
+
+            </h3>
+
+        </div>
+
+        <br>
+
+        <!-- Variables -->
+
+        <h2>Variables</h2>
+
+        <table class="table table-bordered">
+
+            <thead class="table-primary">
+
+                <tr>
+
+                    <th>Symbol</th>
+
+                    <th>Description</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>N</td>
+
+                    <td>Minimum required sample size.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>m</td>
+
+                    <td>Number of predictor (independent) variables included in the regression model.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- When to Use Each Formula -->
+
+        <h2>When Should Each Formula Be Used?</h2>
+
+        <table class="table table-striped">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Formula</th>
+
+                    <th>Purpose</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>N = 50 + 8m</td>
+
+                    <td>Use when testing whether the entire regression model is statistically significant.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>N = 104 + m</td>
+
+                    <td>Use when determining whether each predictor variable makes a unique contribution to the model.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Assumptions -->
+
+        <h2>Assumptions</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Before applying Samuel B. Green's Formula, the researcher should
+                ensure that multiple regression analysis is appropriate for the
+                study.
+
+            </p>
+
+            <ul>
+
+                <li>The dependent variable is continuous.</li>
+
+                <li>The predictor variables are measured appropriately.</li>
+
+                <li>The relationship between variables is linear.</li>
+
+                <li>The observations are independent.</li>
+
+                <li>The sample is selected using an appropriate sampling method.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Worked Example -->
+
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h4>Research Scenario</h4>
+
+            <p>
+
+                A researcher wants to determine whether
+                <strong>study habits</strong>,
+                <strong>class attendance</strong>,
+                <strong>learning motivation</strong>, and
+                <strong>time management</strong>
+                can predict students' academic performance.
+
+            </p>
+
+            <p>
+
+                Since there are four independent variables, the researcher
+                plans to use multiple regression analysis.
+            </p>
+			
+			            <h5>Step 1 - Identify the Number of Predictor Variables</h5>
+
+            <p>
+
+                The researcher plans to include four independent (predictor)
+                variables in the regression model:
+
+            </p>
+
+            <ul>
+
+                <li>Study Habits</li>
+
+                <li>Class Attendance</li>
+
+                <li>Learning Motivation</li>
+
+                <li>Time Management</li>
+
+            </ul>
+
+            <p>
+
+                Therefore,
+
+            </p>
+
+            <div class="alert alert-secondary">
+
+                <strong>m = 4 Predictor Variables</strong>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 2 - Compute the Sample Size for the Overall Regression Model</h5>
+
+            <p>
+
+                If the research objective is to determine whether the
+                <strong>entire regression model</strong> significantly predicts
+                academic performance, use Green's first formula.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <h4 class="text-center">
+
+                    N = 50 + 8m
+
+                </h4>
+
+            </div>
+
+            <p>
+
+                Substitute the value of <strong>m = 4</strong>.
+
+            </p>
+
+            <p>
+
+                N = 50 + 8(4)
+
+            </p>
+
+            <p>
+
+                N = 50 + 32
+
+            </p>
+
+            <p>
+
+                <strong>N = 82</strong>
+
+            </p>
+
+            <div class="alert alert-success">
+
+                Minimum Sample Size = <strong>82 Participants</strong>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 3 - Compute the Sample Size for Testing Individual Predictors</h5>
+
+            <p>
+
+                Suppose the researcher also wants to determine whether each
+                predictor variable makes its own unique contribution to academic
+                performance.
+
+            </p>
+
+            <p>
+
+                Green recommends using the second formula.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <h4 class="text-center">
+
+                    N = 104 + m
+
+                </h4>
+
+            </div>
+
+            <p>
+
+                Substitute the value of <strong>m = 4</strong>.
+
+            </p>
+
+            <p>
+
+                N = 104 + 4
+
+            </p>
+
+            <p>
+
+                <strong>N = 108</strong>
+
+            </p>
+
+            <div class="alert alert-success">
+
+                Minimum Sample Size = <strong>108 Participants</strong>
+
+            </div>
+
+            <hr>
+
+            <h5>Why Are There Two Answers?</h5>
+
+            <div class="alert alert-warning">
+
+                <p>
+
+                    The two formulas answer different research questions.
+
+                </p>
+
+                <ul>
+
+                    <li>
+
+                        <strong>N = 50 + 8m</strong> is used when the researcher
+                        wants to know whether the <strong>overall regression
+                        model</strong> is statistically significant.
+
+                    </li>
+
+                    <li>
+
+                        <strong>N = 104 + m</strong> is used when the researcher
+                        wants to determine whether <strong>each independent
+                        variable</strong> significantly predicts the dependent
+                        variable.
+
+                    </li>
+
+                </ul>
+
+                <p>
+
+                    Since testing individual predictors requires greater
+                    precision, the second formula recommends a larger sample
+                    size.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Interpretation -->
+
+        <h2>Interpretation</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Green's formulas provide researchers with practical guidelines
+                for determining the minimum number of participants needed for
+                multiple regression analysis.
+
+            </p>
+
+            <p>
+
+                In this example:
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Use at least <strong>82 participants</strong> if the goal
+                    is to evaluate the overall regression model.
+
+                </li>
+
+                <li>
+
+                    Use at least <strong>108 participants</strong> if the goal
+                    is to examine the contribution of each predictor variable.
+
+                </li>
+
+            </ul>
+
+            <p>
+
+                Researchers often choose the larger sample size to improve the
+                reliability and statistical power of their analysis.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Multiple regression analysis.</li>
+
+                <li>Educational research.</li>
+
+                <li>Business and management studies.</li>
+
+                <li>Behavioral and social science research.</li>
+
+                <li>Graduate thesis and dissertation studies.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Advantages -->
+
+        <h2>Advantages</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Simple and easy to apply.</li>
+
+                <li>Requires only the number of predictor variables.</li>
+
+                <li>Provides practical guidelines for planning regression studies.</li>
+
+                <li>Widely accepted in educational and social science research.</li>
+
+                <li>Helps reduce the risk of collecting an insufficient sample.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Limitations -->
+
+        <h2>Limitations</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Provides general guidelines rather than exact sample sizes.</li>
+
+                <li>Does not consider effect size or desired statistical power directly.</li>
+
+                <li>May not be appropriate for very complex regression models.</li>
+
+                <li>Modern software such as G*Power can provide more precise estimates.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Samuel B. Green's Formula offers a practical method for
+                estimating sample size in multiple regression analysis. Unlike
+                formulas based on population size, Green's approach considers
+                the number of predictor variables in the model. Researchers
+                should select the appropriate formula based on whether they are
+                evaluating the overall regression model or the individual
+                contribution of each predictor variable.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <h2>References</h2>
+
+        <div class="card-custom">
+
+            <ol>
+
+                <li>Green, S. B. (1991). How Many Subjects Does It Take To Do A Regression Analysis? <em>Multivariate Behavioral Research, 26</em>(3), 499-510.</li>
+
+                <li>Cohen, J. (1988). <em>Statistical Power Analysis for the Behavioral Sciences.</em> 2nd Edition. Lawrence Erlbaum Associates.</li>
+
+                <li>Field, A. (2018). <em>Discovering Statistics Using IBM SPSS Statistics.</em> 5th Edition. SAGE Publications.</li>
+
+                <li>Creswell, J. W., & Creswell, J. D. (2018). <em>Research Design: Qualitative, Quantitative, and Mixed Methods Approaches.</em> 5th Edition. SAGE Publications.</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+
+        <div class="d-flex justify-content-between">
+
+            <a href="05-jacob-cohen.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="07-gpower.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

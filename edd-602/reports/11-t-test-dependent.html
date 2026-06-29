@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 11 - T-Test for Dependent Samples</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i>
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 11
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                T-Test for Dependent Samples
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Comparing Two Related Groups or Repeated Measures
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+
+        <!-- Introduction -->
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                In research, there are situations where the same group of participants is measured twice,
+                or two related conditions are compared. For example, students may take a pre-test and post-test
+                after an intervention.
+
+            </p>
+
+            <p>
+
+                The <strong>t-test for dependent samples</strong> is used when the two sets of data are related
+                or paired in some way.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Define the dependent samples t-test.</li>
+
+                <li>Identify when to use paired sample analysis.</li>
+
+                <li>Explain the assumptions of the test.</li>
+
+                <li>Compute and interpret results of paired comparisons.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The dependent samples t-test evolved from early work on paired observations in agricultural and
+                medical research, where the same subjects were measured before and after treatment.
+
+            </p>
+
+            <p>
+
+                William Sealy Gosset ("Student")'s work on the t-distribution also laid the foundation for paired
+                comparisons, especially when sample sizes are small.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The dependent samples t-test is used to determine whether there is a significant difference between
+                two related means, such as pre-test and post-test scores.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- When to Use -->
+        <h2>When to Use the Dependent Samples T-Test</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Same group measured twice (pre-test/post-test).</li>
+
+                <li>Matched or paired participants.</li>
+
+                <li>Continuous data (interval or ratio scale).</li>
+
+                <li>Differences between pairs are approximately normally distributed.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Formula -->
+        <h2>T-Test Formula</h2>
+
+        <div class="alert alert-primary text-center">
+
+    t = d&#772; / (sd / sqrt(n))
+
+</div>
+
+<div class="card-custom">
+
+    <p>
+        Where:
+    </p>
+
+    <ul>
+
+        <li>d&#772; = mean of the differences</li>
+
+        <li>sd = standard deviation of the differences</li>
+
+        <li>n = number of paired observations</li>
+
+    </ul>
+
+</div>
+
+        <br>
+
+        <!-- Assumptions -->
+        <h2>Assumptions</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>The pairs are dependent (related observations).</li>
+
+                <li>The differences are normally distributed.</li>
+
+                <li>Data is continuous.</li>
+
+                <li>Observations are randomly selected.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Worked Example (Start) -->
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h4>Research Scenario</h4>
+
+            <p>
+
+                A teacher wants to determine whether a new teaching strategy improves student performance.
+                The same group of students takes a pre-test and a post-test.
+
+            </p>
+
+            <hr>
+
+            <h5>Given Information</h5>
+
+            <ul>
+
+                <li>Mean Difference (d&#772;) = 6</li>
+
+                <li>Standard Deviation of Differences (sd) = 5</li>
+
+                <li>Number of Students (n) = 25</li>
+
+            </ul>
+			
+			        <!-- Solution -->
+        <h2>Solution</h2>
+
+        <div class="card-custom">
+
+            <h5>Step 1 - State the Hypotheses</h5>
+
+            <p>
+
+                We test whether there is a significant difference between the pre-test and post-test scores.
+
+            </p>
+
+            <ul>
+
+                <li><strong>Null Hypothesis (H<sub>0</sub>):</strong> There is no significant difference between the paired means.</li>
+
+                <li><strong>Alternative Hypothesis (H<sub>1</sub>):</strong> There is a significant difference between the paired means.</li>
+
+            </ul>
+
+            <div class="alert alert-secondary text-center">
+
+                H<sub>0</sub>: d&#772; = 0 <br>
+                H<sub>1</sub>: d&#772; != 0
+
+            </div>
+
+            <hr>
+
+            <h5>Step 2 - Identify the Formula</h5>
+
+            <div class="alert alert-primary text-center">
+
+                t = d&#772; / (sd / sqrt(n))
+
+            </div>
+
+            <hr>
+
+            <h5>Step 3 - Substitute the Given Values</h5>
+
+            <ul>
+
+                <li>d&#772; = 6</li>
+
+                <li>sd = 5</li>
+
+                <li>n = 25</li>
+
+            </ul>
+
+            <p>
+
+                Substituting:
+
+            </p>
+
+            <p>
+
+                t = 6 / (5 / sqrt(25))
+
+            </p>
+
+            <hr>
+
+            <h5>Step 4 - Compute the Values</h5>
+
+            <p>
+
+                sqrt(25) = 5 <br><br>
+
+                5 / 5 = 1 <br><br>
+
+                t = 6 / 1
+
+            </p>
+
+            <div class="alert alert-success text-center">
+
+                <h3>t = 6.00</h3>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 5 - Decision Rule</h5>
+
+            <p>
+
+                At a = 0.05 (two-tailed test), degrees of freedom:
+
+            </p>
+
+            <div class="alert alert-secondary text-center">
+
+                df = n - 1 = 25 - 1 = 24
+
+            </div>
+
+            <p>
+
+                Critical value:
+
+            </p>
+
+<div class="alert alert-secondary text-center">
+
+    t critical = &plusmn;2.064 (approx)
+
+</div>
+
+            <p>
+
+                Decision rule:
+
+            </p>
+
+            <ul>
+
+                <li>If |t computed| > t critical, reject H<sub>0</sub></li>
+
+                <li>If |t computed| = t critical, fail to reject H<sub>0</sub></li>
+
+            </ul>
+
+            <hr>
+
+            <h5>Step 6 - Decision</h5>
+
+            <div class="alert alert-primary text-center">
+
+                t = 6.00
+
+            </div>
+
+            <p>
+
+                Since 6.00 is greater than 2.064, we reject the null hypothesis.
+
+            </p>
+
+            <hr>
+
+            <h5>Step 7 - Interpretation</h5>
+
+            <p>
+
+                There is a significant difference between pre-test and post-test scores.
+                This suggests that the teaching strategy had a positive effect on student performance.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Pre-test and post-test educational studies</li>
+
+                <li>Medical treatment effectiveness</li>
+
+                <li>Behavioral intervention studies</li>
+
+                <li>Training program evaluation</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The dependent samples t-test is used for comparing two related measurements. In this example,
+                the computed t-value (6.00) exceeded the critical value (&plusmn;2.064), leading to rejection of the null
+                hypothesis and indicating a significant difference between paired observations.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between">
+
+            <a href="10-t-test-independent.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="12-one-way-anova.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

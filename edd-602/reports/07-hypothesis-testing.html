@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>07 - Hypothesis Testing</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-mortarboard-fill"></i>
+
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <h1>Hypothesis Testing</h1>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Learning Objectives -->
+
+        <div class="card-custom">
+
+            <h2>Learning Objectives</h2>
+
+            <p>
+
+                At the end of this lesson, you should be able to:
+
+            </p>
+
+            <ul>
+
+                <li>Define hypothesis testing.</li>
+
+                <li>Differentiate the null and alternative hypotheses.</li>
+
+                <li>Explain the steps involved in hypothesis testing.</li>
+
+                <li>Differentiate one-tailed and two-tailed tests.</li>
+
+                <li>Interpret significance levels and p-values.</li>
+
+                <li>Identify Type I and Type II errors.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Introduction -->
+
+        <div class="card-custom">
+
+            <h2>Introduction</h2>
+
+            <p>
+
+                After collecting, organizing, and summarizing data, researchers often want to
+                determine whether the observed findings are meaningful or simply due to random
+                chance. This process is called <strong>hypothesis testing</strong>.
+
+            </p>
+
+            <p>
+
+                Hypothesis testing is one of the most important concepts in inferential
+                statistics. It provides an objective method for deciding whether the evidence
+                from a sample is strong enough to support a research claim about a population.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <strong>Remember:</strong>
+
+                Hypothesis testing does not prove that a hypothesis is true. Instead, it helps
+                researchers decide whether there is enough statistical evidence to support or
+                reject a claim.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+
+        <div class="card-custom">
+
+            <h2>What is Hypothesis Testing?</h2>
+
+            <p>
+
+                <strong>Hypothesis testing</strong> is a statistical procedure used to determine
+                whether the evidence obtained from a sample is sufficient to support a conclusion
+                about a population.
+
+            </p>
+
+            <p>
+
+                Researchers begin with an assumption, collect sample data, perform statistical
+                analyses, and then decide whether the evidence supports that assumption.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                Hypothesis testing serves as the foundation for statistical procedures such as
+                the z-test, t-test, ANOVA, correlation, regression, and chi-square test.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Research Hypothesis -->
+
+        <div class="card-custom">
+
+            <h2>Research Hypothesis</h2>
+
+            <p>
+
+                A <strong>research hypothesis</strong> is a prediction or statement that the
+                researcher expects to be true based on theory, previous studies, or logical
+                reasoning.
+
+            </p>
+
+            <p>
+
+                In statistical testing, this research hypothesis is represented by the
+                <strong>alternative hypothesis (H<sub>1</sub> or H<sub>a</sub>)</strong>, while
+                the opposite statement is represented by the
+                <strong>null hypothesis (H<sub>0</sub>)</strong>.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Null vs Alternative -->
+
+        <div class="card-custom">
+
+            <h2>Null Hypothesis versus Alternative Hypothesis</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Null Hypothesis (H<sub>0</sub>)</th>
+                        <th>Alternative Hypothesis (H<sub>1</sub> or H<sub>a</sub>)</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+
+                            States that there is <strong>no significant difference</strong> or
+                            <strong>no significant relationship</strong>.
+
+                        </td>
+
+                        <td>
+
+                            States that there <strong>is a significant difference</strong> or
+                            <strong>significant relationship</strong>.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Assumed to be true unless evidence suggests otherwise.
+
+                        </td>
+
+                        <td>
+
+                            Supported only when sufficient statistical evidence exists.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Usually contains an equality sign (=).
+
+                        </td>
+
+                        <td>
+
+                            Usually contains inequality signs (&ne;, &lt;, or &gt;).
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Example -->
+
+        <div class="card-custom">
+
+            <h2>Example of Hypotheses</h2>
+
+            <p>
+
+                Suppose a researcher wants to determine whether a new teaching strategy improves
+                students' mathematics achievement.
+
+            </p>
+
+            <div class="alert alert-secondary">
+
+                <strong>Null Hypothesis (H<sub>0</sub>)</strong>
+
+                <br><br>
+
+                There is no significant difference in mathematics achievement between students
+                taught using the traditional teaching method and those taught using the new
+                teaching strategy.
+
+                <hr>
+
+                <strong>Alternative Hypothesis (H<sub>1</sub>)</strong>
+
+                <br><br>
+
+                There is a significant difference in mathematics achievement between students
+                taught using the traditional teaching method and those taught using the new
+                teaching strategy.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Steps -->
+
+        <div class="card-custom">
+
+            <h2>The Six Steps in Hypothesis Testing</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Step</th>
+                        <th>Description</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>1</td>
+
+                        <td>State the null and alternative hypotheses.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>2</td>
+
+                        <td>Select the level of significance (&alpha;).</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>3</td>
+
+                        <td>Select the appropriate statistical test.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>4</td>
+
+                        <td>Compute the test statistic.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>5</td>
+
+                        <td>Determine the decision using the critical value or p-value.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>6</td>
+
+                        <td>State the statistical conclusion.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Level of Significance -->
+
+        <div class="card-custom">
+
+            <h2>Level of Significance (&alpha;)</h2>
+
+            <p>
+
+                The <strong>level of significance</strong>, represented by the Greek letter
+                <strong>&alpha;</strong>, is the maximum probability of making a Type I error
+                that the researcher is willing to accept.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Significance Level</th>
+                        <th>Meaning</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>0.05</td>
+
+                        <td>
+
+                            Accepts a 5% risk of rejecting a true null hypothesis.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>0.01</td>
+
+                        <td>
+
+                            Accepts only a 1% risk of rejecting a true null hypothesis.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="alert alert-warning">
+
+                In educational research, <strong>&alpha; = 0.05</strong> is the most commonly
+                used significance level.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Decision Rule -->
+
+        <div class="card-custom">
+
+            <h2>Decision Rule</h2>
+
+            <p>
+
+                After computing the test statistic, researchers compare it with the critical
+                value or examine the p-value to make a statistical decision.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>If...</th>
+                        <th>Decision</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>p-value &le; &alpha;</td>
+
+                        <td>Reject the null hypothesis (H<sub>0</sub>).</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>p-value &gt; &alpha;</td>
+
+                        <td>Fail to reject the null hypothesis (H<sub>0</sub>).</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+		
+		        <!-- One-Tailed and Two-Tailed Tests -->
+
+        <div class="card-custom">
+
+            <h2>One-Tailed versus Two-Tailed Tests</h2>
+
+            <p>
+
+                The choice between a one-tailed test and a two-tailed test depends on the
+                research hypothesis. Researchers use a one-tailed test when the direction of the
+                expected difference or relationship is specified. A two-tailed test is used when
+                the researcher is interested in determining whether a difference exists,
+                regardless of its direction.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>One-Tailed Test</th>
+                        <th>Two-Tailed Test</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+
+                            Tests for a difference or relationship in one specific direction.
+
+                        </td>
+
+                        <td>
+
+                            Tests for a difference or relationship in either direction.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Uses one rejection region.
+
+                        </td>
+
+                        <td>
+
+                            Uses two rejection regions.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Example: The new teaching strategy produces <strong>higher</strong>
+                            test scores than the traditional method.
+
+                        </td>
+
+                        <td>
+
+                            Example: The new teaching strategy produces
+                            <strong>different</strong> test scores than the traditional method.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- P-Value -->
+
+        <div class="card-custom">
+
+            <h2>Understanding the p-Value</h2>
+
+            <p>
+
+                The <strong>p-value</strong> represents the probability of obtaining results at
+                least as extreme as those observed if the null hypothesis is true.
+
+            </p>
+
+            <p>
+
+                A small p-value indicates that the observed result is unlikely to have occurred
+                by chance alone.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>p-Value</th>
+                        <th>Decision</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>p &le; 0.05</td>
+
+                        <td>
+
+                            Reject the null hypothesis.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>p &gt; 0.05</td>
+
+                        <td>
+
+                            Fail to reject the null hypothesis.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="alert alert-info">
+
+                <strong>Example</strong>
+
+                <br><br>
+
+                If a statistical analysis produces a p-value of 0.023 and the significance
+                level is 0.05, then:
+
+                <br><br>
+
+                0.023 &lt; 0.05
+
+                <br><br>
+
+                Therefore, reject the null hypothesis.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Errors -->
+
+        <div class="card-custom">
+
+            <h2>Type I and Type II Errors</h2>
+
+            <p>
+
+                Because researchers make decisions using sample data rather than the entire
+                population, errors are always possible.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Error Type</th>
+                        <th>Description</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Type I Error (&alpha;)</td>
+
+                        <td>
+
+                            Rejecting a true null hypothesis.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Type II Error (&beta;)</td>
+
+                        <td>
+
+                            Failing to reject a false null hypothesis.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="alert alert-warning">
+
+                <strong>Example</strong>
+
+                <br><br>
+
+                A school adopts a new teaching strategy because statistical results indicate it
+                is effective, when in reality it is not. This is a <strong>Type I Error</strong>.
+
+                <br><br>
+
+                If the school concludes that the new strategy is not effective when it actually
+                improves student performance, this is a
+                <strong>Type II Error</strong>.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Decision Flow -->
+
+        <div class="card-custom">
+
+            <h2>Summary of the Hypothesis Testing Process</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Step</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>1</td>
+
+                        <td>State the null and alternative hypotheses.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>2</td>
+
+                        <td>Select the significance level (&alpha;).</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>3</td>
+
+                        <td>Choose the appropriate statistical test.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>4</td>
+
+                        <td>Compute the test statistic.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>5</td>
+
+                        <td>Determine the p-value or compare with the critical value.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>6</td>
+
+                        <td>Reject or fail to reject the null hypothesis.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>7</td>
+
+                        <td>Interpret the statistical conclusion in relation to the research problem.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Common Mistakes -->
+
+        <div class="card-custom">
+
+            <h2>Common Mistakes</h2>
+
+            <ul>
+
+                <li>Confusing "fail to reject the null hypothesis" with "accept the null hypothesis."</li>
+
+                <li>Interpreting statistical significance as proof of practical importance.</li>
+
+                <li>Using an inappropriate significance level.</li>
+
+                <li>Selecting the wrong statistical test for the research problem.</li>
+
+                <li>Interpreting a large p-value as evidence that the null hypothesis is true.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <div class="card-custom">
+
+            <h2>Lesson Summary</h2>
+
+            <ul>
+
+                <li>Hypothesis testing helps researchers determine whether sample evidence supports a claim about a population.</li>
+
+                <li>The null hypothesis states that there is no significant difference or relationship, while the alternative hypothesis states that a significant difference or relationship exists.</li>
+
+                <li>The significance level (&alpha;) determines the acceptable risk of making a Type I Error.</li>
+
+                <li>The p-value guides researchers in deciding whether to reject the null hypothesis.</li>
+
+                <li>Researchers may use one-tailed or two-tailed tests depending on the research hypothesis.</li>
+
+                <li>Type I and Type II Errors are possible whenever decisions are made using sample data.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Self-Check -->
+
+        <div class="card-custom">
+
+            <h2>Self-Check Questions</h2>
+
+            <ol>
+
+                <li>What is the purpose of hypothesis testing?</li>
+
+                <li>Differentiate the null hypothesis from the alternative hypothesis.</li>
+
+                <li>What does a significance level of 0.05 mean?</li>
+
+                <li>When should a one-tailed test be used instead of a two-tailed test?</li>
+
+                <li>Differentiate Type I Error from Type II Error.</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <div class="card-custom">
+
+            <h2>References</h2>
+
+            <ul>
+
+                <li>Gravetter, F. J., & Wallnau, L. B. (2021). <em>Statistics for the Behavioral Sciences.</em> Cengage Learning.</li>
+
+                <li>Triola, M. F. (2022). <em>Elementary Statistics.</em> Pearson Education.</li>
+
+                <li>Field, A. (2024). <em>Discovering Statistics Using IBM SPSS Statistics.</em> Sage Publications.</li>
+
+                <li>Moore, D. S., McCabe, G. P., & Craig, B. A. (2021). <em>Introduction to the Practice of Statistics.</em> W. H. Freeman.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Bottom Navigation -->
+
+        <div class="text-center">
+
+            <a href="06-probability-normal-distribution.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Previous
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house-fill"></i>
+
+                Home
+
+            </a>
+
+            <a href="08-selecting-statistical-test.html" class="btn btn-primary">
+
+                Next
+
+                <i class="bi bi-arrow-right-circle"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

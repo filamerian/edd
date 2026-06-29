@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>02 - Levels of Measurement</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-mortarboard-fill"></i>
+
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+
+
+            <h1>Levels of Measurement</h1>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Learning Objectives -->
+
+        <div class="card-custom">
+
+            <h2>Learning Objectives</h2>
+
+            <p>
+
+                At the end of this lesson, you should be able to:
+
+            </p>
+
+            <ul>
+
+                <li>Define the four levels of measurement.</li>
+
+                <li>Differentiate nominal, ordinal, interval, and ratio scales.</li>
+
+                <li>Identify the level of measurement of research variables.</li>
+
+                <li>Select appropriate statistical procedures based on the level of measurement.</li>
+
+                <li>Avoid common mistakes in classifying research data.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Introduction -->
+
+        <div class="card-custom">
+
+            <h2>What are Levels of Measurement?</h2>
+
+            <p>
+
+                Levels of measurement refer to the way data are classified and measured. They
+                determine the amount of information that a variable contains and influence the
+                choice of statistical procedures that may be applied.
+
+            </p>
+
+            <p>
+
+                Before performing any statistical analysis, a researcher must first determine the
+                level of measurement of every variable in the study. Using an inappropriate
+                statistical test often results from incorrectly identifying the measurement scale.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <strong>Remember:</strong>
+
+                The level of measurement determines which statistical techniques are appropriate
+                for analyzing the data.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Four Levels -->
+
+        <div class="card-custom">
+
+            <h2>The Four Levels of Measurement</h2>
+
+            <p>
+
+                In quantitative research, variables are commonly classified into four levels of
+                measurement introduced by psychologist Stanley Stevens.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Level</th>
+                        <th>Main Characteristic</th>
+                        <th>Examples</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Nominal</td>
+
+                        <td>Classification into categories only.</td>
+
+                        <td>Gender, Religion, Program, Civil Status</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Ordinal</td>
+
+                        <td>Classification with ranking or order.</td>
+
+                        <td>Class Rank, Satisfaction Rating, Socioeconomic Status</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Interval</td>
+
+                        <td>Equal intervals but no true zero.</td>
+
+                        <td>Temperature (Celsius), IQ Score</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Ratio</td>
+
+                        <td>Equal intervals with an absolute zero.</td>
+
+                        <td>Age, Height, Weight, Income, Test Score</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Why Important -->
+
+        <div class="card-custom">
+
+            <h2>Why are Levels of Measurement Important?</h2>
+
+            <p>
+
+                The level of measurement determines how data may be summarized, analyzed, and
+                interpreted. Some statistical procedures require interval or ratio data, while
+                others are specifically designed for nominal or ordinal variables.
+
+            </p>
+
+            <p>
+
+                For example, Pearson correlation requires interval or ratio data, whereas
+                Chi-Square analysis is commonly used for nominal variables.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Measurement Level</th>
+                        <th>Common Statistical Procedures</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Nominal</td>
+
+                        <td>Frequency, Percentage, Chi-Square</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Ordinal</td>
+
+                        <td>Median, Spearman Correlation, Mann-Whitney U Test</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Interval</td>
+
+                        <td>Mean, Standard Deviation, t-Test, ANOVA, Pearson Correlation</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Ratio</td>
+
+                        <td>All parametric statistical procedures</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Nominal Scale -->
+
+        <div class="card-custom">
+
+            <h2>1. Nominal Scale</h2>
+
+            <p>
+
+                The <strong>nominal scale</strong> is the simplest level of measurement. It
+                classifies observations into categories without implying any order or ranking.
+
+            </p>
+
+            <p>
+
+                Numbers assigned to nominal data are merely labels. They do not indicate quantity
+                or magnitude.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <strong>Examples</strong>
+
+                <ul>
+
+                    <li>Gender (Male, Female)</li>
+
+                    <li>Civil Status</li>
+
+                    <li>Religion</li>
+
+                    <li>Academic Program</li>
+
+                    <li>Blood Type</li>
+
+                </ul>
+
+            </div>
+
+            <div class="alert alert-warning">
+
+                <strong>Important:</strong>
+
+                If "Male" is coded as 1 and "Female" as 2, this does <strong>not</strong> mean
+                that 2 is greater than 1. The numbers serve only as category labels.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Ordinal Scale -->
+
+        <div class="card-custom">
+
+            <h2>2. Ordinal Scale</h2>
+
+            <p>
+
+                The <strong>ordinal scale</strong> classifies observations into categories that
+                have a meaningful order or ranking. However, the intervals between categories are
+                not necessarily equal.
+
+            </p>
+
+            <p>
+
+                Ordinal data indicate relative position but do not measure the exact difference
+                between ranks.
+
+            </p>
+
+            <div class="alert alert-info">
+
+                <strong>Examples</strong>
+
+                <ul>
+
+                    <li>Class Rank</li>
+
+                    <li>Likert Scale Responses</li>
+
+                    <li>Employee Performance Ratings</li>
+
+                    <li>Socioeconomic Status</li>
+
+                </ul>
+
+            </div>
+
+            <p>
+
+                Consider the following satisfaction ratings:
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Rating</th>
+                        <th>Meaning</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>5</td>
+
+                        <td>Strongly Agree</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>4</td>
+
+                        <td>Agree</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>3</td>
+
+                        <td>Neutral</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>2</td>
+
+                        <td>Disagree</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>1</td>
+
+                        <td>Strongly Disagree</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p>
+
+                Although 5 represents a higher level of agreement than 4, the difference between
+                consecutive ratings cannot be assumed to be exactly equal.
+
+            </p>
+
+        </div>
+
+        <br>
+		
+		
+        <!-- Interval Scale -->
+
+        <div class="card-custom">
+
+            <h2>3. Interval Scale</h2>
+
+            <p>
+
+                The <strong>interval scale</strong> possesses all the characteristics of the
+                ordinal scale, but the intervals between values are equal and meaningful.
+                However, an interval scale does <strong>not</strong> have a true or absolute zero.
+
+            </p>
+
+            <p>
+
+                Because there is no true zero, statements involving multiplication or division
+                are not meaningful. For example, a temperature of 40&deg;C is not "twice as hot"
+                as 20&deg;C.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <strong>Examples</strong>
+
+                <ul>
+
+                    <li>Temperature measured in Celsius</li>
+
+                    <li>Temperature measured in Fahrenheit</li>
+
+                    <li>Intelligence Quotient (IQ)</li>
+
+                    <li>Calendar Years</li>
+
+                </ul>
+
+            </div>
+
+            <p>
+
+                Interval data allow researchers to compute the mean, standard deviation,
+                correlation, and many other parametric statistical procedures.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Ratio Scale -->
+
+        <div class="card-custom">
+
+            <h2>4. Ratio Scale</h2>
+
+            <p>
+
+                The <strong>ratio scale</strong> is the highest level of measurement. It possesses
+                all the characteristics of the interval scale but also includes a
+                <strong>true zero</strong>, indicating the complete absence of the measured
+                quantity.
+
+            </p>
+
+            <p>
+
+                Because ratio data have an absolute zero, comparisons involving multiplication
+                and division are meaningful.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <strong>Examples</strong>
+
+                <ul>
+
+                    <li>Age</li>
+
+                    <li>Height</li>
+
+                    <li>Weight</li>
+
+                    <li>Monthly Income</li>
+
+                    <li>Years of Teaching Experience</li>
+
+                    <li>Number of Books in a Library</li>
+
+                    <li>Examination Scores</li>
+
+                </ul>
+
+            </div>
+
+            <div class="alert alert-warning">
+
+                <strong>Example:</strong>
+
+                A person who is 40 years old is twice as old as someone who is 20 years old.
+                This comparison is valid because age has a true zero.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Comparison Table -->
+
+        <div class="card-custom">
+
+            <h2>Comparison of the Four Levels of Measurement</h2>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Characteristic</th>
+                            <th>Nominal</th>
+                            <th>Ordinal</th>
+                            <th>Interval</th>
+                            <th>Ratio</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Categories</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Ranking</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Equal Intervals</td>
+
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>True Zero</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Yes</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Parametric Statistics</td>
+                            <td>No</td>
+                            <td>Limited</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Choosing the Correct Level -->
+
+        <div class="card-custom">
+
+            <h2>How to Identify the Level of Measurement</h2>
+
+            <ol>
+
+                <li>
+
+                    Ask whether the data simply classify observations into groups.
+
+                    <br>
+
+                    If yes, the level is <strong>Nominal</strong>.
+
+                </li>
+
+                <br>
+
+                <li>
+
+                    If the data can be ranked, determine whether the differences between ranks
+                    are equal.
+
+                    <br>
+
+                    If not, the level is <strong>Ordinal</strong>.
+
+                </li>
+
+                <br>
+
+                <li>
+
+                    If equal intervals exist, determine whether the variable has a true zero.
+
+                    <br>
+
+                    If there is no true zero, the level is <strong>Interval</strong>.
+
+                </li>
+
+                <br>
+
+                <li>
+
+                    If equal intervals exist and the variable has a true zero, the level is
+                    <strong>Ratio</strong>.
+
+                </li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- Common Mistakes -->
+
+        <div class="card-custom">
+
+            <h2>Common Mistakes</h2>
+
+            <ul>
+
+                <li>Treating nominal data as numerical values.</li>
+
+                <li>Assuming every Likert scale is interval data.</li>
+
+                <li>Confusing interval data with ratio data.</li>
+
+                <li>Selecting statistical tests without considering the measurement level.</li>
+
+                <li>Believing that every variable measured with numbers is ratio data.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <div class="card-custom">
+
+            <h2>Lesson Summary</h2>
+
+            <ul>
+
+                <li>Levels of measurement determine how data are classified and analyzed.</li>
+
+                <li>Nominal data classify observations into categories.</li>
+
+                <li>Ordinal data classify observations and establish rankings.</li>
+
+                <li>Interval data have equal intervals but no true zero.</li>
+
+                <li>Ratio data have equal intervals and an absolute zero.</li>
+
+                <li>Correctly identifying the measurement level helps researchers choose appropriate statistical procedures.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Self-Check -->
+
+        <div class="card-custom">
+
+            <h2>Self-Check Questions</h2>
+
+            <ol>
+
+                <li>Differentiate the four levels of measurement.</li>
+
+                <li>Why is identifying the measurement level important before statistical analysis?</li>
+
+                <li>Classify the following variables: gender, age, class rank, monthly income, and temperature in Celsius.</li>
+
+                <li>Why is IQ considered interval data instead of ratio data?</li>
+
+                <li>Which statistical procedures are commonly used with nominal variables?</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <div class="card-custom">
+
+            <h2>References</h2>
+
+            <ul>
+
+                <li>
+
+                    Creswell, J. W., & Creswell, J. D. (2023).
+                    <em>Research Design: Qualitative, Quantitative, and Mixed Methods Approaches.</em>
+                    Sage Publications.
+
+                </li>
+
+                <li>
+
+                    Gravetter, F. J., & Wallnau, L. B. (2021).
+                    <em>Statistics for the Behavioral Sciences.</em>
+                    Cengage Learning.
+
+                </li>
+
+                <li>
+
+                    Stevens, S. S. (1946).
+                    <em>On the Theory of Scales of Measurement.</em>
+                    Science, 103(2684), 677-680.
+
+                </li>
+
+                <li>
+
+                    Triola, M. F. (2022).
+                    <em>Elementary Statistics.</em>
+                    Pearson Education.
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Bottom Navigation -->
+
+        <div class="text-center">
+
+            <a href="01-types-of-variables.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Previous
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house-fill"></i>
+
+                Home
+
+            </a>
+
+            <a href="03-population-sample-sampling.html" class="btn btn-primary">
+
+                Next
+
+                <i class="bi bi-arrow-right-circle"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

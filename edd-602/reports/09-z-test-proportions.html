@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 09 - Z-Test for Proportions</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i>
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 09
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Z-Test for Proportions
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Comparing Sample Proportion with Population Proportion
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+
+        <!-- Introduction -->
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                In research, we often analyze categorical data such as pass/fail,
+                yes/no, or success/failure outcomes. When dealing with proportions,
+                we use the Z-test for proportions to determine whether a sample
+                proportion is significantly different from a known population proportion.
+
+            </p>
+
+            <p>
+
+                This test is commonly used in education, business, and social science
+                research when outcomes are expressed in percentages or proportions.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Define the Z-test for proportions.</li>
+
+                <li>Identify when to use the test.</li>
+
+                <li>Explain the assumptions of the test.</li>
+
+                <li>Compute and interpret Z-test results for proportions.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The Z-test for proportions is based on the development of the normal approximation
+                to the binomial distribution. Early statisticians discovered that when sample sizes
+                are large enough, binomial distributions can be approximated using the normal curve.
+
+            </p>
+
+            <p>
+
+                This approximation allowed researchers to analyze proportions using Z-scores,
+                making hypothesis testing for categorical data more practical and widely applicable.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The Z-test for proportions is a statistical test used to determine whether
+                a sample proportion (p^) is significantly different from a population proportion (p).
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- When to Use -->
+        <h2>When to Use the Z-Test for Proportions</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>The data is categorical (yes/no, pass/fail, etc.).</li>
+
+                <li>The sample size is large enough (np &ge; 5 and n(1-p) &ge; 5).</li>
+
+                <li>The population proportion is known or assumed.</li>
+
+                <li>Observations are independent.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Formula -->
+        <h2>Z-Test Formula for Proportions</h2>
+
+        <div class="alert alert-primary text-center">
+
+            Z = (p^ - p) / sqrt( p(1 - p) / n )
+
+        </div>
+
+        <div class="card-custom">
+
+            <p>
+
+                Where:
+
+            </p>
+
+            <ul>
+
+                <li>p^ = sample proportion</li>
+
+                <li>p = population proportion</li>
+
+                <li>n = sample size</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Assumptions -->
+        <h2>Assumptions</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>The sample is randomly selected.</li>
+
+                <li>Observations are independent.</li>
+
+                <li>Sample size is large enough for normal approximation.</li>
+
+                <li>Data is categorical (binary outcomes).</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Worked Example (Start) -->
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h4>Research Scenario</h4>
+
+            <p>
+
+                A researcher wants to determine whether the pass rate of students
+                in a statistics exam is different from the known university pass rate.
+
+            </p>
+
+            <p>
+
+                The university claims that 70% of students pass the exam.
+                The researcher collects a sample of students to verify this claim.
+
+            </p>
+
+            <hr>
+
+            <h5>Given Information</h5>
+
+            <ul>
+
+                <li>Population Proportion (p) = 0.70</li>
+
+                <li>Sample Proportion (p^) = 0.78</li>
+
+                <li>Sample Size (n) = 50</li>
+
+            </ul>
+			
+			        <!-- Solution -->
+        <h2>Solution</h2>
+
+        <div class="card-custom">
+
+            <h5>Step 1 - State the Hypotheses</h5>
+
+            <p>
+
+                We begin by stating the null and alternative hypotheses.
+
+            </p>
+
+            <ul>
+
+                <li><strong>Null Hypothesis (H0):</strong> There is no significant difference between the sample proportion and the population proportion.</li>
+
+                <li><strong>Alternative Hypothesis (H1):</strong> There is a significant difference between the sample proportion and the population proportion.</li>
+
+            </ul>
+
+            <div class="alert alert-secondary">
+
+                H0: p^ = p <br>
+                H1: p^ != p
+
+            </div>
+
+            <hr>
+
+            <h5>Step 2 - Identify the Formula</h5>
+
+            <p>
+
+                The Z-test formula for proportions is:
+
+            </p>
+
+            <div class="alert alert-primary text-center">
+
+                Z = (p^ - p) / sqrt( p(1 - p) / n )
+
+            </div>
+
+            <hr>
+
+            <h5>Step 3 - Substitute the Given Values</h5>
+
+            <p>
+
+                Given:
+
+            </p>
+
+            <ul>
+
+                <li>p^ = 0.78</li>
+                <li>p = 0.70</li>
+                <li>n = 50</li>
+
+            </ul>
+
+            <p>
+
+                Substitute into the formula:
+
+            </p>
+
+            <p>
+
+                Z = (0.78 - 0.70) / sqrt( (0.70)(1 - 0.70) / 50 )
+
+            </p>
+
+            <hr>
+
+            <h5>Step 4 - Compute the Values</h5>
+
+            <p>
+
+                Compute numerator:
+
+            </p>
+
+            <p>
+
+                0.78 - 0.70 = 0.08
+
+            </p>
+
+            <p>
+
+                Compute denominator:
+
+            </p>
+
+            <p>
+
+                (1 - 0.70) = 0.30 <br>
+                (0.70)(0.30) = 0.21 <br>
+                0.21 / 50 = 0.0042 <br>
+                sqrt(0.0042) = 0.0648 (approx)
+
+            </p>
+
+            <p>
+
+                Now compute Z:
+
+            </p>
+
+            <p>
+
+                Z = 0.08 / 0.0648
+
+            </p>
+
+            <div class="alert alert-success text-center">
+
+                <h3>Z = 1.23 (approx)</h3>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 5 - Decision Rule</h5>
+
+            <p>
+
+                At a = 0.05 (two-tailed test), the critical value is:
+
+            </p>
+
+            <div class="alert alert-secondary text-center">
+
+                Z critical = &plusmn;1.96
+
+            </div>
+
+            <p>
+
+                Decision rule:
+
+            </p>
+
+            <ul>
+
+                <li>If |Z computed| > 1.96, reject H0</li>
+
+                <li>If |Z computed| = 1.96, fail to reject H0</li>
+
+            </ul>
+
+            <hr>
+
+            <h5>Step 6 - Decision</h5>
+
+            <div class="alert alert-primary text-center">
+
+                Z = 1.23
+
+            </div>
+
+            <p>
+
+                Since 1.23 is less than 1.96, we fail to reject the null hypothesis.
+
+            </p>
+
+            <hr>
+
+            <h5>Step 7 - Interpretation</h5>
+
+            <p>
+
+                There is no sufficient evidence to conclude that the student pass rate
+                is significantly different from the university's claimed pass rate of 70%.
+
+            </p>
+
+            <p>
+
+                This suggests that the observed sample proportion is statistically consistent
+                with the population proportion.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Exam pass rate evaluation</li>
+
+                <li>Survey response analysis (yes/no outcomes)</li>
+
+                <li>Quality control defect rates</li>
+
+                <li>Voting and polling studies</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The Z-test for proportions is used to compare a sample proportion with a known population proportion.
+                In this example, the computed Z value (1.23) was less than the critical value (&plusmn;1.96), leading to a
+                failure to reject the null hypothesis.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between">
+
+            <a href="08-z-test-sample-population-means.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="10-t-test-independent.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

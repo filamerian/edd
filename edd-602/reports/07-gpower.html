@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 07 - G*Power</title>
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand"
+                href="../index.html">
+
+                <i class="bi bi-house"></i>
+
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 07
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                G*Power
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Power Analysis and Sample Size Determination Using G*Power
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Introduction -->
+
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                In the previous lessons, we learned several methods for
+                determining sample size, including Taro Yamane's Formula,
+                Cochran Formula, Fisher's Formula, Krejcie and Morgan Formula,
+                Jacob Cohen's approach, and Samuel B. Green's Formula.
+
+            </p>
+
+            <p>
+
+                Although these methods remain valuable, researchers today
+                commonly use statistical software to determine sample size.
+                One of the most widely used applications is
+                <strong>G*Power</strong>, a free program that performs power
+                analysis for many statistical tests.
+
+            </p>
+
+            <p>
+
+                G*Power enables researchers to calculate the minimum sample
+                size before collecting data, helping ensure that studies have
+                enough participants to detect meaningful results.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Explain the purpose of G*Power.</li>
+
+                <li>Describe the different types of power analysis.</li>
+
+                <li>Identify the information needed before performing a power analysis.</li>
+
+                <li>Compute sample size using G*Power.</li>
+
+                <li>Interpret the software output.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                G*Power was originally developed by
+                <strong>Franz Faul</strong> and his colleagues at the
+                University of Dusseldorf, Germany. The software was created to
+                provide researchers with an easy and accurate way of performing
+                statistical power analysis without requiring complex manual
+                calculations.
+
+            </p>
+
+            <p>
+
+                Since its first release, G*Power has become one of the most
+                widely used statistical applications in education,
+                psychology, medicine, business, and the social sciences.
+                Because it is freely available, it is frequently used by
+                undergraduate students, graduate students, and professional
+                researchers around the world.
+
+            </p>
+
+            <p>
+
+                Modern versions of G*Power support a wide range of statistical
+                procedures including t-tests, ANOVA, correlation, regression,
+                chi-square tests, F-tests, and many others.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                G*Power is a free statistical software application designed to
+                perform <strong>power analysis</strong>. It helps researchers
+                determine the required sample size before conducting a study or
+                evaluate whether an existing sample size is sufficient for a
+                particular statistical test.
+
+            </p>
+
+            <p>
+
+                Unlike the manual formulas discussed in previous lessons,
+                G*Power performs calculations automatically based on the
+                research design and statistical assumptions selected by the
+                researcher.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Types of Power Analysis -->
+
+        <h2>Types of Power Analysis</h2>
+
+        <table class="table table-bordered">
+
+            <thead class="table-primary">
+
+                <tr>
+
+                    <th>Type</th>
+
+                    <th>Purpose</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>A Priori</td>
+
+                    <td>Determines the required sample size before data collection.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Post Hoc</td>
+
+                    <td>Calculates the statistical power after the study has been completed.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Sensitivity</td>
+
+                    <td>Determines the smallest effect size that can be detected.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Compromise</td>
+
+                    <td>Balances the risks of Type I and Type II errors.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Criterion</td>
+
+                    <td>Computes the significance level needed to achieve a desired power.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Information Needed -->
+
+        <h2>Information Needed Before Using G*Power</h2>
+
+        <table class="table table-striped">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Information</th>
+
+                    <th>Description</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Statistical Test</td>
+
+                    <td>The statistical procedure to be used (e.g., t-test, ANOVA, correlation).</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Effect Size</td>
+
+                    <td>The expected magnitude of the difference or relationship.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Alpha Level</td>
+
+                    <td>The probability of committing a Type I Error (commonly 0.05).</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Statistical Power</td>
+
+                    <td>The probability of detecting a true effect (commonly 0.80).</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Allocation Ratio</td>
+
+                    <td>The ratio of participants assigned to each comparison group.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <!-- Worked Example -->
+
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h4>Research Scenario</h4>
+
+            <p>
+
+                A researcher wants to compare the academic performance of two
+                groups of students after using two different teaching methods.
+
+            </p>
+
+            <p>
+
+                Before collecting data, the researcher wants to determine the
+                minimum number of participants required for an
+                <strong>Independent Samples t-Test</strong>.
+
+            </p>
+
+            <p>
+
+                Instead of performing manual calculations, the researcher uses
+                <strong>G*Power</strong> to estimate the required sample size.
+
+            </p>
+
+            <hr>
+
+            <h5>Step 1 - Open G*Power</h5>
+
+            <p>
+
+                Launch the G*Power application.
+
+            </p>
+
+          <div class="alert alert-secondary text-center"><img src="../images/gpower/gpower-main.png" alt="G*Power Application" width="525" height="331"></div>
+			
+			            
+
+            <p>
+
+                In G*Power, choose the appropriate test family based on the research design.
+
+                For this study, the researcher selects a t-test because the goal is to compare two independent groups.
+
+            </p>
+
+          <div class="alert alert-secondary text-center">
+
+                Test Family: <strong>t tests</strong><br>
+                <img src="../images/gpower/select-test-family.png" width="525" height="331"></div>
+
+            <hr>
+
+            <h5>Step 3 - Select Statistical Test</h5>
+
+            <p>
+
+                The researcher selects the specific test under the t-test category.
+
+                Since the study compares two independent groups, the correct option is:
+
+            </p>
+
+          <div class="alert alert-secondary text-center">
+
+                Statistical Test:
+
+                <br>
+
+                <strong>Means: Difference between two independent means (two groups)</strong>
+
+                <br><br>
+                <img src="../images/gpower/input-values.png" width="537" height="371"></div>
+
+            <hr>
+
+            <h5>Step 4 - Choose Type of Power Analysis</h5>
+
+            <p>
+
+                For planning the study before data collection, the researcher uses:
+
+            </p>
+
+            <div class="alert alert-primary text-center">
+
+                <strong>A priori power analysis</strong>
+
+            </div>
+
+            <p>
+
+                This option computes the required sample size based on the desired statistical power and effect size.
+
+            </p>
+
+            <hr>
+
+            <h5>Step 5 - Set Input Parameters</h5>
+
+            <p>
+
+                The researcher enters the following values:
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <tr>
+
+                    <th>Parameter</th>
+
+                    <th>Value</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Effect Size (d)</td>
+
+                    <td>0.50 (Medium)</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Alpha (a)</td>
+
+                    <td>0.05</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Power (1 - &beta;)</td>
+
+                    <td>0.80</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Allocation Ratio</td>
+
+                    <td>1 (equal groups)</td>
+
+                </tr>
+
+            </table>
+
+            <div class="alert alert-secondary text-center"><img src="../images/gpower/output.png" width="526" height="371"></div>
+
+            <hr>
+
+            <h5>Step 6 - Run the Analysis</h5>
+
+            <p>
+
+                After entering all required values, the researcher clicks the "Calculate" button.
+
+                G*Power then computes the required sample size automatically.
+
+            </p>
+
+            <div class="alert alert-success text-center">
+
+                Result: <br><br>
+
+                <h3>64 participants per group</h3>
+
+                <h4>Total = 128 participants</h4>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Interpretation -->
+
+        <h2>Interpretation</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The analysis shows that a minimum of <strong>128 participants</strong> is required to conduct the study properly.
+
+                This ensures that the research has enough statistical power (80%) to detect a medium effect size at the 0.05 significance level.
+
+            </p>
+
+            <p>
+
+                If fewer participants are used, the study may not detect meaningful differences even if they exist.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Educational research studies</li>
+
+                <li>Experimental designs</li>
+
+                <li>Psychological testing</li>
+
+                <li>Medical and health research</li>
+
+                <li>Business and management studies</li>
+
+                <li>Graduate thesis and dissertation research</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Advantages -->
+
+        <h2>Advantages</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Free and widely available software</li>
+
+                <li>More accurate than manual formulas</li>
+
+                <li>Supports many statistical tests</li>
+
+                <li>Used internationally in academic research</li>
+
+                <li>Saves time in sample size computation</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Limitations -->
+
+        <h2>Limitations</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Requires correct selection of statistical test</li>
+
+                <li>Users must understand effect size concepts</li>
+
+                <li>Incorrect inputs produce incorrect results</li>
+
+                <li>May be difficult for beginners without guidance</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                G*Power is a powerful statistical tool used for determining sample size through power analysis.
+
+                Unlike manual formulas, it automates calculations based on research design, effect size, and desired statistical power.
+
+                It is widely used in modern research and serves as a practical application of Cohen's power analysis principles.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <h2>References</h2>
+
+        <div class="card-custom">
+
+            <ol>
+
+                <li>Faul, F., Erdfelder, E., Buchner, A., & Lang, A. G. (2007). G*Power 3: A flexible statistical power analysis program. <em>Behavior Research Methods</em>.</li>
+
+                <li>Cohen, J. (1988). <em>Statistical Power Analysis for the Behavioral Sciences.</em></li>
+
+                <li>Creswell, J. W., & Creswell, J. D. (2018). <em>Research Design.</em></li>
+
+                <li>Field, A. (2018). <em>Discovering Statistics Using IBM SPSS Statistics.</em></li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+
+        <div class="d-flex justify-content-between">
+
+            <a href="06-samuel-green.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="08-z-test-sample-population-means.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

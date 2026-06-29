@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 15 - Correlation and Regression Summary</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i>
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 15
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Correlation and Regression Summary
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Integrating Relationship and Prediction Analysis
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Content -->
+    <div class="container py-5">
+
+        <!-- Introduction -->
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                This lesson provides a summary of two important statistical techniques:
+                correlation and regression analysis.
+
+            </p>
+
+            <p>
+
+                These methods are used to examine relationships between variables and
+                make predictions based on data patterns.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Objectives -->
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Differentiate correlation and regression</li>
+
+                <li>Interpret statistical relationships</li>
+
+                <li>Understand prediction models</li>
+
+                <li>Apply both techniques in research</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The foundations of correlation and regression were developed by Sir Francis Galton
+                and Karl Pearson in the late 19th and early 20th centuries.
+
+            </p>
+
+            <p>
+
+                These methods became essential tools in statistics, psychology, education, and business
+                for analyzing relationships between measurable variables.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Concept Overview -->
+        <h2>Concept Overview</h2>
+
+        <div class="card-custom">
+
+            <h5>Correlation</h5>
+
+            <p>
+
+                Correlation measures the strength and direction of a relationship between two variables.
+
+            </p>
+
+            <div class="alert alert-primary text-center">
+
+                r = -1 to +1
+
+            </div>
+
+            <hr>
+
+            <h5>Regression</h5>
+
+            <p>
+
+                Regression is used to predict the value of one variable based on another variable.
+
+            </p>
+
+            <div class="alert alert-primary text-center">
+
+                Y = a + bX
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Comparison Table -->
+        <h2>Correlation vs Regression</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Correlation: describes relationship strength</li>
+
+                <li>Regression: predicts outcomes</li>
+
+                <li>Correlation: symmetric (X and Y equal)</li>
+
+                <li>Regression: directional (X predicts Y)</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Transition to Examples -->
+        <h2>Worked Application Overview</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                In the following section, we will review sample computations
+                for Pearson correlation and linear regression.
+
+            </p>
+
+        </div>
+		
+		
+    <!-- Summary Table -->
+    <h2>Key Formula Summary</h2>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered text-center">
+
+            <thead>
+
+                <tr>
+                    <th>Method</th>
+                    <th>Formula</th>
+                    <th>Purpose</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Pearson r</td>
+                    <td>
+                        r = [ n&Sigma;XY - (&Sigma;X)(&Sigma;Y) ] /
+                        sqrt( [n&Sigma;X<sup>2</sup> - (&Sigma;X)<sup>2</sup>]
+                        [n&Sigma;Y<sup>2</sup> - (&Sigma;Y)<sup>2</sup>] )
+                    </td>
+                    <td>Measures strength and direction of relationship</td>
+                </tr>
+
+                <tr>
+                    <td>Linear Regression</td>
+                    <td>Y = a + bX</td>
+                    <td>Predicts value of dependent variable</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <br>
+
+    <!-- Interpretation Guide -->
+    <h2>Interpretation Guide</h2>
+
+    <div class="card-custom">
+
+        <h5>Pearson r Strength</h5>
+
+        <ul>
+
+            <li>0.00 to 0.19 &rarr; very weak</li>
+            <li>0.20 to 0.39 &rarr; weak</li>
+            <li>0.40 to 0.59 &rarr; moderate</li>
+            <li>0.60 to 0.79 &rarr; strong</li>
+            <li>0.80 to 1.00 &rarr; very strong</li>
+
+        </ul>
+
+        <hr>
+
+        <h5>Regression Interpretation</h5>
+
+        <ul>
+
+            <li>Positive slope (b &gt; 0) &rarr; increasing relationship</li>
+            <li>Negative slope (b &lt; 0) &rarr; decreasing relationship</li>
+            <li>Larger |b| &rarr; stronger change effect</li>
+
+        </ul>
+
+    </div>
+
+    <br>
+
+    <!-- Practical Meaning -->
+    <h2>Practical Application</h2>
+
+    <div class="card-custom">
+
+        <p>
+
+            Correlation helps researchers understand whether variables are related,
+            while regression helps predict future outcomes based on those relationships.
+
+        </p>
+
+        <p>
+
+            These tools are widely used in education, business forecasting, psychology,
+            and performance analysis.
+
+        </p>
+
+    </div>
+
+    <br>
+
+    <!-- Final Conclusion -->
+    <h2>Conclusion</h2>
+
+    <div class="card-custom">
+
+        <p>
+
+            Correlation and regression are foundational statistical tools for understanding
+            and predicting relationships between variables.
+
+        </p>
+
+        <p>
+
+            Mastery of these concepts allows researchers to move from simple description
+            to predictive modeling.
+
+        </p>
+
+    </div>
+
+    <br>
+
+    <!-- Navigation -->
+    <div class="d-flex justify-content-between">
+
+        <a href="14-linear-regression.html" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Previous Lesson
+        </a>
+
+        <a href="../index.html" class="btn btn-dark">
+            <i class="bi bi-house"></i> Home
+        </a>
+
+        <a href="../index.html" class="btn btn-primary">
+            Finish Course <i class="bi bi-check-circle"></i>
+        </a>
+
+    </div>
+
+
+
+    </div>
+	
+	</body>
+</html>

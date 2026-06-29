@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>08 - Selecting the Appropriate Statistical Test</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-mortarboard-fill"></i>
+
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <h1>Selecting the Appropriate Statistical Test</h1>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Learning Objectives -->
+
+        <div class="card-custom">
+
+            <h2>Learning Objectives</h2>
+
+            <p>
+
+                At the end of this lesson, you should be able to:
+
+            </p>
+
+            <ul>
+
+                <li>Explain why selecting the correct statistical test is important.</li>
+
+                <li>Identify the factors that influence the choice of a statistical test.</li>
+
+                <li>Differentiate parametric and nonparametric statistical tests.</li>
+
+                <li>Select the appropriate statistical test based on the research problem.</li>
+
+                <li>Apply a simple decision guide when planning statistical analysis.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Introduction -->
+
+        <div class="card-custom">
+
+            <h2>Introduction</h2>
+
+            <p>
+
+                Choosing the correct statistical test is one of the most important decisions in
+                quantitative research. Even if data are collected accurately, using the wrong
+                statistical procedure may lead to incorrect conclusions.
+
+            </p>
+
+            <p>
+
+                Researchers should select a statistical test based on the research objectives,
+                type of variables, level of measurement, number of groups, assumptions of the
+                data, and the research design.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <strong>Remember:</strong>
+
+                The statistical test should answer the research question - not the other way
+                around.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Importance -->
+
+        <div class="card-custom">
+
+            <h2>Why is Selecting the Correct Statistical Test Important?</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Reason</th>
+                        <th>Explanation</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Produces Valid Conclusions</td>
+
+                        <td>
+
+                            Appropriate tests increase the accuracy of research findings.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Reduces Statistical Errors</td>
+
+                        <td>
+
+                            Prevents incorrect acceptance or rejection of hypotheses.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Matches the Research Design</td>
+
+                        <td>
+
+                            Different research designs require different statistical procedures.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Supports Proper Interpretation</td>
+
+                        <td>
+
+                            Results become easier to explain and defend.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Improves Research Quality</td>
+
+                        <td>
+
+                            Proper statistical analysis strengthens the credibility of the study.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Factors -->
+
+        <div class="card-custom">
+
+            <h2>Factors to Consider When Choosing a Statistical Test</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Factor</th>
+                        <th>Question to Ask</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Research Objective</td>
+
+                        <td>
+
+                            Are you comparing groups, examining relationships, or making predictions?
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Type of Variables</td>
+
+                        <td>
+
+                            Are the variables categorical or numerical?
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Level of Measurement</td>
+
+                        <td>
+
+                            Are the variables nominal, ordinal, interval, or ratio?
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Number of Groups</td>
+
+                        <td>
+
+                            Are you comparing one, two, or more groups?
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Data Distribution</td>
+
+                        <td>
+
+                            Does the data satisfy the assumption of normality?
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Research Design</td>
+
+                        <td>
+
+                            Are the samples independent or related?
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Parametric vs Nonparametric -->
+
+        <div class="card-custom">
+
+            <h2>Parametric versus Nonparametric Tests</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Parametric Tests</th>
+                        <th>Nonparametric Tests</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+
+                            Require numerical data.
+
+                        </td>
+
+                        <td>
+
+                            Can analyze categorical or ordinal data.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Usually assume normal distribution.
+
+                        </td>
+
+                        <td>
+
+                            Do not require normality.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Generally have greater statistical power when assumptions are met.
+
+                        </td>
+
+
+                        <td>
+
+                            Useful when assumptions of parametric tests are violated.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Examples: z-test, t-test, ANOVA, Pearson correlation, Regression.
+
+                        </td>
+
+                        <td>
+
+                            Examples: Chi-square, Mann-Whitney U, Wilcoxon Signed-Rank,
+                            Kruskal-Wallis, Friedman Test.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Decision Guide -->
+
+        <div class="card-custom">
+
+            <h2>General Guide for Selecting Statistical Tests</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>If Your Research Objective Is...</th>
+                        <th>Common Statistical Test</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+
+                            Compare one sample with a population.
+
+                        </td>
+
+                        <td>
+
+                            z-Test (One Sample)
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Compare two independent groups.
+
+                        </td>
+
+                        <td>
+
+                            Independent Samples t-Test
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Compare two related measurements.
+
+                        </td>
+
+                        <td>
+
+                            Paired Samples t-Test
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Compare three or more independent groups.
+
+                        </td>
+
+                        <td>
+
+                            One-Way ANOVA
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Determine whether two numerical variables are related.
+
+                        </td>
+
+                        <td>
+
+                            Pearson Product-Moment Correlation
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Predict one variable using another.
+
+                        </td>
+
+                        <td>
+
+                            Simple Linear Regression
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Example -->
+
+        <div class="card-custom">
+
+            <h2>Example 1</h2>
+
+            <p>
+
+                A researcher wants to determine whether male and female graduate students differ
+                significantly in their comprehensive examination scores.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <tr>
+
+                    <th>Question</th>
+
+                    <td>
+
+                        Is there a significant difference between two independent groups?
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Variables</th>
+
+                    <td>
+
+                        Gender (Nominal) and Examination Score (Interval)
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Recommended Test</th>
+
+                    <td>
+
+                        Independent Samples t-Test
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Example -->
+
+        <div class="card-custom">
+
+            <h2>Example 2</h2>
+
+            <p>
+
+                A researcher wants to determine whether students' study hours are related to
+                their final examination scores.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <tr>
+
+                    <th>Question</th>
+
+                    <td>
+
+                        Is there a relationship between two numerical variables?
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Variables</th>
+
+                    <td>
+
+                        Study Hours and Examination Scores
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Recommended Test</th>
+
+                    <td>
+
+                        Pearson Product-Moment Correlation
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+        <br>
+		
+		        <!-- Decision Flowchart -->
+
+        <div class="card-custom">
+
+            <h2>Simple Decision Guide for Selecting a Statistical Test</h2>
+
+            <p>
+
+                The following guide can help researchers identify the most appropriate statistical
+                test based on the purpose of their study.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Research Question</th>
+                        <th>Recommended Statistical Test</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Is there a difference between one sample and a known population?</td>
+
+                        <td>One-Sample z-Test</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Is there a difference between two independent groups?</td>
+
+                        <td>Independent Samples t-Test</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Is there a difference between two related measurements?</td>
+
+                        <td>Paired Samples t-Test</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Is there a difference among three or more groups?</td>
+
+                        <td>One-Way ANOVA</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Is there a relationship between two numerical variables?</td>
+
+                        <td>Pearson Product-Moment Correlation</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Can one variable predict another?</td>
+
+                        <td>Simple Linear Regression</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Is there an association between two categorical variables?</td>
+
+                        <td>Chi-Square Test of Independence</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Choosing Between Parametric and Nonparametric -->
+
+        <div class="card-custom">
+
+            <h2>When Should You Use a Nonparametric Test?</h2>
+
+            <p>
+
+                Although parametric tests are generally preferred when their assumptions are met,
+                nonparametric tests become more appropriate under certain conditions.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Situation</th>
+                        <th>Recommended Approach</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Data are nominal or ordinal.</td>
+
+                        <td>Use a nonparametric test.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Data are not normally distributed.</td>
+
+                        <td>Consider a nonparametric alternative.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Sample size is very small and assumptions are violated.</td>
+
+                        <td>Use a nonparametric procedure.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Data contain extreme outliers.</td>
+
+                        <td>Consider a nonparametric test.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Practical Tips -->
+
+        <div class="card-custom">
+
+            <h2>Practical Tips for Researchers</h2>
+
+            <ul>
+
+                <li>Begin by clearly stating the research objectives and hypotheses.</li>
+
+                <li>Identify the independent and dependent variables.</li>
+
+                <li>Determine the level of measurement of each variable.</li>
+
+                <li>Check whether the assumptions of the intended statistical test are satisfied.</li>
+
+                <li>When in doubt, consult statistical references before selecting the analysis.</li>
+
+                <li>Remember that the statistical test should answer the research question.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Common Mistakes -->
+
+        <div class="card-custom">
+
+            <h2>Common Mistakes in Selecting Statistical Tests</h2>
+
+            <ul>
+
+                <li>Choosing a statistical test before identifying the research objective.</li>
+
+                <li>Ignoring the level of measurement of the variables.</li>
+
+                <li>Using a parametric test without checking its assumptions.</li>
+
+                <li>Using several statistical tests unnecessarily for the same research question.</li>
+
+                <li>Interpreting statistical significance without considering practical significance.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <div class="card-custom">
+
+            <h2>Lesson Summary</h2>
+
+            <ul>
+
+                <li>The selection of a statistical test depends on the research objective, variables, measurement level, research design, and data characteristics.</li>
+
+                <li>Parametric tests require stronger assumptions but generally provide greater statistical power.</li>
+
+                <li>Nonparametric tests are useful when data do not satisfy the assumptions required by parametric tests.</li>
+
+                <li>Researchers should always select the statistical procedure that best answers their research question.</li>
+
+                <li>Careful selection of the statistical test improves the validity, reliability, and credibility of research findings.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Self-Check Questions -->
+
+        <div class="card-custom">
+
+            <h2>Self-Check Questions</h2>
+
+            <ol>
+
+                <li>Why is selecting the correct statistical test important?</li>
+
+                <li>What factors should be considered when choosing a statistical test?</li>
+
+                <li>Differentiate parametric tests from nonparametric tests.</li>
+
+                <li>Which statistical test is appropriate for comparing three independent groups?</li>
+
+                <li>Which statistical test should be used to determine the relationship between two numerical variables?</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <div class="card-custom">
+
+            <h2>References</h2>
+
+            <ul>
+
+                <li>Field, A. (2024). <em>Discovering Statistics Using IBM SPSS Statistics.</em> Sage Publications.</li>
+
+                <li>Gravetter, F. J., & Wallnau, L. B. (2021). <em>Statistics for the Behavioral Sciences.</em> Cengage Learning.</li>
+
+                <li>Moore, D. S., McCabe, G. P., & Craig, B. A. (2021). <em>Introduction to the Practice of Statistics.</em> W. H. Freeman.</li>
+
+                <li>Triola, M. F. (2022). <em>Elementary Statistics.</em> Pearson Education.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Bottom Navigation -->
+
+        <div class="text-center">
+
+            <a href="07-hypothesis-testing.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Previous
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house-fill"></i>
+
+                Home
+
+            </a>
+
+            <a href="01-taro-yamane.html" class="btn btn-primary">
+
+                Next
+
+                <i class="bi bi-arrow-right-circle"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

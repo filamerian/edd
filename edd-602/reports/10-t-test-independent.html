@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 10 - T-Test for Independent Samples</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i>
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 10
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                T-Test for Independent Samples
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Comparing the Means of Two Independent Groups
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+
+        <!-- Introduction -->
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                In research, we often compare the means of two separate groups to determine whether a significant
+                difference exists between them. For example, we may compare the performance of students using two
+                different teaching methods.
+
+            </p>
+
+            <p>
+
+                The <strong>t-test for independent samples</strong> is used when the two groups being compared are
+                unrelated or independent from each other.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Define the independent samples t-test.</li>
+
+                <li>Identify when to use the test.</li>
+
+                <li>Explain its assumptions.</li>
+
+                <li>Compute and interpret results.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The t-test was developed by William Sealy Gosset in 1908 under the pseudonym "Student".
+                It was originally created to solve problems in quality control for small sample sizes in breweries.
+
+            </p>
+
+            <p>
+
+                Over time, the t-test became one of the most widely used statistical tools in educational,
+                psychological, and social science research for comparing group means.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+        <h2>Definition</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The independent samples t-test is a statistical test used to determine whether there is a significant
+                difference between the means of two independent groups.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- When to Use -->
+        <h2>When to Use the Independent Samples T-Test</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Two independent groups are being compared.</li>
+
+                <li>Data is continuous (interval or ratio scale).</li>
+
+                <li>Samples are randomly selected.</li>
+
+                <li>Data is approximately normally distributed.</li>
+
+                <li>Variances are equal (homogeneity of variance).</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Formula -->
+        <h2>T-Test Formula</h2>
+
+<div class="alert alert-primary text-center">
+
+    t = (X&#772;<sub>1</sub> - X&#772;<sub>2</sub>) / sqrt( (s<sub>1</sub><sup>2</sup> / n<sub>1</sub>) + (s<sub>2</sub><sup>2</sup> / n<sub>2</sub>) )
+
+</div>
+        <div class="card-custom">
+
+            <p>
+
+                Where:
+
+            </p>
+
+<ul>
+
+    <li>X&#772;<sub>1</sub> = mean of group 1</li>
+
+    <li>X&#772;<sub>2</sub> = mean of group 2</li>
+
+    <li>s<sub>1</sub><sup>2</sup> = variance of group 1</li>
+
+    <li>s<sub>2</sub><sup>2</sup> = variance of group 2</li>
+
+    <li>n<sub>1</sub> = sample size of group 1</li>
+
+    <li>n<sub>2</sub> = sample size of group 2</li>
+
+</ul>
+
+        </div>
+
+        <br>
+
+        <!-- Assumptions -->
+        <h2>Assumptions</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>The two groups are independent.</li>
+
+                <li>Data is continuous.</li>
+
+                <li>Data is approximately normally distributed.</li>
+
+                <li>Variances of both groups are equal.</li>
+
+                <li>Observations are randomly selected.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Worked Example (Start) -->
+        <h2>Worked Example</h2>
+
+        <div class="card-custom">
+
+            <h4>Research Scenario</h4>
+
+            <p>
+
+                A researcher wants to determine whether there is a significant difference in mathematics performance
+                between students taught using Method A and Method B.
+
+            </p>
+
+            <p>
+
+                Two independent groups of students are selected for comparison.
+
+            </p>
+
+            <hr>
+
+            <h5>Given Information</h5>
+
+<ul>
+
+    <li>Group 1 Mean (X&#772;<sub>1</sub>) = 82</li>
+
+    <li>Group 2 Mean (X&#772;<sub>2</sub>) = 76</li>
+
+    <li>Group 1 Standard Deviation (s<sub>1</sub>) = 8</li>
+
+    <li>Group 2 Standard Deviation (s<sub>2</sub>) = 10</li>
+
+    <li>Group 1 Sample Size (n<sub>1</sub>) = 30</li>
+
+    <li>Group 2 Sample Size (n<sub>2</sub>) = 30</li>
+
+</ul>
+			
+			        <!-- Solution -->
+        <h2>Solution</h2>
+
+        <div class="card-custom">
+
+            <h5>Step 1 - State the Hypotheses</h5>
+
+            <p>
+
+                We begin by stating the null and alternative hypotheses.
+
+            </p>
+
+<ul>
+
+    <li><strong>H<sub>0</sub> (Null Hypothesis):</strong> There is no significant difference between the two group means (X&#772;<sub>1</sub> and X&#772;<sub>2</sub>).</li>
+
+    <li><strong>H<sub>1</sub> (Alternative Hypothesis):</strong> There is a significant difference between the two group means (X&#772;<sub>1</sub> and X&#772;<sub>2</sub>).</li>
+
+</ul>
+
+<div class="alert alert-secondary">
+
+    H<sub>0</sub>: X&#772;<sub>1</sub> = X&#772;<sub>2</sub> <br>
+    H<sub>1</sub>: X&#772;<sub>1</sub> != X&#772;<sub>2</sub>
+
+</div>
+
+            <hr>
+
+            <h5>Step 2 - Identify the Formula</h5>
+
+            <p>
+
+                The formula for the independent samples t-test is:
+
+            </p>
+<div class="alert alert-primary text-center">
+
+    t = (X&#772;<sub>1</sub> - X&#772;<sub>2</sub>) / sqrt( (s<sub>1</sub><sup>2</sup> / n<sub>1</sub>) + (s<sub>2</sub><sup>2</sup> / n<sub>2</sub>) )
+
+</div>
+
+
+            <hr>
+
+            <h5>Step 3 - Substitute the Given Values</h5>
+
+            <p>
+
+                Given:
+
+            </p>
+
+           <ul>
+
+    <li>X&#772;<sub>1</sub> = 82</li>
+
+    <li>X&#772;<sub>2</sub> = 76</li>
+
+    <li>s<sub>1</sub> = 8</li>
+
+    <li>s<sub>2</sub> = 10</li>
+
+    <li>n<sub>1</sub> = 30</li>
+
+    <li>n<sub>2</sub> = 30</li>
+
+</ul>
+
+<p>
+
+    Substitute into the formula:
+
+</p>
+
+<p>
+
+    t = (82 - 76) / sqrt( (8<sup>2</sup> / 30) + (10<sup>2</sup> / 30) )
+
+</p>
+
+<hr>
+
+            <h5>Step 4 - Compute the Values</h5>
+
+            <p>
+
+                Compute numerator:
+
+            </p>
+
+            <p>
+
+                82 - 76 = 6
+
+            </p>
+
+            <p>
+
+                Compute denominator:
+
+            </p>
+
+           <p>
+
+    8<sup>2</sup> = 64 <br>
+    10<sup>2</sup> = 100 <br><br>
+
+    64 / 30 = 2.13 (approx) <br>
+    100 / 30 = 3.33 (approx) <br><br>
+
+    2.13 + 3.33 = 5.46 <br>
+    sqrt(5.46) = 2.34 (approx)
+
+</p>
+
+            <p>
+
+                Now compute t:
+
+            </p>
+
+            <p>
+
+                t = 6 / 2.34
+
+            </p>
+
+            <div class="alert alert-success text-center">
+
+                <h3>t = 2.56 (approx)</h3>
+
+            </div>
+
+            <hr>
+
+            <h5>Step 5 - Decision Rule</h5>
+
+            <p>
+
+                At a = 0.05 (two-tailed test), degrees of freedom:
+
+            </p>
+
+<div class="alert alert-secondary text-center">
+
+    df = n<sub>1</sub> + n<sub>2</sub> - 2 = 30 + 30 - 2 = 58
+
+</div>
+
+            <p>
+
+                Critical value (approx):
+
+            </p>
+
+            <div class="alert alert-secondary text-center">
+
+                t critical = &plusmn;2.00 (approx)
+
+            </div>
+
+            <p>
+
+                Decision rule:
+
+            </p>
+
+            <ul>
+
+                <li>If |t computed| > t critical, reject H0</li>
+
+                <li>If |t computed| = t critical, fail to reject H0</li>
+
+            </ul>
+
+            <hr>
+
+            <h5>Step 6 - Decision</h5>
+
+            <div class="alert alert-primary text-center">
+
+                t = 2.56
+
+            </div>
+
+            <p>
+
+                Since 2.56 is greater than 2.00, we reject the null hypothesis.
+
+            </p>
+
+            <hr>
+
+            <h5>Step 7 - Interpretation</h5>
+
+            <p>
+
+                There is a significant difference in mathematics performance between students taught using Method A
+                and Method B.
+
+            </p>
+
+            <p>
+
+                This suggests that the teaching method has a statistically significant effect on student performance.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+        <h2>Applications</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>Comparing teaching methods</li>
+
+                <li>Gender-based performance studies</li>
+
+                <li>Experimental research designs</li>
+
+                <li>Business training evaluations</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+        <h2>Summary</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The independent samples t-test is used to compare the means of two unrelated groups. In this example,
+                the computed t-value (2.56) exceeded the critical value (&plusmn;2.00), leading to rejection of the null
+                hypothesis and concluding that a significant difference exists between the two groups.
+
+            </p>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between">
+
+            <a href="09-z-test-proportions.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i> Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i> Home
+
+            </a>
+
+            <a href="11-t-test-dependent.html" class="btn btn-primary">
+
+                Next Lesson <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

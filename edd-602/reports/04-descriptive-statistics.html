@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>04 - Descriptive Statistics</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-mortarboard-fill"></i>
+
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <h1>Descriptive Statistics</h1>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <!-- Learning Objectives -->
+
+        <div class="card-custom">
+
+            <h2>Learning Objectives</h2>
+
+            <p>
+
+                At the end of this lesson, you should be able to:
+
+            </p>
+
+            <ul>
+
+                <li>Define descriptive statistics.</li>
+
+                <li>Explain the importance of descriptive statistics in research.</li>
+
+                <li>Differentiate measures of central tendency and measures of variability.</li>
+
+                <li>Identify the appropriate descriptive statistics for different types of data.</li>
+
+                <li>Interpret descriptive statistical results presented in research reports.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Introduction -->
+
+        <div class="card-custom">
+
+            <h2>Introduction</h2>
+
+            <p>
+
+                Before conducting hypothesis testing or advanced statistical analyses,
+                researchers first need to understand the characteristics of their data.
+                This process is known as <strong>descriptive statistics</strong>.
+
+            </p>
+
+            <p>
+
+                Descriptive statistics summarize, organize, and present data in a meaningful
+                manner. Instead of examining hundreds or thousands of individual observations,
+                researchers can describe an entire dataset using only a few statistical values.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <strong>Remember:</strong>
+
+                Descriptive statistics <strong>describe</strong> the data, while inferential
+                statistics <strong>draw conclusions</strong> about a population.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Definition -->
+
+        <div class="card-custom">
+
+            <h2>What are Descriptive Statistics?</h2>
+
+            <p>
+
+                <strong>Descriptive statistics</strong> are statistical methods used to
+                summarize, organize, and present data in a meaningful and understandable
+                form.
+
+            </p>
+
+            <p>
+
+                These statistics help researchers answer questions such as:
+
+            </p>
+
+            <ul>
+
+                <li>What is the average score of the students?</li>
+
+                <li>How spread out are the scores?</li>
+
+                <li>Which score occurs most frequently?</li>
+
+                <li>Are the data generally high or low?</li>
+
+            </ul>
+
+            <div class="alert alert-success">
+
+                Descriptive statistics summarize <strong>what the data show</strong>, but they
+                do not determine whether differences or relationships are statistically
+                significant.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Importance -->
+
+        <div class="card-custom">
+
+            <h2>Why are Descriptive Statistics Important?</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Importance</th>
+                        <th>Explanation</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Organizes Data</td>
+
+                        <td>
+
+                            Converts large amounts of raw data into meaningful summaries.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Simplifies Interpretation</td>
+
+                        <td>
+
+                            Makes research findings easier to understand.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Detects Patterns</td>
+
+                        <td>
+
+                            Helps identify trends, clusters, and unusual observations.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Supports Decision-Making</td>
+
+                        <td>
+
+                            Provides information before performing inferential statistical tests.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Improves Research Reporting</td>
+
+                        <td>
+
+                            Summarizes findings clearly using tables, charts, and statistical
+                            measures.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Categories -->
+
+        <div class="card-custom">
+
+            <h2>Major Categories of Descriptive Statistics</h2>
+
+            <p>
+
+                Descriptive statistics are generally grouped into four major categories.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Category</th>
+                        <th>Purpose</th>
+                        <th>Examples</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Measures of Frequency</td>
+
+                        <td>
+
+                            Count how often observations occur.
+
+                        </td>
+
+                        <td>
+
+                            Frequency, Percentage
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Measures of Central Tendency</td>
+
+                        <td>
+
+                            Identify the center of the data.
+
+                        </td>
+
+                        <td>
+
+                            Mean, Median, Mode
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Measures of Variability</td>
+
+                        <td>
+
+                            Measure how spread out the data are.
+
+                        </td>
+
+                        <td>
+
+                            Range, Variance, Standard Deviation
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Measures of Position</td>
+
+                        <td>
+
+                            Show the relative location of observations.
+
+                        </td>
+
+                        <td>
+
+                            Quartiles, Percentiles, Deciles
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Frequency -->
+
+        <div class="card-custom">
+
+            <h2>1. Measures of Frequency</h2>
+
+            <p>
+
+                Measures of frequency indicate how many times a value or category appears in a
+                dataset.
+
+            </p>
+
+            <p>
+
+                They are commonly used with nominal and ordinal data and are often presented in
+                frequency distribution tables.
+
+            </p>
+
+            <div class="alert alert-info">
+
+                <strong>Example</strong>
+
+                <table class="table table-bordered table-sm mt-3">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Program</th>
+                            <th>Frequency</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>BSIT</td>
+                            <td>45</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>BSED</td>
+                            <td>38</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>BSBA</td>
+                            <td>42</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Central Tendency -->
+
+        <div class="card-custom">
+
+            <h2>2. Measures of Central Tendency</h2>
+
+            <p>
+
+                Measures of central tendency identify the center or typical value of a dataset.
+
+                They answer the question:
+
+                <strong>"What is the typical or average value?"</strong>
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Measure</th>
+                        <th>Description</th>
+                        <th>Best Used For</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Mean</td>
+
+                        <td>
+
+                            Arithmetic average of all observations.
+
+                        </td>
+
+                        <td>
+
+                            Interval and ratio data.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Median</td>
+
+                        <td>
+
+                            Middle value after arranging data.
+
+                        </td>
+
+                        <td>
+
+                            Ordinal data or skewed distributions.
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Mode</td>
+
+                        <td>
+
+                            Most frequently occurring value.
+
+                        </td>
+
+                        <td>
+
+                            Nominal, ordinal, interval, and ratio data.
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="alert alert-warning">
+
+                In the next lessons, you will learn how to compute and interpret the
+                <strong>mean</strong>, <strong>median</strong>, and <strong>mode</strong> in
+                greater detail.
+
+            </div>
+
+        </div>
+
+        <br>
+		
+		        <!-- Measures of Variability -->
+
+        <div class="card-custom">
+
+            <h2>3. Measures of Variability</h2>
+
+            <p>
+
+                Measures of variability describe how widely the data are spread around the center.
+                While measures of central tendency identify the typical value, measures of
+                variability indicate whether the observations are closely grouped or widely
+                scattered.
+
+            </p>
+
+            <p>
+
+                Two groups may have the same average but very different levels of variation.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Measure</th>
+                        <th>Description</th>
+                        <th>Purpose</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Range</td>
+
+                        <td>Difference between the highest and lowest values.</td>
+
+                        <td>Provides the simplest measure of spread.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Variance</td>
+
+                        <td>Average squared deviation from the mean.</td>
+
+                        <td>Measures overall variability of the data.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Standard Deviation</td>
+
+                        <td>Square root of the variance.</td>
+
+                        <td>Most commonly reported measure of dispersion.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="alert alert-secondary">
+
+                <strong>Example</strong>
+
+                <br><br>
+
+                Class A Scores:
+
+                78, 79, 80, 81, 82
+
+                <br><br>
+
+                Class B Scores:
+
+                60, 70, 80, 90, 100
+
+                <br><br>
+
+                Both classes have the same mean of 80, but Class B has a much larger spread of
+                scores. Therefore, Class B has a higher variance and standard deviation.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Measures of Position -->
+
+        <div class="card-custom">
+
+            <h2>4. Measures of Position</h2>
+
+            <p>
+
+                Measures of position describe the location of a value relative to the rest of the
+                dataset. They divide the data into equal parts to help researchers understand
+                where a particular observation falls.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Measure</th>
+                        <th>Description</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Quartiles</td>
+
+                        <td>Divide the data into four equal parts.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Deciles</td>
+
+                        <td>Divide the data into ten equal parts.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Percentiles</td>
+
+                        <td>Divide the data into one hundred equal parts.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="alert alert-info">
+
+                <strong>Example</strong>
+
+                <br><br>
+
+                A student whose test score is at the 90th percentile performed better than
+                approximately 90% of the students who took the same examination.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Choosing the Appropriate Statistic -->
+
+        <div class="card-custom">
+
+            <h2>Choosing the Appropriate Descriptive Statistic</h2>
+
+            <p>
+
+                The choice of descriptive statistic depends on the level of measurement of the
+                data.
+
+            </p>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Level of Measurement</th>
+                        <th>Recommended Descriptive Statistics</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Nominal</td>
+
+                        <td>Frequency, Percentage, Mode</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Ordinal</td>
+
+                        <td>Frequency, Percentage, Median, Mode</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Interval</td>
+
+                        <td>Mean, Standard Deviation, Variance, Range</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Ratio</td>
+
+                        <td>Mean, Standard Deviation, Variance, Range, Percentiles</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Descriptive vs Inferential -->
+
+        <div class="card-custom">
+
+            <h2>Descriptive Statistics versus Inferential Statistics</h2>
+
+            <table class="table table-bordered">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Descriptive Statistics</th>
+                        <th>Inferential Statistics</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Summarize existing data.</td>
+
+                        <td>Draw conclusions about a population.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Describe the characteristics of a dataset.</td>
+
+                        <td>Test hypotheses and make predictions.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>No generalization beyond the data collected.</td>
+
+                        <td>Generalizes sample results to a population.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Examples: Mean, Median, Standard Deviation.</td>
+
+                        <td>Examples: t-Test, ANOVA, Pearson Correlation.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        <!-- Common Mistakes -->
+
+        <div class="card-custom">
+
+            <h2>Common Mistakes</h2>
+
+            <ul>
+
+                <li>Using the mean for highly skewed data when the median is more appropriate.</li>
+
+                <li>Reporting averages without describing the variability of the data.</li>
+
+                <li>Using descriptive statistics alone to make conclusions about a population.</li>
+
+                <li>Choosing descriptive statistics that do not match the level of measurement.</li>
+
+                <li>Interpreting descriptive statistics as evidence of cause-and-effect relationships.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Summary -->
+
+        <div class="card-custom">
+
+            <h2>Lesson Summary</h2>
+
+            <ul>
+
+                <li>Descriptive statistics summarize and organize data.</li>
+
+                <li>The four major categories are frequency, central tendency, variability, and position.</li>
+
+                <li>Measures of central tendency identify the typical value.</li>
+
+                <li>Measures of variability describe how spread out the data are.</li>
+
+                <li>Measures of position indicate the relative location of observations.</li>
+
+                <li>The choice of descriptive statistic depends on the level of measurement.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Self-Check -->
+
+        <div class="card-custom">
+
+            <h2>Self-Check Questions</h2>
+
+            <ol>
+
+                <li>What is the purpose of descriptive statistics?</li>
+
+                <li>Differentiate measures of central tendency from measures of variability.</li>
+
+                <li>When is the median preferred over the mean?</li>
+
+                <li>What does a large standard deviation indicate?</li>
+
+                <li>Which descriptive statistics would you report for nominal data?</li>
+
+            </ol>
+
+        </div>
+
+        <br>
+
+        <!-- References -->
+
+        <div class="card-custom">
+
+            <h2>References</h2>
+
+            <ul>
+
+                <li>Gravetter, F. J., & Wallnau, L. B. (2021). <em>Statistics for the Behavioral Sciences.</em> Cengage Learning.</li>
+
+                <li>Triola, M. F. (2022). <em>Elementary Statistics.</em> Pearson Education.</li>
+
+                <li>Creswell, J. W., & Creswell, J. D. (2023). <em>Research Design: Qualitative, Quantitative, and Mixed Methods Approaches.</em> Sage Publications.</li>
+
+                <li>Field, A. (2024). <em>Discovering Statistics Using IBM SPSS Statistics.</em> Sage Publications.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Bottom Navigation -->
+
+        <div class="text-center">
+
+            <a href="03-population-sample-sampling.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Previous
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house-fill"></i>
+
+                Home
+
+            </a>
+
+            <a href="05-data-collection-tabulation.html" class="btn btn-primary">
+
+                Next
+
+                <i class="bi bi-arrow-right-circle"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <p>
+
+                Filamer Christian University, Inc.<br>
+                Graduate School<br>
+                EdD 602 - Advanced Educational Statistics
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
