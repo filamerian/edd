@@ -1,0 +1,2431 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 37 - Goodman and Kruskal's Lambda</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house"></i>
+                EdD 602 - Advanced Educational Statistics
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+        <div class="container text-center">
+
+            <div class="lesson-number">
+
+                Lesson 37
+
+            </div>
+
+            <h1 class="lesson-title">
+
+                Goodman and Kruskal's Lambda
+
+            </h1>
+
+            <p class="lesson-subtitle">
+
+                Measuring Predictive Association Between Nominal Variables
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Content -->
+    <div class="container py-5">
+
+        <!-- Introduction -->
+        <h2>Introduction</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                <img src="../images/goodman-kruskal-uses.jpg" alt="Goodman and Kruskal&rsquo;s Lambda is a useful tool for prediction and evaluation in both basic and higher education." width="446" height="266" style="float: right; margin-left: 15px; margin-bottom: 10px; ">In educational, business, and social science research, investigators are often interested in
+                determining whether one categorical variable can help predict another. For example, a researcher
+                may ask whether a student's internship performance can predict employment status after graduation,
+                whether an employee's training program is associated with promotion, or whether a customer's
+                membership type influences purchasing behavior. Since these variables are measured using categories
+                rather than numerical values, traditional statistical techniques such as correlation and regression
+                are not appropriate.            </p>
+
+            <p>
+
+                Goodman and Kruskal's Lambda (&lambda;) is a measure of association specifically designed for
+                nominal variables. Unlike statistical tests that simply determine whether two variables are related,
+                Lambda evaluates how much knowing the value of one variable improves our ability to predict the
+                value of another. This makes Lambda a valuable tool whenever the primary objective is prediction
+                rather than merely identifying an association.
+
+            </p>
+
+            <p>
+
+                Lambda belongs to a family of statistics known as <strong>Proportional Reduction in Error (PRE)</strong>
+                measures. The basic idea is intuitive: before any information is available, predictions are made
+                using the most frequently occurring category, which results in a certain number of prediction
+                errors. Once information about another variable is introduced, prediction errors may decrease.
+                Lambda quantifies this improvement by expressing the proportion of errors eliminated through the
+                use of additional information.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <strong>Key Idea:</strong> Goodman and Kruskal's Lambda answers the question,
+                <em>"How much does knowing one nominal variable improve our prediction of another nominal
+                variable?"</em>
+
+            </div>
+
+            <p>
+
+                Throughout this lesson, you will learn the theoretical foundations of Lambda, understand its
+                mathematical formula, perform manual calculations, interpret the results, and apply the technique
+                to practical research situations in education, business, and the social sciences.
+
+            </p>
+
+      </div>
+
+        <br>
+
+        <!-- Learning Objectives -->
+        <h2>Learning Objectives</h2>
+
+        <div class="card-custom">
+
+            <p>
+                At the end of this lesson, you should be able to:
+            </p>
+
+            <ul>
+
+                <li>Describe the purpose and characteristics of Goodman and Kruskal's Lambda.</li>
+
+                <li>Identify research situations where Lambda is the appropriate statistical measure.</li>
+
+                <li>Explain the concept of Proportional Reduction in Error (PRE).</li>
+
+                <li>Calculate Lambda using contingency table data.</li>
+
+                <li>Interpret Lambda values in the context of educational and business research.</li>
+
+                <li>Differentiate Lambda from Chi-square, Phi Coefficient, and Cramer's V.</li>
+
+                <li>Report and interpret Lambda results using appropriate statistical language.</li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Historical Background -->
+        <h2>Historical Background</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                <img src="../images/goodman-kruskal.jpg" alt="Leo Goodman and William Kruskal were distinguished American statisticians and professors at the University of Chicago" width="395" height="266" style="float: right; margin-left: 15px; margin-bottom: 10px; ">During the middle of the twentieth century, social scientists increasingly relied on survey
+                research to study relationships among categorical variables such as gender, occupation,
+                educational attainment, political affiliation, and consumer preferences. While existing
+                statistical methods could determine whether an association existed, researchers also needed a
+                measure that could quantify the practical value of one variable in predicting another.            </p>
+
+            <p>
+
+                In response to this need, statisticians <strong>Leo A. Goodman</strong> and
+                <strong>William H. Kruskal</strong> introduced a family of measures of association based on the
+                concept of prediction rather than correlation. Their landmark series of papers, published during
+                the 1950s, introduced several measures for analyzing categorical data, with Lambda becoming one
+                of the most widely used statistics for nominal variables.
+
+            </p>
+
+            <p>
+
+                Goodman and Kruskal recognized that many research questions focus on improving decision-making.
+                Instead of asking only whether two variables are associated, they proposed evaluating whether
+                knowledge of one variable actually reduces the number of prediction errors when estimating the
+                categories of another variable. This practical perspective made Lambda especially useful for
+                researchers working with contingency tables and classification data.
+
+            </p>
+
+            <p>
+
+                Today, Goodman and Kruskal's Lambda remains an important statistical tool in numerous disciplines,
+                including education, business, psychology, sociology, public administration, marketing, health
+                sciences, and human resource management. Researchers frequently use Lambda when both variables are
+                measured at the nominal level and the primary goal is to assess predictive improvement rather than
+                the strength of a linear relationship.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <strong>Historical Significance:</strong>
+
+                Goodman and Kruskal shifted the focus from merely identifying associations to evaluating how
+                useful one variable is for predicting another. Their work laid the foundation for modern
+                categorical data analysis and remains influential in applied research today.
+
+            </div>
+
+      </div>
+
+        <br>
+
+
+        <h2>Concept Overview</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Goodman and Kruskal's Lambda (&lambda;) is a measure of association used when both the
+                independent and dependent variables are measured at the <strong>nominal level</strong>.
+                Unlike correlation coefficients that measure the strength and direction of a relationship,
+                Lambda measures how much our ability to predict one variable improves after learning the
+                value of another variable.
+
+            </p>
+
+            <p>
+
+                The statistic is based on a simple principle. If we know nothing about the independent
+                variable, our best prediction is to always choose the category that occurs most frequently.
+                This approach will inevitably produce prediction errors. However, if we know the category
+                of the independent variable, we may be able to make better predictions and reduce the
+                number of errors. Lambda expresses this reduction as a proportion.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <strong>Remember:</strong>
+
+                Lambda does <strong>not</strong> measure the strength of a linear relationship.
+                Instead, it measures how much prediction improves after additional information is known.
+
+            </div>
+
+            <hr>
+
+            <h4>Key Concepts</h4>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+
+                    <thead>
+
+                        <tr>
+
+                            <th width="25%">Concept</th>
+                            <th>Description</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td><strong>Nominal Variables</strong></td>
+
+                            <td>
+
+                                Variables consisting of categories without any natural ordering,
+                                such as gender, academic program, employment status, department,
+                                or civil status.
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><strong>Prediction</strong></td>
+
+                            <td>
+
+                                Estimating the category of one variable based on available
+                                information.
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><strong>Prediction Error</strong></td>
+
+                            <td>
+
+                                A wrong prediction made when the predicted category does not
+                                match the actual category.
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><strong>Proportional Reduction in Error (PRE)</strong></td>
+
+                            <td>
+
+                                The percentage by which prediction errors decrease after
+                                knowing another variable.
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><strong>Lambda (&lambda;)</strong></td>
+
+                            <td>
+
+                                A statistic ranging from 0 to 1 that represents the proportion
+                                of prediction errors eliminated.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        
+
+        <br>
+
+        <!-- Formula -->
+        <h2>Goodman and Kruskal's Lambda Formula</h2>
+
+        <div class="card-custom">
+
+            <div class="alert alert-primary text-center">
+
+                <h3>
+
+                    &lambda; =
+                    <span style="border-top:1px solid #000; display:inline-block; padding-top:5px;">
+                        (E<sub>1</sub> - E<sub>2</sub>)
+                    </span>
+                    /
+                    E<sub>1</sub>
+
+                </h3>
+
+            </div>
+
+            <hr>
+
+            <h5>Where:</h5>
+
+            <ul>
+
+                <li><strong>E<sub>1</sub></strong> = Number of prediction errors made without knowing the independent variable.</li>
+
+                <li><strong>E<sub>2</sub></strong> = Number of prediction errors made after knowing the independent variable.</li>
+
+                <li><strong>&lambda;</strong> = Proportion of prediction errors reduced.</li>
+
+            </ul>
+
+            <div class="alert alert-info">
+
+                <strong>Interpretation:</strong>
+
+                The larger the reduction in prediction errors, the larger the value of
+                Lambda and the more useful the independent variable becomes for prediction.
+
+            </div>
+
+        </div>
+        <br>
+        <h2>Understanding Prediction Errors</h2>
+
+<div class="card-custom">
+
+            <h5>Scenario</h5>
+
+            <p>
+
+                Suppose a university wants to predict whether graduates will become
+                <strong>Employed</strong> or <strong>Unemployed</strong> after graduation.
+
+            </p>
+
+            <p>
+
+                Assume the university has data from 40 graduates.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered text-center">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Employment Status</th>
+                            <th>Number of Graduates</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Employed</td>
+                            <td>28</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Unemployed</td>
+                            <td>12</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p>
+
+                If we know nothing about the graduates, our best strategy is to predict
+                the category that occurs most often.
+
+            </p>
+
+            <div class="alert alert-warning">
+
+                Since "Employed" is the most frequent category, we predict that
+                <strong>every graduate is employed.</strong>
+
+            </div>
+
+            <p>
+
+                This prediction correctly classifies 28 graduates but incorrectly
+                classifies the remaining 12 graduates.
+
+            </p>
+
+            <div class="alert alert-danger">
+
+                <strong>Prediction Errors Before Knowing X (E<sub>1</sub>) = 12</strong>
+
+            </div>
+
+            <p>
+
+                Now suppose we also know each student's internship performance.
+                This additional information allows us to make more accurate predictions,
+                reducing the number of incorrect classifications.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                If the number of prediction errors decreases to 4,
+                then internship performance has improved our prediction.
+
+            </div>
+
+            <p>
+
+                Goodman and Kruskal's Lambda measures exactly how much this prediction
+                has improved.
+
+            </p>
+
+      </div>
+        <br>
+
+
+
+<!-- Understanding Proportional Reduction in Error -->
+<h2>Visualizing Proportional Reduction in Error (PRE)</h2>
+
+<div class="card-custom">
+
+    <p>
+
+        Goodman and Kruskal's Lambda is based on a very simple idea:
+        <strong>better information leads to better predictions.</strong>
+
+        Before knowing the independent variable, we make predictions using only
+        the overall distribution of the dependent variable. After learning the
+        independent variable, we can make more informed predictions and reduce
+        the number of mistakes.
+
+    </p>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <div class="card border-danger h-100">
+
+                <div class="card-header bg-danger text-white">
+
+                    <strong>Before Knowing the Independent Variable</strong>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        We know nothing about each graduate.
+
+                    </p>
+
+                    <p>
+
+                        The safest prediction is to classify everyone into the
+                        most common employment category.
+
+                    </p>
+
+                    <ul>
+
+                        <li>Total Graduates = 40</li>
+
+                        <li>Predict everyone as <strong>Employed</strong></li>
+
+                        <li>Correct Predictions = 28</li>
+
+                        <li>Incorrect Predictions = 12</li>
+
+                    </ul>
+
+                    <div class="alert alert-danger text-center">
+
+                        <h4>
+
+                            E<sub>1</sub> = 12 Errors
+
+                        </h4>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="card border-success h-100">
+
+                <div class="card-header bg-success text-white">
+
+                    <strong>After Knowing Internship Performance</strong>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        We now know whether each graduate had an
+                        <strong>Outstanding</strong> or
+                        <strong>Satisfactory</strong> internship.
+
+                    </p>
+
+                    <p>
+
+                        Instead of making one prediction for everyone,
+                        we make separate predictions for each internship group.
+
+                    </p>
+
+                    <ul>
+
+                        <li>Prediction becomes more accurate.</li>
+
+                        <li>Prediction errors decrease.</li>
+
+                        <li>Better decisions become possible.</li>
+
+                    </ul>
+
+                    <div class="alert alert-success text-center">
+
+                        <h4>
+
+                            E<sub>2</sub> = Fewer Errors
+
+                        </h4>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="alert alert-primary">
+
+        <h5>
+
+            What Does Lambda Measure?
+
+        </h5>
+
+        <p class="mb-0">
+
+            Lambda measures the percentage of prediction errors that disappear
+            after additional information becomes available.
+
+        </p>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered text-center">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Prediction Stage</th>
+
+                    <th>Errors</th>
+
+                    <th>Improvement</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+
+                        Before Knowing X
+
+                    </td>
+
+                    <td>
+
+                        12
+
+                    </td>
+
+                    <td>
+
+                        -
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+
+                        After Knowing X
+
+                    </td>
+
+                    <td>
+
+                        4
+
+                    </td>
+
+                    <td>
+
+                        Reduced by 8 Errors
+
+                    </td>
+
+                </tr>
+
+                <tr class="table-success">
+
+                    <td>
+
+                        Lambda
+
+                    </td>
+
+                    <td colspan="2">
+
+                        (12 - 4) / 12 = 0.667
+
+                        <br>
+
+                        Prediction errors decreased by
+                        <strong>66.7%</strong>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="alert alert-info">
+
+        <strong>Think About It:</strong>
+
+        If knowing another variable does not reduce prediction errors,
+        then Lambda equals <strong>0</strong>.
+
+        If all prediction errors disappear,
+        Lambda equals <strong>1</strong>.
+
+    </div>
+
+</div>
+
+<br>
+
+
+        <!-- Interactive Calculator -->
+        <h2>Interactive Lambda Calculator</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Enter the number of prediction errors before and after knowing the
+                independent variable. The calculator will compute Goodman and
+                Kruskal's Lambda and provide an interpretation.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+
+                        Errors Before Knowing X (E<sub>1</sub>)
+
+                    </label>
+
+                    <input type="number" class="form-control" id="errorsBefore">
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+
+                        Errors After Knowing X (E<sub>2</sub>)
+
+                    </label>
+
+                    <input type="number" class="form-control" id="errorsAfter">
+
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end">
+
+                    <button class="btn btn-primary w-100" id="calculateLambda">
+
+                        <i class="bi bi-calculator"></i>
+
+                        Calculate Lambda
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div id="lambdaResult">
+
+                <!-- JavaScript output goes here -->
+
+            </div>
+
+        </div>
+
+        <br>
+
+
+
+<!-- Research Scenario -->
+<h2>Research Scenario</h2>
+
+<div class="card-custom">
+
+    <p>
+
+        Imagine that you are the Dean of a College conducting a graduate tracer
+        study. You want to determine whether students with better internship
+        performance are more likely to become employed within six months after
+        graduation.
+
+    </p>
+
+    <p>
+
+        Since both variables consist of categories rather than numerical values,
+        you decide to use Goodman and Kruskal's Lambda to determine whether
+        internship performance improves the prediction of employment status.
+
+    </p>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="card border-primary mb-3">
+
+                <div class="card-header bg-primary text-white">
+
+                    Independent Variable (Predictor)
+
+                </div>
+
+                <div class="card-body">
+
+                    <h5>
+
+                        Internship Performance
+
+                    </h5>
+
+                    <ul>
+
+                        <li>Outstanding</li>
+
+                        <li>Satisfactory</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card border-success mb-3">
+
+                <div class="card-header bg-success text-white">
+
+                    Dependent Variable (Outcome)
+
+                </div>
+
+                <div class="card-body">
+
+                    <h5>
+
+                        Employment Status
+
+                    </h5>
+
+                    <ul>
+
+                        <li>Employed</li>
+
+                        <li>Unemployed</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="alert alert-info">
+
+        <h5>
+
+            Research Question
+
+        </h5>
+
+        <p class="mb-0">
+
+            <strong>
+
+                Can internship performance improve the prediction of employment
+                status among college graduates?
+
+            </strong>
+
+        </p>
+
+    </div>
+
+    <div class="alert alert-warning">
+
+        <strong>Why Goodman and Kruskal's Lambda?</strong>
+
+        <ul class="mb-0 mt-2">
+
+            <li>Both variables are nominal.</li>
+
+            <li>The objective is prediction rather than correlation.</li>
+
+            <li>The data will be summarized in a contingency table.</li>
+
+            <li>The researcher wants to determine the reduction in prediction errors.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<br>
+
+<!-- Think Before You Calculate -->
+<h2>Think Before You Calculate</h2>
+
+<div class="card-custom">
+
+    <p>
+
+        Before performing any calculations, answer the following questions.
+        Click each button to reveal the correct answer.
+
+    </p>
+
+    <div class="accordion" id="thinkingAccordion">
+
+        <div class="accordion-item">
+
+            <h2 class="accordion-header">
+
+                <button class="accordion-button collapsed"
+
+                    type="button"
+
+                    data-bs-toggle="collapse"
+
+                    data-bs-target="#q1">
+
+                    1. What is the level of measurement of both variables?
+
+                </button>
+
+            </h2>
+
+            <div id="q1"
+
+                class="accordion-collapse collapse"
+
+                data-bs-parent="#thinkingAccordion">
+
+                <div class="accordion-body">
+
+                    Both variables are measured at the
+                    <strong>nominal level</strong> because they consist of
+                    categories without any natural order.
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="accordion-item">
+
+            <h2 class="accordion-header">
+
+                <button class="accordion-button collapsed"
+
+                    type="button"
+
+                    data-bs-toggle="collapse"
+
+                    data-bs-target="#q2">
+
+                    2. Why is Pearson's correlation not appropriate?
+
+                </button>
+
+            </h2>
+
+            <div id="q2"
+
+                class="accordion-collapse collapse"
+
+                data-bs-parent="#thinkingAccordion">
+
+                <div class="accordion-body">
+
+                    Pearson's correlation requires interval or ratio data.
+                    Internship performance and employment status are categorical
+                    variables.
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="accordion-item">
+
+            <h2 class="accordion-header">
+
+                <button class="accordion-button collapsed"
+
+                    type="button"
+
+                    data-bs-toggle="collapse"
+
+                    data-bs-target="#q3">
+
+                    3. What does Lambda measure?
+
+                </button>
+
+            </h2>
+
+            <div id="q3"
+
+                class="accordion-collapse collapse"
+
+                data-bs-parent="#thinkingAccordion">
+
+                <div class="accordion-body">
+
+                    Lambda measures how much prediction errors are reduced after
+                    knowing the value of the independent variable.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+
+        <h2>Worked Example: Predicting Employment Status</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Consider a study conducted by a university to determine whether
+                <strong>internship performance</strong> can predict a graduate's
+                <strong>employment status</strong> within six months after graduation.
+
+            </p>
+
+            <p>
+
+                Forty (40) graduates were classified according to two nominal variables:
+
+            </p>
+
+            <ul>
+
+                <li><strong>Independent Variable (X):</strong> Internship Performance</li>
+
+                <li><strong>Dependent Variable (Y):</strong> Employment Status</li>
+
+            </ul>
+
+            <p>
+
+                The data are summarized in the contingency table below.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered text-center align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th rowspan="2">Internship Performance</th>
+
+                            <th colspan="2">Employment Status</th>
+
+                            <th rowspan="2">Row Total</th>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Employed</th>
+                            <th>Unemployed</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td><strong>Outstanding</strong></td>
+
+                            <td>18</td>
+
+                            <td>2</td>
+
+                            <td>20</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><strong>Satisfactory</strong></td>
+
+                            <td>10</td>
+
+                            <td>10</td>
+
+                            <td>20</td>
+
+                        </tr>
+
+                        <tr class="table-secondary">
+
+                            <td><strong>Column Total</strong></td>
+
+                            <td><strong>28</strong></td>
+
+                            <td><strong>12</strong></td>
+
+                            <td><strong>40</strong></td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="alert alert-info">
+
+                The objective is to determine whether internship performance improves
+                our ability to predict employment status.
+
+            </div>
+
+        </div>
+
+        <br>
+
+
+
+<!-- Predict Before Solving -->
+<h2>Can You Predict the Result?</h2>
+
+<div class="card-custom">
+
+    <p>
+
+        Before computing Goodman and Kruskal's Lambda, examine the contingency
+        table below. Based on the frequencies, do you think internship
+        performance will greatly improve the prediction of employment status?
+
+    </p>
+
+    <div class="alert alert-info">
+
+        <i class="bi bi-lightbulb"></i>
+
+        Make your prediction first, then reveal the answer after completing
+        the computation.
+
+    </div>
+
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-3">
+
+            <button
+                class="btn btn-outline-danger w-100"
+                onclick="showPrediction('low')">
+
+                Very Little Improvement
+
+            </button>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <button
+                class="btn btn-outline-warning w-100"
+                onclick="showPrediction('moderate')">
+
+                Moderate Improvement
+
+            </button>
+
+        </div>
+
+        <div class="col-md-4 mb-3">
+
+            <button
+                class="btn btn-outline-success w-100"
+                onclick="showPrediction('high')">
+
+                Large Improvement
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div id="predictionFeedback"></div>
+
+</div>
+
+<br>
+
+<!-- Error Reduction Visualization -->
+<h2>Visualizing Prediction Errors</h2>
+
+<div class="card-custom">
+
+    <p>
+
+        Goodman and Kruskal's Lambda is called a
+        <strong>Proportional Reduction in Error (PRE)</strong> statistic because
+        it compares the number of prediction errors before and after knowing the
+        independent variable.
+
+    </p>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <h5 class="text-center">
+
+                Before Knowing X
+
+            </h5>
+
+            <div class="progress mb-2" style="height:35px;">
+
+                <div
+
+                    id="beforeBar"
+
+                    class="progress-bar bg-danger"
+
+                    style="width:100%;">
+
+                    12 Errors
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <h5 class="text-center">
+
+                After Knowing X
+
+            </h5>
+
+            <div class="progress mb-2" style="height:35px;">
+
+                <div
+
+                    id="afterBar"
+
+                    class="progress-bar bg-success"
+
+                    style="width:34%;">
+
+                    4 Errors
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="alert alert-success text-center mt-3">
+
+        <h5>
+
+            Prediction Errors Reduced
+
+        </h5>
+
+        <h3>
+
+            66.7%
+
+        </h3>
+
+    </div>
+
+</div>
+
+<br>
+
+<!-- Interactive Interpretation -->
+<h2>What Does This Mean?</h2>
+
+<div class="card-custom">
+
+    <p>
+
+        Move the slider below to see how different Lambda values are interpreted.
+
+    </p>
+
+    <input
+
+        type="range"
+
+        class="form-range"
+
+        id="lambdaSlider"
+
+        min="0"
+
+        max="1"
+
+        step="0.01"
+
+        value="0.67">
+
+    <div class="text-center mt-4">
+
+        <h3>
+
+            &lambda; =
+
+            <span id="lambdaValue">
+
+                0.67
+
+            </span>
+
+        </h3>
+
+    </div>
+
+    <div
+
+        id="lambdaInterpretation"
+
+        class="alert alert-primary text-center">
+
+        A Lambda of 0.67 indicates that knowing the independent variable reduces
+        prediction errors by approximately 67%, suggesting a strong improvement
+        in prediction.
+
+    </div>
+
+</div>
+
+<br>
+
+
+        <!-- Step-by-Step Solution -->
+        <h2>Step-by-Step Solution</h2>
+
+        <div class="card-custom">
+
+            <div class="accordion" id="solutionAccordion">
+
+                <!-- Step 1 -->
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button"
+
+                            type="button"
+
+                            data-bs-toggle="collapse"
+
+                            data-bs-target="#step1">
+
+                            Step 1 - Compute E<sub>1</sub>
+
+                        </button>
+
+                    </h2>
+
+                    <div id="step1"
+
+                        class="accordion-collapse collapse show"
+
+                        data-bs-parent="#solutionAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+
+                                Before knowing internship performance, our best prediction
+                                is to always choose the employment category with the
+                                largest frequency.
+
+                            </p>
+
+                            <table class="table table-bordered text-center">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Employment Status</th>
+                                        <th>Frequency</th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>Employed</td>
+                                        <td>28</td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>Unemployed</td>
+                                        <td>12</td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <p>
+
+                                Since "Employed" has the highest frequency, predict that
+                                every graduate is employed.
+
+                            </p>
+
+                            <div class="alert alert-danger">
+
+                                E<sub>1</sub> = Total Cases - Largest Column Total
+
+                                <br><br>
+
+                                = 40 - 28
+
+                                <br>
+
+                                = <strong>12 Errors</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Step 2 -->
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+
+                            type="button"
+
+                            data-bs-toggle="collapse"
+
+                            data-bs-target="#step2">
+
+                            Step 2 - Compute E<sub>2</sub>
+
+                        </button>
+
+                    </h2>
+
+                    <div id="step2"
+
+                        class="accordion-collapse collapse"
+
+                        data-bs-parent="#solutionAccordion">
+
+                        <div class="accordion-body">
+
+                            <p>
+
+                                Now use internship performance to make separate
+                                predictions for each row.
+
+                            </p>
+
+                            <table class="table table-bordered text-center">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Internship Performance</th>
+                                        <th>Largest Cell</th>
+                                        <th>Errors</th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>Outstanding</td>
+
+                                        <td>18</td>
+
+                                        <td>20 - 18 = 2</td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>Satisfactory</td>
+
+                                        <td>10</td>
+
+                                        <td>20 - 10 = 10</td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <div class="alert alert-warning">
+
+                                E<sub>2</sub> = 2 + 10 =
+
+                                <strong>12 Errors</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Step 3 -->
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+
+                            type="button"
+
+                            data-bs-toggle="collapse"
+
+                            data-bs-target="#step3">
+
+                            Step 3 - Compute Lambda
+
+                        </button>
+
+                    </h2>
+
+                    <div id="step3"
+
+                        class="accordion-collapse collapse"
+
+                        data-bs-parent="#solutionAccordion">
+
+                        <div class="accordion-body">
+
+                            <div class="alert alert-primary text-center">
+
+                                <h4>
+
+                                    &lambda; =
+
+                                    (12 - 12)
+
+                                    /
+
+                                    12
+
+                                </h4>
+
+                            </div>
+
+                            <div class="alert alert-success text-center">
+
+                                <h3>
+
+                                    &lambda; = 0.00
+
+                                </h3>
+
+                            </div>
+
+                            <p>
+
+                                Knowing internship performance does not reduce prediction
+                                errors in this example. Therefore, Lambda is zero,
+                                indicating that internship performance does not improve
+                                the prediction of employment status.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Interactive Contingency Table -->
+        <h2>Interactive Contingency Table</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Modify the frequencies below and observe how the values of
+                E<sub>1</sub>, E<sub>2</sub>, and Goodman and Kruskal's Lambda
+                change automatically.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <i class="bi bi-lightbulb-fill"></i>
+
+                Try increasing the number of employed students with
+                <strong>Outstanding</strong> internship performance. Notice how
+                the prediction errors decrease and Lambda becomes larger.
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered text-center align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Internship Performance</th>
+                            <th>Employed</th>
+                            <th>Unemployed</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td><strong>Outstanding</strong></td>
+
+                            <td>
+
+                                <input
+                                    type="number"
+                                    class="form-control text-center lambda-input"
+                                    id="oEmp"
+                                    value="18">
+
+                            </td>
+
+                            <td>
+
+                                <input
+                                    type="number"
+                                    class="form-control text-center lambda-input"
+                                    id="oUnemp"
+                                    value="2">
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><strong>Satisfactory</strong></td>
+
+                            <td>
+
+                                <input
+                                    type="number"
+                                    class="form-control text-center lambda-input"
+                                    id="sEmp"
+                                    value="10">
+
+                            </td>
+
+                            <td>
+
+                                <input
+                                    type="number"
+                                    class="form-control text-center lambda-input"
+                                    id="sUnemp"
+                                    value="10">
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div id="liveLambdaResults">
+
+                <!-- Generated by JavaScript -->
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Interpretation Guide -->
+        <h2>Interpretation of Goodman and Kruskal's Lambda</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                The value of Goodman and Kruskal's Lambda (&lambda;) always ranges from
+                <strong>0.00 to 1.00</strong>. The value indicates the proportion by which
+                prediction errors are reduced after the independent variable is taken into
+                consideration.
+
+            </p>
+
+            <p>
+
+                A larger Lambda value indicates greater predictive usefulness of the
+                independent variable, while a value of zero indicates that knowing the
+                independent variable does not improve prediction.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th width="25%">Lambda Value</th>
+
+                            <th width="30%">Interpretation</th>
+
+                            <th>Meaning</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>0.00</td>
+
+                            <td>No Predictive Improvement</td>
+
+                            <td>
+
+                                Knowing the independent variable does not reduce
+                                prediction errors.
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>0.01 - 0.30</td>
+
+                            <td>Weak Improvement</td>
+
+                            <td>
+
+                                Only a small reduction in prediction errors is achieved.
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>0.31 - 0.60</td>
+
+                            <td>Moderate Improvement</td>
+
+                            <td>
+
+                                The independent variable provides a noticeable
+                                improvement in prediction.
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>0.61 - 0.99</td>
+
+                            <td>Strong Improvement</td>
+
+                            <td>
+
+                                The independent variable substantially improves
+                                prediction accuracy.
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>1.00</td>
+
+                            <td>Perfect Prediction</td>
+
+                            <td>
+
+                                All prediction errors are eliminated.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="alert alert-success">
+
+                <strong>Important:</strong>
+
+                Lambda does not tell us whether two variables are statistically
+                significant. It only tells us how much our prediction improves.
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Lambda vs Other Statistics -->
+        <h2>Lambda Compared with Other Measures of Association</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Several statistics are available for analyzing relationships between
+                variables. Selecting the appropriate statistic depends primarily on the
+                level of measurement of the variables and the objective of the study.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Statistic</th>
+
+                            <th>Variables</th>
+
+                            <th>Main Purpose</th>
+
+                            <th>Measures</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Chi-Square</td>
+
+                            <td>Nominal</td>
+
+                            <td>Test Association</td>
+
+                            <td>
+
+                                Whether an association exists
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Phi Coefficient</td>
+
+                            <td>Nominal (2 x 2)</td>
+
+                            <td>Measure Strength</td>
+
+                            <td>
+
+                                Strength of association
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Cramer's V</td>
+
+                            <td>Nominal</td>
+
+                            <td>Measure Strength</td>
+
+                            <td>
+
+                                Strength of association
+
+                            </td>
+
+                        </tr>
+
+                        <tr class="table-primary">
+
+                            <td>
+
+                                <strong>Goodman and Kruskal's Lambda</strong>
+
+                            </td>
+
+                            <td>Nominal</td>
+
+                            <td>Prediction</td>
+
+                            <td>
+
+                                Reduction in prediction errors
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Decision Guide -->
+        <h2>When Should You Use Goodman and Kruskal's Lambda?</h2>
+
+        <div class="card-custom">
+
+            <p>
+
+                Use the following guide to determine whether Lambda is the appropriate
+                statistical measure for your research.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Question</th>
+
+                            <th>Answer</th>
+
+                            <th>Recommendation</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Are both variables nominal?</td>
+
+                            <td>Yes</td>
+
+                            <td>
+
+                                Continue
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+
+                                Is the purpose to improve prediction?
+
+                            </td>
+
+                            <td>Yes</td>
+
+                            <td>
+
+                                Continue
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+
+                                Are the data summarized in a contingency table?
+
+                            </td>
+
+                            <td>Yes</td>
+
+                            <td>
+
+                                Use Goodman and Kruskal's Lambda
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+
+                                Are the variables ordinal or numerical?
+
+                            </td>
+
+                            <td>No</td>
+
+                            <td>
+
+                                Consider another statistical method.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- Applications -->
+        <h2>Applications in Research</h2>
+
+        <div class="card-custom">
+
+            <h5>Educational Research</h5>
+
+            <ul>
+
+                <li>
+
+                    Can teaching strategy predict student participation?
+
+                </li>
+
+                <li>
+
+                    Can internship performance predict employment?
+
+                </li>
+
+                <li>
+
+                    Can admission category predict graduation status?
+
+                </li>
+
+            </ul>
+
+            <hr>
+
+            <h5>Business Research</h5>
+
+            <ul>
+
+                <li>
+
+                    Can employee training predict promotion?
+
+                </li>
+
+                <li>
+
+                    Can membership level predict customer loyalty?
+
+                </li>
+
+                <li>
+
+                    Can product category predict purchasing behavior?
+
+                </li>
+
+            </ul>
+
+            <hr>
+
+            <h5>Social Science Research</h5>
+
+            <ul>
+
+                <li>
+
+                    Can educational attainment predict voting preference?
+
+                </li>
+
+                <li>
+
+                    Can occupation predict income group?
+
+                </li>
+
+                <li>
+
+                    Can residence predict transportation preference?
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Common Mistakes -->
+        <h2>Common Mistakes</h2>
+
+        <div class="card-custom">
+
+            <div class="alert alert-danger">
+
+                <strong>Do NOT use Lambda when:</strong>
+
+                <ul class="mb-0 mt-2">
+
+                    <li>Variables are measured using interval or ratio scales.</li>
+
+                    <li>The research objective is hypothesis testing only.</li>
+
+                    <li>You need to measure a linear relationship.</li>
+
+                    <li>You want to compute correlation between numerical variables.</li>
+
+                </ul>
+
+            </div>
+
+            <div class="alert alert-warning">
+
+                <strong>Common Misconceptions</strong>
+
+                <ul class="mb-0 mt-2">
+
+                    <li>
+
+                        A Lambda value of 0.00 does not necessarily mean there is no
+                        association.
+
+                    </li>
+
+                    <li>
+
+                        Lambda measures prediction improvement, not statistical
+                        significance.
+
+                    </li>
+
+                    <li>
+
+                        Chi-Square and Lambda often complement each other in research.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <br>
+		
+		
+		<h2>Practice and APA Interpretation</h2>
+
+<div class="card-custom">
+
+    <div class="d-flex flex-wrap gap-2 mb-3">
+
+        <button class="btn btn-success"
+            onclick="loadStrongExample()">
+            Strong Example
+        </button>
+
+        <button class="btn btn-warning"
+            onclick="loadWeakExample()">
+            Weak Example
+        </button>
+
+        <button class="btn btn-danger"
+            onclick="loadZeroExample()">
+            Lambda = 0 Example
+        </button>
+
+        <button class="btn btn-info"
+            onclick="randomExample()">
+            Random Dataset
+        </button>
+
+        <button class="btn btn-secondary"
+            onclick="resetTable()">
+            Reset
+        </button>
+
+        <button class="btn btn-primary"
+            onclick="showAPAReport()">
+            Generate APA Interpretation
+        </button>
+
+    </div>
+
+    <div id="apaReport"></div>
+
+</div>
+
+<br>
+
+        <!-- Summary -->
+        <h2>Lesson Summary</h2>
+
+        <div class="card-custom">
+
+            <ul>
+
+                <li>
+
+                    Goodman and Kruskal's Lambda is used for nominal variables.
+
+                </li>
+
+                <li>
+
+                    It is a Proportional Reduction in Error (PRE) statistic.
+
+                </li>
+
+                <li>
+
+                    Lambda measures how much prediction improves after additional
+                    information becomes available.
+
+                </li>
+
+                <li>
+
+                    Values range from 0.00 to 1.00.
+
+                </li>
+
+                <li>
+
+                    Larger values indicate greater improvement in prediction.
+
+                </li>
+
+                <li>
+
+                    Lambda is commonly used in education, business, marketing,
+                    psychology, sociology, and public administration.
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <br>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between">
+
+            <a href="36-cramers-v.html" class="btn btn-secondary">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Previous Lesson
+
+            </a>
+
+            <a href="../index.html" class="btn btn-dark">
+
+                <i class="bi bi-house"></i>
+
+                Home
+
+            </a>
+
+            <a href="38-next-lesson.html" class="btn btn-primary">
+
+                Next Lesson
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../js/37-goodman-kruskal-lambda.js"></script>
+
+</body>
+
+</html>
+
+
+
