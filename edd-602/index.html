@@ -29,7 +29,7 @@
             <a class="navbar-brand" href="index.html">
 
                 <i class="bi bi-mortarboard-fill"></i>
-                Doctor of Education
+                Doctor of Education - Major in Educational Leadership
 
             </a>
 
@@ -1041,7 +1041,8 @@
 
                     <td>36</td>
 
-                    <td>Skewness</td>
+                    <td><p>Skewness</p>
+                    <p><a href="https://docs.google.com/presentation/d/1u0DhFj0qMnnV7Lmc7_csE1uirsYhxH2T/edit?usp=sharing&ouid=106397098387580282559&rtpof=true&sd=true" target="_blank">Report link</a></p></td>
 
                     <td>
 
@@ -1157,9 +1158,7 @@
                     <th>Description</th>
                     <th>Formula & Interpretation</th>
                     <th>Example</th>
-
                 </tr>
-
             </thead>
 
             <tbody>
@@ -1174,42 +1173,33 @@
 
                         r<sub>s</sub> = 1 - (6&Sigma;d<sup>2</sup> / n(n<sup>2</sup> - 1))<br><br>
 
-                        <strong>Interpretation:</strong> Values close to +1 or -1 indicate strong monotonic relationships.
-
-                    </td>
+                        <strong>Interpretation:</strong> Values close to +1 or -1 indicate strong monotonic relationships.                    </td>
 
                     <td>
 
                         Used for ranked or ordinal data.<br><br>
 
-                        Example: Relationship between class rank and student performance.
-
-                    </td>
-
+                        Example: Relationship between class rank and student performance.                    </td>
                 </tr>
 
                 <tr>
 
                     <td>27</td>
 
-                    <td>Kendall’s Tau</td>
+                    <td><p>Kendall’s Tau</p>
+                    <p><a href="https://docs.google.com/presentation/d/1ogfDTz7_bmqks1dTP6eFIVLIMBgFXdGd/edit?usp=drive_link&ouid=106397098387580282559&rtpof=true&sd=true" target="_blank">Report link</a></p></td>
 
                     <td>
 
                         τ = (C - D) / [n(n-1)/2]<br><br>
 
-                        <strong>Interpretation:</strong> Measures agreement between rankings.
-
-                    </td>
+                        <strong>Interpretation:</strong> Measures agreement between rankings.                    </td>
 
                     <td>
 
                         Used to compare ranking agreement.<br><br>
 
-                        Example: Agreement between two judges scoring student projects.
-
-                    </td>
-
+                        Example: Agreement between two judges scoring student projects.                    </td>
                 </tr>
 
                 <tr>
@@ -1224,18 +1214,13 @@
                         sqrt([n&Sigma;X<sup>2</sup> - (&Sigma;X)<sup>2</sup>]
                         [n&Sigma;Y<sup>2</sup> - (&Sigma;Y)<sup>2</sup>])<br><br>
 
-                        <strong>Interpretation:</strong> Values close to +1 or -1 indicate strong linear relationship.
-
-                    </td>
+                        <strong>Interpretation:</strong> Values close to +1 or -1 indicate strong linear relationship.                    </td>
 
                     <td>
 
                         Used for continuous variables.<br><br>
 
-                        Example: Relationship between study hours and exam scores.
-
-                    </td>
-
+                        Example: Relationship between study hours and exam scores.                    </td>
                 </tr>
 
                 <tr>
@@ -1248,20 +1233,39 @@
 
                         r = (M1 - M0) / s × sqrt(pq)<br><br>
 
-                        <strong>Interpretation:</strong> Measures relationship between a binary and continuous variable.
-
-                    </td>
+                        <strong>Interpretation:</strong> Measures relationship between a binary and continuous variable.                    </td>
 
                     <td>
 
                         Used for yes/no or pass/fail data.<br><br>
 
-                        Example: Relationship between attendance (present/absent) and exam score.
-
-                    </td>
-
+                        Example: Relationship between attendance (present/absent) and exam score.                    </td>
                 </tr>
 
+<tr>
+
+    <td>32</td>
+
+    <td><p>Contingency Coefficient (C)</p>
+      <p><a href="https://docs.google.com/presentation/d/1Ctcsdf__75LK9Sfa5hOelewdC-bqW2Fp/edit?usp=drive_link&ouid=106397098387580282559&rtpof=true&sd=true" target="_blank">Report link </a></p></td>
+
+    <td>
+
+        C = &radic;(&chi;<sup>2</sup> / (&chi;<sup>2</sup> + n))<br><br>
+
+        <strong>Interpretation:</strong> Values closer to 1 indicate a stronger association between two categorical variables. The maximum value depends on the size of the contingency table.
+
+    </td>
+
+    <td>
+
+        Used to measure the strength of association between categorical variables after a Chi-Square Test of Independence.<br><br>
+
+        Example: Measuring the association between students' academic program and preferred learning modality.
+
+    </td>
+
+</tr>
                 <tr>
 
                     <td>60</td>
@@ -1272,42 +1276,74 @@
 
                         V = sqrt(&chi;<sup>2</sup> / [n(k - 1)])<br><br>
 
-                        <strong>Interpretation:</strong> Measures strength of association between categorical variables.
-
-                    </td>
+                        <strong>Interpretation:</strong> Measures strength of association between categorical variables.                    </td>
 
                     <td>
 
                         Used for categorical data relationships.<br><br>
 
-                        Example: Relationship between program course and student satisfaction.
-
-                    </td>
-
+                        Example: Relationship between program course and student satisfaction.                    </td>
                 </tr>
 
+                <tr>
+                  <td>41</td>
+                  <td background="reports/37-goodman-kruskal-lambda.html"><p>Cohen's Kappa Statistic</p>
+                  <p><a href="https://docs.google.com/presentation/d/1APNqx0ahnIt1O0Qm-_aKhqypImyzCij6/edit?usp=drive_link&ouid=106397098387580282559&rtpof=true&sd=true" target="_blank">Report link </a></p></td>
+                  <td>
+
+        κ = (P<sub>o</sub> - P<sub>e</sub>) /
+        (1 - P<sub>e</sub>)<br><br>
+
+        <strong>Interpretation:</strong>
+        Measures the level of agreement between two raters after correcting for agreement expected by chance.
+        Values closer to 1 indicate stronger agreement.    </td>
+                  <td>
+
+        Used to measure inter-rater reliability for categorical data.<br><br>
+
+        Example: Two teachers independently classify students as
+        "Proficient" or "Not Proficient" and the researcher determines
+        how consistently they agree.    </td>
+                </tr>
+                <tr>
+                  <tr>
+
+    <td><!-- Assigned Report Number -->42</td>
+
+    <td><p>Eta Coefficient (&eta;)</p>
+      <p><a href="https://docs.google.com/presentation/d/1XVx1JD8f7PA3etFNHP8Mhcr2jplxrTVr/edit?usp=drive_link&ouid=106397098387580282559&rtpof=true&sd=true" target="_blank">Report link </a></p></td>
+
+    <td>
+
+        &eta; = &radic;(SS<sub>between</sub> / SS<sub>total</sub>)<br><br>
+
+        <strong>Interpretation:</strong> Values range from 0 to 1. Values closer to 1 indicate a stronger association between a categorical independent variable and a continuous dependent variable.    </td>
+
+    <td>
+
+        Used to measure the strength of association after ANOVA.<br><br>
+
+        Example: Determining the strength of the relationship between teaching method (Lecture, Blended, and Online) and students' mathematics achievement scores.    </td>
+</tr>
+                </tr>
                 <tr>
 
                     <td>37</td>
 
-                    <td><a href="reports/37-goodman-kruskal-lambda.html">Goodman and Kruskal's Lambda (λ)</a></td>
+                    <td background="reports/37-goodman-kruskal-lambda.html"><p><a href="reports/37-goodman-kruskal-lambda.html">Goodman and Kruskal's Lambda (λ)</a></p>
+                    <p><a href="https://drive.google.com/file/d/1LhXNEqLotL6p0nr_wM50jN2b6PCgcJNa/view?usp=drive_link" target="_blank">Report link </a></p></td>
 
                     <td>
 
                         λ = (E1 - E2) / E1<br><br>
 
-                        <strong>Interpretation:</strong> Measures proportional reduction in prediction error.
-
-                    </td>
+                        <strong>Interpretation:</strong> Measures proportional reduction in prediction error.                    </td>
 
                     <td>
 
                         Used for predictive association in categorical data.<br><br>
 
-                        Example: Predicting student enrollment based on program preference.
-
-                    </td>
-
+                        Example: Predicting student enrollment based on program preference.                    </td>
                 </tr>
 
                 <tr>
@@ -1320,18 +1356,13 @@
 
                         D = (C - D) / (C + D + ties)<br><br>
 
-                        <strong>Interpretation:</strong> Measures directional association for ordinal variables.
-
-                    </td>
+                        <strong>Interpretation:</strong> Measures directional association for ordinal variables.                    </td>
 
                     <td>
 
                         Used for ordered categories.<br><br>
 
-                        Example: Relationship between academic ranking and job placement level.
-
-                    </td>
-
+                        Example: Relationship between academic ranking and job placement level.                    </td>
                 </tr>
 
                 <tr>
@@ -1344,22 +1375,15 @@
 
                         γ = (C - D) / (C + D)<br><br>
 
-                        <strong>Interpretation:</strong> Measures strength of association ignoring ties.
-
-                    </td>
+                        <strong>Interpretation:</strong> Measures strength of association ignoring ties.                    </td>
 
                     <td>
 
                         Used for ordinal data with few ties.<br><br>
 
-                        Example: Relationship between student satisfaction and performance ranking.
-
-                    </td>
-
+                        Example: Relationship between student satisfaction and performance ranking.                    </td>
                 </tr>
-
             </tbody>
-
         </table>
 
     </div>
@@ -1812,11 +1836,12 @@
 
                     <td>
 
-                        Wilks’ Lambda / Pillai’s Trace<br><br>
+                        <a href="https://docs.google.com/presentation/d/1t4hwtrIIwdbdcDYVMavYBBjRcr9wMuLO/edit?usp=drive_link&ouid=106397098387580282559&rtpof=true&sd=true" target="_blank">Wilks’ Lambda</a> / Pillai’s Trace<br>
+                        <br>
 
                         <strong>Interpretation:</strong> Tests differences across groups for multiple dependent variables.
 
-                    </td>
+                  </td>
 
                     <td>
 
