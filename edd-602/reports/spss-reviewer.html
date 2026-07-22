@@ -1,0 +1,4523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>SPSS Statistics Reviewer</title>
+
+<style type="text/css">
+
+body{
+    margin:0;
+    padding:0;
+    background:#101820;
+    color:#E8E8E8;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:15px;
+    line-height:1.7;
+}
+
+#sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100%;
+    overflow:auto;
+    background:#16212B;
+    border-right:2px solid #1E88E5;
+}
+
+#sidebar h2{
+    color:#4FC3F7;
+    text-align:center;
+    padding:15px;
+    margin:0;
+    border-bottom:1px solid #2E3C47;
+}
+
+#sidebar a{
+    display:block;
+    color:#EEEEEE;
+    text-decoration:none;
+    padding:12px 18px;
+    border-bottom:1px solid #22313F;
+}
+
+#sidebar a:hover{
+    background:#1E88E5;
+}
+
+#content{
+    margin-left:270px;
+    padding:30px;
+}
+
+h1{
+    color:#4FC3F7;
+}
+
+h2{
+    color:#4FC3F7;
+    border-bottom:2px solid #1E88E5;
+    padding-bottom:6px;
+}
+
+h3{
+    color:#81D4FA;
+}
+
+.card{
+    background:#1B2836;
+    padding:20px;
+    margin-bottom:25px;
+    border-left:5px solid #1E88E5;
+    border-radius:5px;
+}
+
+.step{
+    background:#243746;
+    padding:12px;
+    margin-top:10px;
+    margin-bottom:10px;
+    border-left:4px solid #4FC3F7;
+}
+
+.note{
+    background:#2E3C20;
+    padding:15px;
+    border-left:5px solid #8BC34A;
+    margin-top:15px;
+}
+
+.warning{
+    background:#3A2323;
+    padding:15px;
+    border-left:5px solid #FF9800;
+    margin-top:15px;
+}
+
+.codebox{
+    background:#0B1117;
+    border:1px solid #444444;
+    padding:12px;
+    color:#90CAF9;
+    font-family:Courier New, monospace;
+    margin:12px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table,th,td{
+    border:1px solid #445566;
+}
+
+th{
+    background:#1565C0;
+    color:#FFFFFF;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+}
+
+ul{
+    margin-top:5px;
+}
+
+.footer{
+    text-align:center;
+    color:#AAAAAA;
+    margin-top:50px;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="sidebar">
+
+<h2>SPSS Reviewer</h2>
+
+<a href="#home">Home</a>
+<a href="#variables">Variables</a>
+<a href="#coding">Coding</a>
+
+<b style="padding-left:18px;color:#81D4FA;">General Questions</b>
+
+<a href="#q1">Question 1</a>
+<a href="#q2">Question 2</a>
+<a href="#q3">Question 3</a>
+<a href="#q4">Question 4</a>
+<a href="#q5">Question 5</a>
+<a href="#q6">Question 6</a>
+<a href="#q7">Question 7</a>
+<a href="#q8">Question 8</a>
+<a href="#q9">Question 9</a>
+
+<b style="padding-left:18px;color:#81D4FA;">Parametric Tests</b>
+
+<a href="#p1">Independent Samples t-test</a>
+<a href="#p2">Paired Samples t-test</a>
+<a href="#p3">One-Way ANOVA</a>
+<a href="#p4">Pearson Correlation</a>
+
+<b style="padding-left:18px;color:#81D4FA;">Nonparametric Tests</b>
+
+<a href="#np1">Mann-Whitney U</a>
+<a href="#np2">Wilcoxon Signed Rank</a>
+<a href="#np3">Kruskal-Wallis H</a>
+<a href="#np4">Spearman rho</a>
+
+</div>
+
+<div id="content">
+
+<a name="home"></a>
+
+<h1>SPSS Statistics Reviewer</h1>
+
+<div class="card">
+
+<h2>Introduction</h2>
+
+<p>
+This reviewer is based on the SPSS procedures demonstrated by the professor during class.
+It is organized according to the assignment questions. Each section explains what the
+question is asking, why the statistical procedure is used, the SPSS steps to perform the
+analysis, and how to interpret the results.
+</p>
+
+<p>
+This reviewer assumes that you are a beginner in SPSS. Every procedure is explained
+using simple language so that even students with little or no experience using SPSS can
+follow the steps.
+</p>
+
+</div>
+
+<a name="variables"></a>
+
+<div class="card">
+
+<h2>Variables Used</h2>
+
+<table>
+
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+
+<tr>
+<td>Sex</td>
+<td>Sex of the student</td>
+<td>Categorical</td>
+</tr>
+
+<tr>
+<td>Grade</td>
+<td>Grade level of the student</td>
+<td>Categorical</td>
+</tr>
+
+<tr>
+<td>Mathematical Ability</td>
+<td>Mathematics score</td>
+<td>Scale</td>
+</tr>
+
+<tr>
+<td>English Proficiency</td>
+<td>English score</td>
+<td>Scale</td>
+</tr>
+
+</table>
+
+</div>
+
+<a name="coding"></a>
+
+<div class="card">
+
+<h2>Coding of Variables</h2>
+
+<table>
+
+<tr>
+<th>Variable</th>
+<th>Coding</th>
+</tr>
+
+<tr>
+<td>Sex</td>
+<td>
+1 = Male<br>
+2 = Female
+</td>
+</tr>
+
+<tr>
+<td>Grade Level</td>
+<td>
+1 = Grade 7<br>
+2 = Grade 8<br>
+3 = Grade 9<br>
+4 = Grade 10
+</td>
+</tr>
+
+</table>
+
+<div class="note">
+
+<b>Professor's Note</b>
+
+<p>
+According to the lecture, only the categorical variables need to be coded.
+Mathematical Ability and English Proficiency are already numerical scores,
+so they do not require value labels.
+</p>
+
+</div>
+
+</div>
+
+<a name="q1"></a>
+
+<div class="card">
+
+<h2>Question 1</h2>
+
+<h3>Create a Frequency Distribution for Mathematical Ability</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to organize the Mathematical Ability scores into a frequency table.
+Instead of looking at a long list of scores, SPSS groups the scores together so you can easily
+see how many students fall within each score range.
+</p>
+
+<p>
+The professor demonstrated creating score intervals first using <b>Visual Binning</b> before
+generating the frequency table. This is the procedure followed in this reviewer.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+A frequency distribution allows you to quickly understand how the scores are distributed.
+It answers questions such as:
+</p>
+
+<ul>
+<li>Which score range has the most students?</li>
+<li>Which score range has the fewest students?</li>
+<li>Are most students getting high or low scores?</li>
+<li>How are the scores spread across the class?</li>
+</ul>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Transform -> Visual Binning
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Select <b>Mathematical Ability</b> from the list of variables.
+
+Click the arrow button to move it into the Variables to Bin box.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Click <b>Continue</b>.
+
+SPSS displays the minimum and maximum values of the scores.
+
+The professor computed:
+
+<ul>
+<li>Range = Highest Score - Lowest Score</li>
+<li>Class Width = Range divided by the desired number of class intervals</li>
+</ul>
+
+During the lecture, five class intervals were used.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Create the cut points (bins).
+
+Give the new variable a name such as
+
+<div class="codebox">
+Ability2
+</div>
+
+This new variable will contain the grouped score intervals.
+
+</div>
+
+<div class="step">
+
+<b>Step 5</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+SPSS creates the new grouped variable.
+
+</div>
+
+<div class="step">
+
+<b>Step 6</b><br><br>
+
+Now create the frequency table.
+
+Click
+
+<div class="codebox">
+Analyze -> Descriptive Statistics -> Frequencies
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 7</b><br><br>
+
+Move the new variable
+
+<div class="codebox">
+Ability2
+</div>
+
+to the Variable(s) box.
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will produce a <b>Frequency Table</b>.
+The table usually contains the following columns:
+</p>
+
+<table>
+
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+
+<tr>
+<td>Frequency</td>
+<td>Number of students in each score interval.</td>
+</tr>
+
+<tr>
+<td>Percent</td>
+<td>Percentage of all students in each score interval.</td>
+</tr>
+
+<tr>
+<td>Valid Percent</td>
+<td>Percentage after excluding missing data.</td>
+</tr>
+
+<tr>
+<td>Cumulative Percent</td>
+<td>Running total percentage from the first interval to the last.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<p><b>Frequency</b></p>
+
+<p>
+This tells you how many students belong to a particular score interval.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+28 - 35 = Frequency of 12
+</div>
+
+This means that <b>12 students obtained scores between 28 and 35.</b>
+
+<br><br>
+
+<p><b>Percent</b></p>
+
+<p>
+This tells you what percentage of the entire class belongs to that score interval.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+24%
+</div>
+
+This means that <b>24 percent of all students</b> scored within that range.
+
+<br><br>
+
+<p><b>Cumulative Percent</b></p>
+
+<p>
+This shows the running total of percentages from the lowest score interval up to the current interval.
+The last row should normally reach 100%.
+</p>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>Create the score intervals first using <b>Visual Binning</b>.</li>
+
+<li>Generate the frequency table using the newly created variable instead of the original Mathematical Ability scores.</li>
+
+<li>The frequency table becomes easier to read because the scores are grouped into intervals instead of listing every individual score.</li>
+
+</ul>
+
+</div>
+
+<div class="warning">
+
+<b>Common Mistakes</b>
+
+<ul>
+
+<li>Using the original Mathematical Ability variable instead of the binned variable.</li>
+
+<li>Creating too many or too few class intervals.</li>
+
+<li>Forgetting to click <b>OK</b> after creating the new binned variable.</li>
+
+<li>Interpreting Percent and Frequency as the same value.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="q2"></a>
+
+<div class="card">
+
+<h2>Question 2</h2>
+
+<h3>Compute the Mean, Median, and Mode of English Proficiency</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to compute the three measures of central tendency of the
+English Proficiency scores. These measures help describe the typical or average
+performance of the students.
+</p>
+
+<p>
+Instead of looking at every individual score, these statistics summarize the
+entire set of data into values that are easy to understand.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+Measures of central tendency help answer questions such as:
+</p>
+
+<ul>
+
+<li>What is the average score of the class?</li>
+
+<li>What is the middle score of the class?</li>
+
+<li>Which score appears most often?</li>
+
+</ul>
+
+<p>
+These values provide a quick summary of the students' overall performance.
+</p>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Descriptive Statistics -> Frequencies
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Select
+
+<div class="codebox">
+English Proficiency
+</div>
+
+Move it to the <b>Variable(s)</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Click
+
+<div class="codebox">
+Statistics
+</div>
+
+A new window will appear.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Place a check mark on the following:
+
+<ul>
+
+<li>Mean</li>
+
+<li>Median</li>
+
+<li>Mode</li>
+
+</ul>
+
+Click
+
+<div class="codebox">
+Continue
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 5</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+SPSS will generate the descriptive statistics.
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will display a table containing the selected descriptive statistics.
+For this question, focus on the following values:
+</p>
+
+<table>
+
+<tr>
+<th>Statistic</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>Mean</td>
+<td>The average score of all students.</td>
+</tr>
+
+<tr>
+<td>Median</td>
+<td>The middle score when all scores are arranged from lowest to highest.</td>
+</tr>
+
+<tr>
+<td>Mode</td>
+<td>The score that appears most frequently.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<h3>1. Mean</h3>
+
+<p>
+The <b>Mean</b> is the average score.
+It is calculated by adding all the scores together and dividing by the total number of students.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Mean = 82.45
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+The average English Proficiency score of the students is <b>82.45</b>.
+</p>
+
+<hr>
+
+<h3>2. Median</h3>
+
+<p>
+The <b>Median</b> is the middle value after arranging all scores from the
+lowest to the highest.
+</p>
+
+<p>
+Half of the students scored below the median, while the other half scored above it.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Median = 83.00
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+The middle score of the class is <b>83</b>.
+Fifty percent of the students scored below 83, while the other fifty percent scored above 83.
+</p>
+
+<hr>
+
+<h3>3. Mode</h3>
+
+<p>
+The <b>Mode</b> is the score that occurs most often.
+</p>
+
+<p>
+If one score appears more frequently than all the others, that score is the mode.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Mode = 85
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+The score of <b>85</b> is the most common English Proficiency score among the students.
+</p>
+
+<p>
+Sometimes SPSS displays a note stating that there are multiple modes.
+This means two or more scores occurred with the same highest frequency.
+SPSS usually reports only the smallest of those values.
+</p>
+
+<hr>
+
+<h3>How to Describe the Results in Words</h3>
+
+<p>
+A simple interpretation may be written as:
+</p>
+
+<div class="codebox">
+The English Proficiency scores have a mean of 82.45,
+a median of 83.00, and a mode of 85.
+This indicates that the average performance of the students
+is around 82 to 83, while the most frequently obtained score is 85.
+</div>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>The professor obtained the Mean, Median, and Mode from a single SPSS output.</li>
+
+<li>There is no need to run separate analyses for each statistic.</li>
+
+<li>Simply select all three statistics in the Statistics window before clicking OK.</li>
+
+</ul>
+
+</div>
+
+<div class="warning">
+
+<b>Common Mistakes</b>
+
+<ul>
+
+<li>Confusing the Mean with the Median.</li>
+
+<li>Thinking that the Mode is always the highest score. It is actually the score that appears most often.</li>
+
+<li>Forgetting to click the <b>Statistics</b> button before clicking OK.</li>
+
+<li>Running separate analyses for Mean, Median, and Mode when they can all be obtained from one SPSS output.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="q3"></a>
+
+<div class="card">
+
+<h2>Question 3</h2>
+
+<h3>Compute the Standard Deviation, Variance, and Range of Mathematical Ability</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to measure how spread out the Mathematical Ability scores are.
+While the mean tells us the average score, these three statistics tell us whether the
+students' scores are close together or widely spread apart.
+</p>
+
+<p>
+In other words, these statistics describe the variation or consistency of the students'
+performance.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+Knowing only the average score is not enough. Two classes may have the same average,
+but one class may have very similar scores while another has scores that are very different.
+</p>
+
+<p>
+The Standard Deviation, Variance, and Range help us understand how consistent the
+students' scores are.
+</p>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Descriptive Statistics -> Frequencies
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Select
+
+<div class="codebox">
+Mathematical Ability
+</div>
+
+Move it to the <b>Variable(s)</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Click
+
+<div class="codebox">
+Statistics
+</div>
+
+A new window will appear.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Place a check mark on the following statistics:
+
+<ul>
+
+<li>Standard Deviation</li>
+
+<li>Variance</li>
+
+<li>Range</li>
+
+</ul>
+
+Click
+
+<div class="codebox">
+Continue
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 5</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+SPSS will calculate the requested statistics.
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will display a Descriptive Statistics table containing the selected values.
+For this question, focus on:
+</p>
+
+<table>
+
+<tr>
+<th>Statistic</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>Standard Deviation</td>
+<td>Shows how close or far the scores are from the average.</td>
+</tr>
+
+<tr>
+<td>Variance</td>
+<td>Measures the amount of variation in the scores.</td>
+</tr>
+
+<tr>
+<td>Range</td>
+<td>The difference between the highest and lowest scores.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<h3>1. Standard Deviation (SD)</h3>
+
+<p>
+The <b>Standard Deviation</b> tells you how spread out the scores are around the mean.
+</p>
+
+<p>
+A <b>small Standard Deviation</b> means that most students obtained scores that are
+close to the average.
+</p>
+
+<p>
+A <b>large Standard Deviation</b> means that the students' scores vary greatly.
+Some students scored much higher or much lower than the average.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Standard Deviation = 4.82
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+The Mathematical Ability scores do not differ greatly from the average.
+Most students scored within a few points of the mean.
+</p>
+
+<hr>
+
+<h3>2. Variance</h3>
+
+<p>
+The <b>Variance</b> also measures how spread out the scores are.
+It is closely related to the Standard Deviation because it is the square of the Standard Deviation.
+</p>
+
+<p>
+You normally do not interpret the Variance by itself.
+It is mainly used in statistical computations.
+However, a larger variance still means greater variation among the scores.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Variance = 23.23
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+The Mathematical Ability scores show some variation among the students.
+The larger the variance, the more spread out the scores are.
+</p>
+
+<hr>
+
+<h3>3. Range</h3>
+
+<p>
+The <b>Range</b> is the difference between the highest score and the lowest score.
+</p>
+
+<p>
+Formula:
+</p>
+
+<div class="codebox">
+Range = Highest Score - Lowest Score
+</div>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Highest Score = 49
+Lowest Score = 11
+
+Range = 49 - 11 = 38
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+The difference between the highest and lowest Mathematical Ability score is 38 points.
+</p>
+
+<hr>
+
+<h3>How to Describe the Results in Words</h3>
+
+<div class="codebox">
+The Mathematical Ability scores have a Standard Deviation of 4.82,
+a Variance of 23.23, and a Range of 38.
+These results indicate the amount of variation among the students' scores.
+</div>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>The professor obtained the Standard Deviation, Variance, and Range from the same Statistics window used for the Mean, Median, and Mode.</li>
+
+<li>You do not need to perform another SPSS procedure. Simply check the additional statistics before clicking OK.</li>
+
+<li>When comparing groups later, a lower Standard Deviation indicates that the group's scores are more consistent.</li>
+
+</ul>
+
+</div>
+
+<div class="warning">
+
+<b>Common Mistakes</b>
+
+<ul>
+
+<li>Confusing Standard Deviation with Variance.</li>
+
+<li>Thinking that a larger Standard Deviation means better performance. It only means the scores are more spread out.</li>
+
+<li>Computing the Range incorrectly. Always subtract the lowest score from the highest score.</li>
+
+<li>Running a separate SPSS analysis when all three statistics can be obtained from the same Frequencies output.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="q4"></a>
+
+<div class="card">
+
+<h2>Question 4</h2>
+
+<h3>Compute the Skewness and Kurtosis of English Proficiency</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to determine the shape of the distribution of the English
+Proficiency scores. Specifically, it examines whether the scores are evenly distributed
+or whether they tend to cluster toward the lower or higher scores.
+</p>
+
+<p>
+SPSS computes two statistics for this purpose:
+</p>
+
+<ul>
+
+<li><b>Skewness</b> - measures the symmetry of the distribution.</li>
+
+<li><b>Kurtosis</b> - measures the shape or peakedness of the distribution.</li>
+
+</ul>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+Many statistical tests assume that the data are normally distributed.
+Skewness and Kurtosis help you determine whether the distribution is approximately
+normal or noticeably different from a normal distribution.
+</p>
+
+<p>
+These statistics are often examined before performing parametric tests such as
+the t-test, ANOVA, and Pearson Correlation.
+</p>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Descriptive Statistics -> Frequencies
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Select
+
+<div class="codebox">
+English Proficiency
+</div>
+
+Move it to the <b>Variable(s)</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Click
+
+<div class="codebox">
+Statistics
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Place a check mark on:
+
+<ul>
+
+<li>Skewness</li>
+
+<li>Kurtosis</li>
+
+</ul>
+
+Click
+
+<div class="codebox">
+Continue
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 5</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+SPSS will calculate the Skewness and Kurtosis values.
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+The output table will contain the values for:
+</p>
+
+<table>
+
+<tr>
+<th>Statistic</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>Skewness</td>
+<td>Measures whether the scores are distributed evenly or are concentrated toward one side.</td>
+</tr>
+
+<tr>
+<td>Kurtosis</td>
+<td>Measures whether the distribution is flatter or more peaked than a normal distribution.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret Skewness</h3>
+
+<p>
+Skewness tells you whether the distribution is balanced or tilted toward one side.
+</p>
+
+<table>
+
+<tr>
+<th>Skewness Value</th>
+<th>Interpretation</th>
+</tr>
+
+<tr>
+<td>Approximately 0</td>
+<td>The distribution is approximately symmetrical or normal.</td>
+</tr>
+
+<tr>
+<td>Positive (+)</td>
+<td>The distribution is skewed to the right. More students obtained lower scores, while only a few obtained very high scores.</td>
+</tr>
+
+<tr>
+<td>Negative (-)</td>
+<td>The distribution is skewed to the left. More students obtained higher scores, while only a few obtained very low scores.</td>
+</tr>
+
+</table>
+
+<br>
+
+<b>Simple Illustration</b>
+
+<div class="codebox">
+
+Negative Skew
+
+************
+***********
+*********
+******
+***
+
+Most students have HIGH scores.
+
+
+--------------------------------------------
+
+Normal Distribution
+
+****
+********
+************
+********
+****
+
+Scores are balanced.
+
+
+--------------------------------------------
+
+Positive Skew
+
+***
+******
+*********
+************
+**************
+
+Most students have LOW scores.
+
+</div>
+
+<hr>
+
+<h3>How to Interpret Kurtosis</h3>
+
+<p>
+Kurtosis describes the overall shape of the distribution.
+It tells you whether the scores are concentrated near the center or spread out.
+</p>
+
+<table>
+
+<tr>
+<th>Kurtosis</th>
+<th>Interpretation</th>
+</tr>
+
+<tr>
+<td>Approximately 0</td>
+<td>The distribution is close to normal.</td>
+</tr>
+
+<tr>
+<td>Positive (+)</td>
+<td>The distribution is more peaked. Many scores are concentrated near the center.</td>
+</tr>
+
+<tr>
+<td>Negative (-)</td>
+<td>The distribution is flatter. The scores are more spread out.</td>
+</tr>
+
+</table>
+
+<br>
+
+<b>Simple Illustration</b>
+
+<div class="codebox">
+
+Negative Kurtosis
+
+**************
+
+**************
+
+**************
+
+Flatter distribution
+
+
+--------------------------------------------
+
+Normal
+
+******
+
+************
+
+******
+
+Normal shape
+
+
+--------------------------------------------
+
+Positive Kurtosis
+
+***
+
+**************
+
+***
+
+More peaked distribution
+
+</div>
+
+<hr>
+
+<h3>How to Describe the Results in Words</h3>
+
+<p>
+Example 1
+</p>
+
+<div class="codebox">
+Skewness = 0.18
+
+Interpretation:
+
+The English Proficiency scores are approximately symmetrical,
+indicating that the distribution is close to normal.
+</div>
+
+<br>
+
+<p>
+Example 2
+</p>
+
+<div class="codebox">
+Skewness = -0.92
+
+Interpretation:
+
+The distribution is negatively skewed.
+Most students obtained relatively high scores,
+while only a few students obtained low scores.
+</div>
+
+<br>
+
+<p>
+Example 3
+</p>
+
+<div class="codebox">
+Kurtosis = 0.35
+
+Interpretation:
+
+The distribution is close to a normal distribution
+with only a slight tendency to be more peaked.
+</div>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>The professor obtained Skewness and Kurtosis from the same <b>Statistics</b> window used for the Mean, Median, Mode, Standard Deviation, Variance, and Range.</li>
+
+<li>You do not need to perform another SPSS procedure. Simply check the additional statistics before clicking OK.</li>
+
+<li>The professor explained that these values help determine whether the data are approximately normally distributed before performing parametric statistical tests.</li>
+
+</ul>
+
+</div>
+
+<div class="warning">
+
+<b>Common Mistakes</b>
+
+<ul>
+
+<li>Confusing Skewness with Kurtosis.</li>
+
+<li>Thinking that positive or negative values automatically mean the data are incorrect.</li>
+
+<li>Interpreting Skewness without considering the overall distribution of the data.</li>
+
+<li>Running a separate SPSS analysis when these statistics can be obtained from the same Frequencies output.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="q5"></a>
+
+<div class="card">
+
+<h2>Question 5</h2>
+
+<h3>Compute the Frequency Distribution of Sex and Grade Level</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to determine how many students belong to each category of
+<b>Sex</b> and <b>Grade Level</b>. Unlike Mathematical Ability and English Proficiency,
+these variables are categorical, meaning they represent groups rather than numerical
+scores.
+</p>
+
+<p>
+A frequency distribution counts the number of students in each category and shows
+the percentage that each category represents.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+Before analyzing data, it is important to know how the respondents are distributed.
+For example:
+</p>
+
+<ul>
+
+<li>How many students are male?</li>
+
+<li>How many students are female?</li>
+
+<li>How many students belong to Grade 7, Grade 8, Grade 9, and Grade 10?</li>
+
+</ul>
+
+<p>
+This information describes the profile of the respondents and is usually presented
+at the beginning of a research study.
+</p>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Descriptive Statistics -> Frequencies
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Select the following variables:
+
+<ul>
+
+<li>Sex</li>
+
+<li>Grade</li>
+
+</ul>
+
+Move both variables into the <b>Variable(s)</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+There is no need to click the <b>Statistics</b> button because this question only
+requires the frequency distribution of the categories.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+SPSS will generate separate frequency tables for Sex and Grade Level.
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will produce two frequency tables.
+</p>
+
+<ul>
+
+<li>Frequency Distribution of Sex</li>
+
+<li>Frequency Distribution of Grade Level</li>
+
+</ul>
+
+<p>
+Each table contains the following information:
+</p>
+
+<table>
+
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>Frequency</td>
+<td>The number of students in each category.</td>
+</tr>
+
+<tr>
+<td>Percent</td>
+<td>The percentage of students in each category.</td>
+</tr>
+
+<tr>
+<td>Valid Percent</td>
+<td>The percentage after excluding missing data.</td>
+</tr>
+
+<tr>
+<td>Cumulative Percent</td>
+<td>The running total percentage.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<h3>Frequency</h3>
+
+<p>
+The Frequency column tells you how many students belong to each category.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Male = 28
+
+Female = 22
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+There are <b>28 male students</b> and <b>22 female students</b> in the study.
+</p>
+
+<hr>
+
+<h3>Percent</h3>
+
+<p>
+The Percent column shows what percentage of the total respondents belongs to each category.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Male = 56%
+
+Female = 44%
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+Fifty-six percent of the respondents are male, while forty-four percent are female.
+</p>
+
+<hr>
+
+<h3>Grade Level</h3>
+
+<p>
+The Grade Level table is interpreted in exactly the same way.
+Simply report the number and percentage of students in each grade level.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Grade 7 = 15 students
+
+Grade 8 = 12 students
+
+Grade 9 = 11 students
+
+Grade 10 = 12 students
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+The study consists of students from four grade levels, with Grade 7 having the
+largest number of respondents.
+</p>
+
+<hr>
+
+<h3>How to Describe the Results in Words</h3>
+
+<div class="codebox">
+The frequency distribution shows that there are 28 male students (56%)
+and 22 female students (44%).
+
+The respondents came from four grade levels, with Grade 7 having
+the highest number of students.
+</div>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>This procedure is used only for categorical variables such as Sex and Grade Level.</li>
+
+<li>The professor simply generated the frequency tables without computing additional descriptive statistics.</li>
+
+<li>These tables describe the characteristics of the respondents.</li>
+
+</ul>
+
+</div>
+
+<div class="warning">
+
+<b>Common Mistakes</b>
+
+<ul>
+
+<li>Trying to compute the Mean or Standard Deviation for Sex or Grade Level.</li>
+
+<li>Using Mathematical Ability instead of Sex or Grade Level.</li>
+
+<li>Confusing Frequency with Percent.</li>
+
+<li>Reporting only the Frequency without mentioning the corresponding Percent.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="q6"></a>
+
+<div class="card">
+
+<h2>Question 6</h2>
+
+<h3>Compute the Frequency Distribution of Sex According to Grade Level</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to determine how the students are distributed according to
+both <b>Sex</b> and <b>Grade Level</b> at the same time.
+</p>
+
+<p>
+Instead of creating two separate frequency tables, this question combines the two
+variables into a single table called a <b>Crosstab</b> or <b>Cross-tabulation Table</b>.
+</p>
+
+<p>
+The Crosstab allows you to compare two categorical variables and observe how they
+are related.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+A Crosstab helps answer questions such as:
+</p>
+
+<ul>
+
+<li>How many Grade 7 students are male?</li>
+
+<li>How many Grade 7 students are female?</li>
+
+<li>Which grade level has the most male students?</li>
+
+<li>Which grade level has the most female students?</li>
+
+<li>Is one sex more common in a particular grade level?</li>
+
+</ul>
+
+<p>
+This provides a clearer picture of how the respondents are distributed across
+different categories.
+</p>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Descriptive Statistics -> Crosstabs
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Select
+
+<div class="codebox">
+Sex
+</div>
+
+Move it to the <b>Row(s)</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Select
+
+<div class="codebox">
+Grade
+</div>
+
+Move it to the <b>Column(s)</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Leave the default settings.
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will generate a <b>Crosstabulation Table</b>.
+The table displays the number of students for every combination of Sex and Grade Level.
+</p>
+
+<p>
+A sample Crosstab may look like this:
+</p>
+
+<table>
+
+<tr>
+<th>Sex</th>
+<th>Grade 7</th>
+<th>Grade 8</th>
+<th>Grade 9</th>
+<th>Grade 10</th>
+<th>Total</th>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>8</td>
+<td>6</td>
+<td>7</td>
+<td>7</td>
+<td>28</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>7</td>
+<td>6</td>
+<td>4</td>
+<td>5</td>
+<td>22</td>
+</tr>
+
+<tr>
+<td><b>Total</b></td>
+<td><b>15</b></td>
+<td><b>12</b></td>
+<td><b>11</b></td>
+<td><b>12</b></td>
+<td><b>50</b></td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<p>
+Read the table one cell at a time.
+Each cell tells you the number of students belonging to a particular combination
+of Sex and Grade Level.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Male
+Grade 7
+Frequency = 8
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+There are <b>8 male students in Grade 7.</b>
+</p>
+
+<br>
+
+<div class="codebox">
+Female
+Grade 10
+Frequency = 5
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+There are <b>5 female students in Grade 10.</b>
+</p>
+
+<hr>
+
+<h3>Reading the Totals</h3>
+
+<p>
+The totals provide additional information.
+</p>
+
+<ul>
+
+<li>The last column shows the total number of Male and Female students.</li>
+
+<li>The last row shows the total number of students in each Grade Level.</li>
+
+<li>The bottom-right corner shows the total number of respondents in the study.</li>
+
+</ul>
+
+<hr>
+
+<h3>How to Describe the Results in Words</h3>
+
+<div class="codebox">
+The Crosstab shows the distribution of students according to Sex and Grade Level.
+
+There are 8 male students and 7 female students in Grade 7.
+
+Grade 8 consists of 6 male students and 6 female students.
+
+Overall, the study includes 28 male students and 22 female students.
+</div>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>The professor used the <b>Crosstabs</b> procedure to answer this question.</li>
+
+<li>Place <b>Sex</b> in the Rows box and <b>Grade Level</b> in the Columns box.</li>
+
+<li>The Crosstab summarizes two categorical variables in a single table, making comparison easier.</li>
+
+</ul>
+
+</div>
+
+<div class="warning">
+
+<b>Common Mistakes</b>
+
+<ul>
+
+<li>Using Frequencies instead of Crosstabs.</li>
+
+<li>Placing Mathematical Ability or English Proficiency in the Rows or Columns boxes.</li>
+
+<li>Confusing the row totals with the column totals.</li>
+
+<li>Interpreting the totals incorrectly instead of reading the individual cells first.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="q7"></a>
+
+<div class="card">
+
+<h2>Question 7</h2>
+
+<h3>What is the Mean and Standard Deviation of Mathematical Ability According to Sex?</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to compare the average Mathematical Ability scores of
+male and female students. Instead of looking at all students as one group,
+the scores are separated according to Sex.
+</p>
+
+<p>
+SPSS will also compute the Standard Deviation for each group to determine
+how consistent the students' scores are.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+This analysis allows you to compare the performance of two groups.
+It answers questions such as:
+</p>
+
+<ul>
+
+<li>Which group has the higher average Mathematical Ability score?</li>
+
+<li>Which group has more consistent scores?</li>
+
+<li>Are the scores of one group more spread out than the other?</li>
+
+</ul>
+
+<p>
+Take note that this question only asks for the Mean and Standard Deviation.
+It does <b>not</b> ask whether the difference is statistically significant.
+That will be answered later using the Independent Samples t-test.
+</p>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Compare Means -> Means
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Select
+
+<div class="codebox">
+Mathematical Ability
+</div>
+
+Move it to the
+
+<b>Dependent List</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Select
+
+<div class="codebox">
+Sex
+</div>
+
+Move it to the
+
+<b>Independent List</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Click
+
+<div class="codebox">
+Options
+</div>
+
+Make sure the following are selected:
+
+<ul>
+
+<li>Mean</li>
+
+<li>Standard Deviation</li>
+
+<li>Number of Cases (N)</li>
+
+</ul>
+
+Click
+
+<div class="codebox">
+Continue
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 5</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will generate a table similar to the one below.
+</p>
+
+<table>
+
+<tr>
+<th>Sex</th>
+<th>N</th>
+<th>Mean</th>
+<th>Standard Deviation</th>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>28</td>
+<td>84.25</td>
+<td>4.15</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>22</td>
+<td>82.40</td>
+<td>5.31</td>
+</tr>
+
+<tr>
+<td>Total</td>
+<td>50</td>
+<td>83.44</td>
+<td>4.73</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>Understanding Each Column</h3>
+
+<table>
+
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+
+<tr>
+<td>N</td>
+<td>The number of students in each group.</td>
+</tr>
+
+<tr>
+<td>Mean</td>
+<td>The average Mathematical Ability score.</td>
+</tr>
+
+<tr>
+<td>Standard Deviation</td>
+<td>Shows how spread out the scores are within each group.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret the Mean</h3>
+
+<p>
+Compare the Mean of the two groups.
+</p>
+
+<p>
+The group with the higher Mean has the higher average Mathematical Ability score.
+</p>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Male Mean = 84.25
+
+Female Mean = 82.40
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+Male students obtained a higher average Mathematical Ability score than female students.
+</p>
+
+<hr>
+
+<h3>How to Interpret the Standard Deviation</h3>
+
+<p>
+The Standard Deviation tells you how close the students' scores are to their group average.
+</p>
+
+<ul>
+
+<li>A lower Standard Deviation means the scores are more consistent.</li>
+
+<li>A higher Standard Deviation means the scores are more spread out.</li>
+
+</ul>
+
+<p>
+Example:
+</p>
+
+<div class="codebox">
+Male SD = 4.15
+
+Female SD = 5.31
+</div>
+
+<p>
+Interpretation:
+</p>
+
+<p>
+The male students have more consistent Mathematical Ability scores because their
+Standard Deviation is lower.
+The female students have more variation in their scores because their
+Standard Deviation is higher.
+</p>
+
+<hr>
+
+<h3>How to Describe the Results in Words</h3>
+
+<div class="codebox">
+Male students obtained a mean Mathematical Ability score of 84.25
+(SD = 4.15), while female students obtained a mean score of 82.40
+(SD = 5.31).
+
+Based on the descriptive statistics, male students have a slightly
+higher average score, while their scores are also more consistent.
+</div>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>The professor emphasized comparing the Mean first.</li>
+
+<li>The group with the higher Mean has the better average performance.</li>
+
+<li>The group with the lower Standard Deviation has more consistent scores.</li>
+
+<li>This analysis only describes the groups. It does not determine whether the difference is statistically significant.</li>
+
+</ul>
+
+</div>
+
+<div class="warning">
+
+<b>Common Mistakes</b>
+
+<ul>
+
+<li>Thinking that a higher Standard Deviation means better performance.</li>
+
+<li>Confusing Mean with Standard Deviation.</li>
+
+<li>Concluding that one group is significantly better based only on the Mean. Statistical significance is tested later using the Independent Samples t-test.</li>
+
+<li>Ignoring the Standard Deviation when comparing the groups.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<a name="q8"></a>
+
+<div class="card">
+
+<h2>Question 8</h2>
+
+<h3>What is the Mean and Standard Deviation of Mathematical Ability According to Grade Level?</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to compare the Mathematical Ability scores of students from
+different grade levels. Instead of comparing Male and Female students, the scores
+are grouped according to Grade Level.
+</p>
+
+<p>
+SPSS computes the Mean and Standard Deviation for each grade level so you can
+compare their average performance and the consistency of their scores.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+This analysis helps answer questions such as:
+</p>
+
+<ul>
+
+<li>Which grade level has the highest average Mathematical Ability score?</li>
+
+<li>Which grade level has the lowest average score?</li>
+
+<li>Which grade level has the most consistent performance?</li>
+
+</ul>
+
+<p>
+Like the previous question, this is only a descriptive analysis. It does not determine
+whether the differences among the grade levels are statistically significant.
+That will be answered later using One-Way ANOVA.
+</p>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Compare Means -> Means
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Move
+
+<div class="codebox">
+Mathematical Ability
+</div>
+
+to the <b>Dependent List</b>.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Move
+
+<div class="codebox">
+Grade
+</div>
+
+to the <b>Independent List</b>.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Click
+
+<div class="codebox">
+Options
+</div>
+
+Verify that the following are selected:
+
+<ul>
+
+<li>Mean</li>
+
+<li>Standard Deviation</li>
+
+<li>Number of Cases (N)</li>
+
+</ul>
+
+Click
+
+<div class="codebox">
+Continue
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 5</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will display a table similar to the one below.
+</p>
+
+<table>
+
+<tr>
+<th>Grade Level</th>
+<th>N</th>
+<th>Mean</th>
+<th>Standard Deviation</th>
+</tr>
+
+<tr>
+<td>Grade 7</td>
+<td>15</td>
+<td>80.20</td>
+<td>4.62</td>
+</tr>
+
+<tr>
+<td>Grade 8</td>
+<td>12</td>
+<td>82.50</td>
+<td>3.91</td>
+</tr>
+
+<tr>
+<td>Grade 9</td>
+<td>11</td>
+<td>84.10</td>
+<td>5.12</td>
+</tr>
+
+<tr>
+<td>Grade 10</td>
+<td>12</td>
+<td>86.00</td>
+<td>3.48</td>
+</tr>
+
+<tr>
+<td>Total</td>
+<td>50</td>
+<td>83.44</td>
+<td>4.73</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>Understanding the Output</h3>
+
+<table>
+
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+
+<tr>
+<td>N</td>
+<td>Number of students in each grade level.</td>
+</tr>
+
+<tr>
+<td>Mean</td>
+<td>Average Mathematical Ability score.</td>
+</tr>
+
+<tr>
+<td>Standard Deviation</td>
+<td>Shows how consistent the students' scores are.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<p>
+First, compare the <b>Mean</b> values.
+</p>
+
+<p>
+The grade level with the highest Mean has the highest average Mathematical Ability score.
+</p>
+
+<p>
+Next, compare the <b>Standard Deviation</b>.
+</p>
+
+<p>
+The grade level with the lowest Standard Deviation has the most consistent scores.
+</p>
+
+<p>
+Remember that consistency does not necessarily mean better performance. It simply
+means the students' scores are closer to one another.
+</p>
+
+<hr>
+
+<h3>Example Interpretation</h3>
+
+<div class="codebox">
+Grade 10 has the highest Mean of 86.00.
+
+This indicates that Grade 10 students obtained the highest average
+Mathematical Ability score.
+
+Grade 10 also has the lowest Standard Deviation (3.48),
+indicating that their scores are the most consistent among
+all grade levels.
+</div>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>Compare the Mean values first to determine which grade level performed better.</li>
+
+<li>Compare the Standard Deviations to determine which grade level has more consistent scores.</li>
+
+<li>This procedure only describes the data. Statistical significance will be tested later using One-Way ANOVA.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="q9"></a>
+
+<div class="card">
+
+<h2>Question 9</h2>
+
+<h3>What is the Mean and Standard Deviation of Mathematical Ability According to Sex and Grade Level?</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to compare the Mathematical Ability scores by using
+<b>two grouping variables at the same time</b>: <b>Sex</b> and <b>Grade Level</b>.
+Instead of comparing only males and females or only grade levels, SPSS divides
+the students into smaller groups such as:
+</p>
+
+<ul>
+
+<li>Male - Grade 7</li>
+
+<li>Female - Grade 7</li>
+
+<li>Male - Grade 8</li>
+
+<li>Female - Grade 8</li>
+
+<li>Male - Grade 9</li>
+
+<li>Female - Grade 9</li>
+
+<li>Male - Grade 10</li>
+
+<li>Female - Grade 10</li>
+
+</ul>
+
+<p>
+SPSS computes the Mean and Standard Deviation for each group so you can compare
+their average performance and the consistency of their scores.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+This analysis provides a more detailed description of the data. Instead of asking
+whether males performed better than females, you can compare males and females
+within each grade level.
+</p>
+
+<p>
+This analysis helps answer questions such as:
+</p>
+
+<ul>
+
+<li>Which group has the highest average Mathematical Ability score?</li>
+
+<li>Which group has the lowest average score?</li>
+
+<li>Which group has the most consistent performance?</li>
+
+<li>How do males and females compare within each grade level?</li>
+
+</ul>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Compare Means -> Means
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Move
+
+<div class="codebox">
+Mathematical Ability
+</div>
+
+to the <b>Dependent List</b>.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Move
+
+<div class="codebox">
+Sex
+</div>
+
+to the <b>Independent List</b>.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Move
+
+<div class="codebox">
+Grade
+</div>
+
+below <b>Sex</b> in the <b>Independent List</b>.
+
+Both variables should now appear in the Independent List.
+
+</div>
+
+<div class="step">
+
+<b>Step 5</b><br><br>
+
+Click
+
+<div class="codebox">
+Options
+</div>
+
+Verify that the following are selected:
+
+<ul>
+
+<li>Mean</li>
+
+<li>Standard Deviation</li>
+
+<li>Number of Cases (N)</li>
+
+</ul>
+
+Click
+
+<div class="codebox">
+Continue
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 6</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will produce a table showing the Mean and Standard Deviation for every
+combination of Sex and Grade Level.
+</p>
+
+<table>
+
+<tr>
+<th>Sex</th>
+<th>Grade</th>
+<th>N</th>
+<th>Mean</th>
+<th>Standard Deviation</th>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>Grade 7</td>
+<td>8</td>
+<td>81.50</td>
+<td>4.21</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>Grade 7</td>
+<td>7</td>
+<td>79.10</td>
+<td>4.88</td>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>Grade 8</td>
+<td>6</td>
+<td>83.20</td>
+<td>3.75</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>Grade 8</td>
+<td>6</td>
+<td>81.80</td>
+<td>4.06</td>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>Grade 9</td>
+<td>7</td>
+<td>85.30</td>
+<td>5.10</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>Grade 9</td>
+<td>4</td>
+<td>82.00</td>
+<td>4.85</td>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>Grade 10</td>
+<td>7</td>
+<td>87.20</td>
+<td>3.30</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>Grade 10</td>
+<td>5</td>
+<td>84.30</td>
+<td>3.82</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>Understanding the Output</h3>
+
+<p>
+Each row represents one specific group.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="codebox">
+Male - Grade 8
+</div>
+
+<p>
+This row contains only the male students from Grade 8.
+The Mean and Standard Deviation are computed only for this group.
+</p>
+
+<p>
+The same interpretation applies to every row in the table.
+</p>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<p>
+Begin by comparing the <b>Mean</b> values.
+</p>
+
+<p>
+The group with the highest Mean has the highest average Mathematical Ability score.
+</p>
+
+<p>
+Next, compare the <b>Standard Deviation</b>.
+</p>
+
+<p>
+The group with the lowest Standard Deviation has the most consistent scores because
+their scores are closer to their group average.
+</p>
+
+<p>
+You may also compare Male and Female students within the same grade level.
+For example, compare the Mean of Male Grade 7 students with the Mean of Female Grade 7 students.
+Repeat the comparison for Grade 8, Grade 9, and Grade 10.
+</p>
+
+<hr>
+
+<h3>Example Interpretation</h3>
+
+<div class="codebox">
+Male Grade 10 students obtained the highest Mean score of 87.20.
+
+This indicates that Male Grade 10 students achieved the highest average
+Mathematical Ability score among all groups.
+
+Their Standard Deviation is 3.30, which is also one of the lowest values.
+This indicates that their scores are relatively consistent.
+</div>
+
+<hr>
+
+<h3>Summary</h3>
+
+<table>
+
+<tr>
+<th>Statistic</th>
+<th>How to Interpret</th>
+</tr>
+
+<tr>
+<td>Highest Mean</td>
+<td>Group with the highest average Mathematical Ability score.</td>
+</tr>
+
+<tr>
+<td>Lowest Mean</td>
+<td>Group with the lowest average Mathematical Ability score.</td>
+</tr>
+
+<tr>
+<td>Lowest Standard Deviation</td>
+<td>Group with the most consistent scores.</td>
+</tr>
+
+<tr>
+<td>Highest Standard Deviation</td>
+<td>Group with the greatest variation in scores.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>The professor added both <b>Sex</b> and <b>Grade Level</b> to the <b>Independent List</b> to produce a more detailed comparison.</li>
+
+<li>Interpret the Mean first to identify which group has the higher average performance.</li>
+
+<li>Next, compare the Standard Deviations to determine which group's scores are more consistent.</li>
+
+<li>This analysis is descriptive only. It does not test whether the differences are statistically significant. Statistical significance will be tested later using hypothesis testing procedures.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="q9"></a>
+
+<div class="card">
+
+<h2>Question 9</h2>
+
+<h3>What is the Mean and Standard Deviation of Mathematical Ability According to Sex and Grade Level?</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks you to compare the Mathematical Ability scores by using
+<b>two grouping variables at the same time</b>: <b>Sex</b> and <b>Grade Level</b>.
+Instead of comparing only males and females or only grade levels, SPSS divides
+the students into smaller groups such as:
+</p>
+
+<ul>
+
+<li>Male - Grade 7</li>
+
+<li>Female - Grade 7</li>
+
+<li>Male - Grade 8</li>
+
+<li>Female - Grade 8</li>
+
+<li>Male - Grade 9</li>
+
+<li>Female - Grade 9</li>
+
+<li>Male - Grade 10</li>
+
+<li>Female - Grade 10</li>
+
+</ul>
+
+<p>
+SPSS computes the Mean and Standard Deviation for each group so you can compare
+their average performance and the consistency of their scores.
+</p>
+
+<hr>
+
+<h3>Why is this important?</h3>
+
+<p>
+This analysis provides a more detailed description of the data. Instead of asking
+whether males performed better than females, you can compare males and females
+within each grade level.
+</p>
+
+<p>
+This analysis helps answer questions such as:
+</p>
+
+<ul>
+
+<li>Which group has the highest average Mathematical Ability score?</li>
+
+<li>Which group has the lowest average score?</li>
+
+<li>Which group has the most consistent performance?</li>
+
+<li>How do males and females compare within each grade level?</li>
+
+</ul>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b><br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Compare Means -> Means
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b><br><br>
+
+Move
+
+<div class="codebox">
+Mathematical Ability
+</div>
+
+to the <b>Dependent List</b>.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b><br><br>
+
+Move
+
+<div class="codebox">
+Sex
+</div>
+
+to the <b>Independent List</b>.
+
+</div>
+
+<div class="step">
+
+<b>Step 4</b><br><br>
+
+Move
+
+<div class="codebox">
+Grade
+</div>
+
+below <b>Sex</b> in the <b>Independent List</b>.
+
+Both variables should now appear in the Independent List.
+
+</div>
+
+<div class="step">
+
+<b>Step 5</b><br><br>
+
+Click
+
+<div class="codebox">
+Options
+</div>
+
+Verify that the following are selected:
+
+<ul>
+
+<li>Mean</li>
+
+<li>Standard Deviation</li>
+
+<li>Number of Cases (N)</li>
+
+</ul>
+
+Click
+
+<div class="codebox">
+Continue
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 6</b><br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+SPSS will produce a table showing the Mean and Standard Deviation for every
+combination of Sex and Grade Level.
+</p>
+
+<table>
+
+<tr>
+<th>Sex</th>
+<th>Grade</th>
+<th>N</th>
+<th>Mean</th>
+<th>Standard Deviation</th>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>Grade 7</td>
+<td>8</td>
+<td>81.50</td>
+<td>4.21</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>Grade 7</td>
+<td>7</td>
+<td>79.10</td>
+<td>4.88</td>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>Grade 8</td>
+<td>6</td>
+<td>83.20</td>
+<td>3.75</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>Grade 8</td>
+<td>6</td>
+<td>81.80</td>
+<td>4.06</td>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>Grade 9</td>
+<td>7</td>
+<td>85.30</td>
+<td>5.10</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>Grade 9</td>
+<td>4</td>
+<td>82.00</td>
+<td>4.85</td>
+</tr>
+
+<tr>
+<td>Male</td>
+<td>Grade 10</td>
+<td>7</td>
+<td>87.20</td>
+<td>3.30</td>
+</tr>
+
+<tr>
+<td>Female</td>
+<td>Grade 10</td>
+<td>5</td>
+<td>84.30</td>
+<td>3.82</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>Understanding the Output</h3>
+
+<p>
+Each row represents one specific group.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="codebox">
+Male - Grade 8
+</div>
+
+<p>
+This row contains only the male students from Grade 8.
+The Mean and Standard Deviation are computed only for this group.
+</p>
+
+<p>
+The same interpretation applies to every row in the table.
+</p>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<p>
+Begin by comparing the <b>Mean</b> values.
+</p>
+
+<p>
+The group with the highest Mean has the highest average Mathematical Ability score.
+</p>
+
+<p>
+Next, compare the <b>Standard Deviation</b>.
+</p>
+
+<p>
+The group with the lowest Standard Deviation has the most consistent scores because
+their scores are closer to their group average.
+</p>
+
+<p>
+You may also compare Male and Female students within the same grade level.
+For example, compare the Mean of Male Grade 7 students with the Mean of Female Grade 7 students.
+Repeat the comparison for Grade 8, Grade 9, and Grade 10.
+</p>
+
+<hr>
+
+<h3>Example Interpretation</h3>
+
+<div class="codebox">
+Male Grade 10 students obtained the highest Mean score of 87.20.
+
+This indicates that Male Grade 10 students achieved the highest average
+Mathematical Ability score among all groups.
+
+Their Standard Deviation is 3.30, which is also one of the lowest values.
+This indicates that their scores are relatively consistent.
+</div>
+
+<hr>
+
+<h3>Summary</h3>
+
+<table>
+
+<tr>
+<th>Statistic</th>
+<th>How to Interpret</th>
+</tr>
+
+<tr>
+<td>Highest Mean</td>
+<td>Group with the highest average Mathematical Ability score.</td>
+</tr>
+
+<tr>
+<td>Lowest Mean</td>
+<td>Group with the lowest average Mathematical Ability score.</td>
+</tr>
+
+<tr>
+<td>Lowest Standard Deviation</td>
+<td>Group with the most consistent scores.</td>
+</tr>
+
+<tr>
+<td>Highest Standard Deviation</td>
+<td>Group with the greatest variation in scores.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>The professor added both <b>Sex</b> and <b>Grade Level</b> to the <b>Independent List</b> to produce a more detailed comparison.</li>
+
+<li>Interpret the Mean first to identify which group has the higher average performance.</li>
+
+<li>Next, compare the Standard Deviations to determine which group's scores are more consistent.</li>
+
+<li>This analysis is descriptive only. It does not test whether the differences are statistically significant. Statistical significance will be tested later using hypothesis testing procedures.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="p2"></a>
+
+<div class="card">
+
+<h2>Parametric Analysis - Question 2</h2>
+
+<h3>Is there a Significant Difference Between Mathematical Ability and English Proficiency?</h3>
+
+<h3>Statistical Test: Paired Samples t-test (Dependent Samples t-test)</h3>
+
+<p><b>What is this question asking?</b></p>
+
+<p>
+This question asks whether there is a significant difference between the
+students' Mathematical Ability scores and their English Proficiency scores.
+Since both scores belong to the same students, the two sets of scores are
+paired or related.
+</p>
+
+<p>
+The Paired Samples t-test compares the average of the two related variables
+to determine whether they differ significantly.
+</p>
+
+<hr>
+
+<h3>When is the Paired Samples t-test Used?</h3>
+
+<p>
+Use the Paired Samples t-test when:
+</p>
+
+<ul>
+
+<li>The same respondents are measured twice.</li>
+
+<li>Each person has two related scores.</li>
+
+<li>The variables are measured using a numerical (Scale) level.</li>
+
+</ul>
+
+<p>
+
+For this problem:
+
+</p>
+
+<table>
+
+<tr>
+<th>Variable 1</th>
+<th>Variable 2</th>
+</tr>
+
+<tr>
+<td>Mathematical Ability</td>
+<td>English Proficiency</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>Hypotheses</h3>
+
+<p><b>Null Hypothesis (H0)</b></p>
+
+<div class="codebox">
+There is no significant difference between the
+Mathematical Ability scores and English Proficiency scores.
+</div>
+
+<p><b>Alternative Hypothesis (H1)</b></p>
+
+<div class="codebox">
+There is a significant difference between the
+Mathematical Ability scores and English Proficiency scores.
+</div>
+
+<hr>
+
+<h3>Level of Significance</h3>
+
+<div class="codebox">
+alpha = 0.05
+</div>
+
+<p><b>Decision Rule</b></p>
+
+<ul>
+
+<li>If Sig. (2-tailed) <= 0.05, reject the Null Hypothesis.</li>
+
+<li>If Sig. (2-tailed) > 0.05, fail to reject the Null Hypothesis.</li>
+
+</ul>
+
+<hr>
+
+<h3>SPSS Procedure</h3>
+
+<div class="step">
+
+<b>Step 1</b>
+
+<br><br>
+
+Click
+
+<div class="codebox">
+Analyze -> Compare Means -> Paired-Samples T Test
+</div>
+
+</div>
+
+<div class="step">
+
+<b>Step 2</b>
+
+<br><br>
+
+Select
+
+<div class="codebox">
+Mathematical Ability
+</div>
+
+and
+
+<div class="codebox">
+English Proficiency
+</div>
+
+Move them together into the
+<b>Paired Variables</b> box.
+
+</div>
+
+<div class="step">
+
+<b>Step 3</b>
+
+<br><br>
+
+Click
+
+<div class="codebox">
+OK
+</div>
+
+</div>
+
+<hr>
+
+<h3>What Will SPSS Display?</h3>
+
+<p>
+
+SPSS usually produces three tables.
+
+</p>
+
+<ol>
+
+<li>Paired Samples Statistics</li>
+
+<li>Paired Samples Correlations</li>
+
+<li>Paired Samples Test</li>
+
+</ol>
+
+<p>
+
+For this question, the most important table is the
+<b>Paired Samples Test</b> because it contains the
+Sig. (2-tailed) value used in making the decision.
+
+</p>
+
+<hr>
+
+<h3>Table 1 - Paired Samples Statistics</h3>
+
+<table>
+
+<tr>
+<th>Variable</th>
+<th>Mean</th>
+<th>N</th>
+<th>Standard Deviation</th>
+</tr>
+
+<tr>
+<td>Mathematical Ability</td>
+<td>83.44</td>
+<td>50</td>
+<td>4.73</td>
+</tr>
+
+<tr>
+<td>English Proficiency</td>
+<td>81.92</td>
+<td>50</td>
+<td>5.10</td>
+</tr>
+
+</table>
+
+<p>
+
+This table shows the average and Standard Deviation of each variable.
+It is only descriptive and is not used to decide whether there is a
+significant difference.
+
+</p>
+
+<hr>
+
+<h3>Table 2 - Paired Samples Correlations</h3>
+
+<p>
+
+This table shows the correlation between the two variables.
+
+Although SPSS displays this table, the answer to this question is
+not based on the correlation.
+
+The decision comes from the next table.
+
+</p>
+
+<hr>
+
+<h3>Table 3 - Paired Samples Test</h3>
+
+<table>
+
+<tr>
+<th>t</th>
+<th>df</th>
+<th>Sig. (2-tailed)</th>
+</tr>
+
+<tr>
+<td>2.18</td>
+<td>49</td>
+<td>0.034</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>How to Interpret the Results</h3>
+
+<p>
+
+Look only at the value of
+
+<b>Sig. (2-tailed)</b>.
+
+</p>
+
+<table>
+
+<tr>
+<th>Sig. (2-tailed)</th>
+<th>Decision</th>
+</tr>
+
+<tr>
+<td><= 0.05</td>
+<td>Reject the Null Hypothesis.</td>
+</tr>
+
+<tr>
+<td>> 0.05</td>
+<td>Fail to reject the Null Hypothesis.</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>Example Interpretation</h3>
+
+<div class="codebox">
+
+Sig. (2-tailed) = 0.034
+
+Since 0.034 is less than 0.05,
+
+reject the Null Hypothesis.
+
+There is a significant difference between the
+Mathematical Ability scores and English Proficiency scores.
+
+</div>
+
+<hr>
+
+<h3>How to Write the Conclusion</h3>
+
+<div class="codebox">
+
+A Paired Samples t-test was conducted to determine whether
+there is a significant difference between Mathematical Ability
+and English Proficiency.
+
+The analysis produced a Sig. (2-tailed) value of 0.034,
+which is less than the 0.05 level of significance.
+
+Therefore, the Null Hypothesis is rejected.
+
+This indicates that there is a statistically significant
+difference between the Mathematical Ability scores and
+English Proficiency scores of the students.
+
+</div>
+
+<hr>
+
+<div class="note">
+
+<b>Professor's Notes</b>
+
+<ul>
+
+<li>Use the Paired Samples t-test only when both scores belong to the same respondents.</li>
+
+<li>The final decision is based on the Sig. (2-tailed) value in the Paired Samples Test table.</li>
+
+<li>The Paired Samples Statistics table is descriptive only and should not be used to determine statistical significance.</li>
+
+<li>If the Sig. (2-tailed) value is less than or equal to 0.05, conclude that there is a significant difference between the two variables.</li>
+
+</ul>
+
+</div>
+
+</div>
+<a name="p3"></a>
+
+<div class="card">
+
+<h2>Parametric Analysis - Question 3</h2>
+
+<h3>Is there a Significant Difference in Mathematical Ability According to Grade Level?</h3>
+
+<p><b>Statistical Test:</b> One-Way ANOVA</p>
+
+<p><b>Purpose</b></p>
+
+<p>
+Determines whether the average Mathematical Ability scores differ among the different grade levels.
+</p>
+
+<p><b>Hypotheses</b></p>
+
+<div class="codebox">
+H0: There is no significant difference in Mathematical Ability according to Grade Level.
+
+H1: There is a significant difference in Mathematical Ability according to Grade Level.
+</div>
+
+<p><b>SPSS Procedure</b></p>
+
+<div class="step">
+Analyze -> Compare Means -> One-Way ANOVA
+</div>
+
+<ul>
+
+<li>Dependent List: Mathematical Ability</li>
+
+<li>Factor: Grade Level</li>
+
+<li>Click OK</li>
+
+</ul>
+
+<p><b>Interpretation</b></p>
+
+<table>
+
+<tr>
+<th>Sig. Value</th>
+<th>Decision</th>
+</tr>
+
+<tr>
+<td><= 0.05</td>
+<td>Reject H0. There is a significant difference.</td>
+</tr>
+
+<tr>
+<td>> 0.05</td>
+<td>Fail to reject H0. There is no significant difference.</td>
+</tr>
+
+</table>
+
+<p><b>Example</b></p>
+
+<div class="codebox">
+Sig. = 0.018
+
+Since 0.018 is less than 0.05,
+reject the Null Hypothesis.
+
+There is a significant difference in Mathematical Ability according to Grade Level.
+</div>
+
+<div class="note">
+
+<b>Professor's Note</b>
+
+<p>
+ANOVA only tells whether a difference exists. It does not identify which grade levels differ. A Post Hoc test is needed for that.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+<a name="p4"></a>
+
+<div class="card">
+
+<h2>Parametric Analysis - Question 4</h2>
+
+<h3>Is there a Significant Relationship Between Mathematical Ability and English Proficiency?</h3>
+
+<p><b>Statistical Test:</b> Pearson Product-Moment Correlation (Pearson r)</p>
+
+<p><b>Purpose</b></p>
+
+<p>
+Determines whether Mathematical Ability and English Proficiency are related.
+</p>
+
+<p><b>Hypotheses</b></p>
+
+<div class="codebox">
+H0: There is no significant relationship between Mathematical Ability and English Proficiency.
+
+H1: There is a significant relationship between Mathematical Ability and English Proficiency.
+</div>
+
+<p><b>SPSS Procedure</b></p>
+
+<div class="step">
+Analyze -> Correlate -> Bivariate
+</div>
+
+<ul>
+
+<li>Select Mathematical Ability</li>
+
+<li>Select English Proficiency</li>
+
+<li>Check Pearson</li>
+
+<li>Check Two-tailed</li>
+
+<li>Click OK</li>
+
+</ul>
+
+<p><b>Interpretation</b></p>
+
+<p>
+Look at two values:
+</p>
+
+<ul>
+
+<li><b>Pearson Correlation (r)</b> - indicates the strength and direction of the relationship.</li>
+
+<li><b>Sig. (2-tailed)</b> - determines whether the relationship is statistically significant.</li>
+
+</ul>
+
+<table>
+
+<tr>
+<th>Sig. Value</th>
+<th>Decision</th>
+</tr>
+
+<tr>
+<td><= 0.05</td>
+<td>Reject H0. There is a significant relationship.</td>
+</tr>
+
+<tr>
+<td>> 0.05</td>
+<td>Fail to reject H0. There is no significant relationship.</td>
+</tr>
+
+</table>
+
+<p><b>Example</b></p>
+
+<div class="codebox">
+Pearson r = 0.72
+
+Sig. = 0.001
+
+Since 0.001 is less than 0.05,
+reject the Null Hypothesis.
+
+There is a significant positive relationship between
+Mathematical Ability and English Proficiency.
+</div>
+
+<div class="note">
+
+<b>Professor's Note</b>
+
+<p>
+The sign of Pearson r (+ or -) shows the direction of the relationship, while the Sig. value determines whether the relationship is statistically significant.
+</p>
+
+</div>
+
+</div>
+
+<a name="np1"></a>
+
+<div class="card">
+
+<h2>Nonparametric Analysis - Question 5</h2>
+
+<h3>Is there a Significant Difference in Mathematical Ability According to Sex?</h3>
+
+<p><b>Statistical Test:</b> Mann-Whitney U Test</p>
+
+<p><b>Purpose</b></p>
+
+<p>
+Used to compare the Mathematical Ability scores of Male and Female students when the data are not normally distributed.
+</p>
+
+<p><b>Hypotheses</b></p>
+
+<div class="codebox">
+H0: There is no significant difference in Mathematical Ability according to Sex.
+
+H1: There is a significant difference in Mathematical Ability according to Sex.
+</div>
+
+<p><b>SPSS Procedure</b></p>
+
+<div class="step">
+Analyze -> Nonparametric Tests -> Legacy Dialogs -> 2 Independent Samples
+</div>
+
+<ul>
+
+<li>Test Variable: Mathematical Ability</li>
+
+<li>Grouping Variable: Sex</li>
+
+<li>Define Groups (1 = Male, 2 = Female)</li>
+
+<li>Select Mann-Whitney U</li>
+
+<li>Click OK</li>
+
+</ul>
+
+<p><b>Interpretation</b></p>
+
+<table>
+
+<tr>
+<th>Sig.</th>
+<th>Decision</th>
+</tr>
+
+<tr>
+<td><= 0.05</td>
+<td>Reject H0. There is a significant difference.</td>
+</tr>
+
+<tr>
+<td>> 0.05</td>
+<td>Fail to reject H0. There is no significant difference.</td>
+</tr>
+
+</table>
+
+<div class="note">
+
+<b>Professor's Note</b>
+
+<p>
+The Mann-Whitney U Test is the nonparametric equivalent of the Independent Samples t-test.
+</p>
+
+</div>
+
+</div>
+
+
+
+<a name="np2"></a>
+
+<div class="card">
+
+<h2>Nonparametric Analysis - Question 6</h2>
+
+<h3>Is there a Significant Difference Between Mathematical Ability and English Proficiency?</h3>
+
+<p><b>Statistical Test:</b> Wilcoxon Signed-Ranks Test</p>
+
+<p><b>Purpose</b></p>
+
+<p>
+Used to compare two related scores when the data are not normally distributed.
+</p>
+
+<p><b>Hypotheses</b></p>
+
+<div class="codebox">
+H0: There is no significant difference between Mathematical Ability and English Proficiency.
+
+H1: There is a significant difference between Mathematical Ability and English Proficiency.
+</div>
+
+<p><b>SPSS Procedure</b></p>
+
+<div class="step">
+Analyze -> Nonparametric Tests -> Legacy Dialogs -> 2 Related Samples
+</div>
+
+<ul>
+
+<li>Pair: Mathematical Ability and English Proficiency</li>
+
+<li>Select Wilcoxon</li>
+
+<li>Click OK</li>
+
+</ul>
+
+<p><b>Interpretation</b></p>
+
+<table>
+
+<tr>
+<th>Sig.</th>
+<th>Decision</th>
+</tr>
+
+<tr>
+<td><= 0.05</td>
+<td>Reject H0. There is a significant difference.</td>
+</tr>
+
+<tr>
+<td>> 0.05</td>
+<td>Fail to reject H0. There is no significant difference.</td>
+</tr>
+
+</table>
+
+<div class="note">
+
+<b>Professor's Note</b>
+
+<p>
+The Wilcoxon Signed-Ranks Test is the nonparametric equivalent of the Paired Samples t-test.
+</p>
+
+</div>
+
+</div>
+
+
+
+<a name="np3"></a>
+
+<div class="card">
+
+<h2>Nonparametric Analysis - Question 7</h2>
+
+<h3>Is there a Significant Difference in Mathematical Ability According to Grade Level?</h3>
+
+<p><b>Statistical Test:</b> Kruskal-Wallis H Test</p>
+
+<p><b>Purpose</b></p>
+
+<p>
+Used to compare Mathematical Ability among three or more grade levels when the data are not normally distributed.
+</p>
+
+<p><b>Hypotheses</b></p>
+
+<div class="codebox">
+H0: There is no significant difference in Mathematical Ability according to Grade Level.
+
+H1: There is a significant difference in Mathematical Ability according to Grade Level.
+</div>
+
+<p><b>SPSS Procedure</b></p>
+
+<div class="step">
+Analyze -> Nonparametric Tests -> Legacy Dialogs -> K Independent Samples
+</div>
+
+<ul>
+
+<li>Test Variable: Mathematical Ability</li>
+
+<li>Grouping Variable: Grade Level</li>
+
+<li>Define Range (Example: 1 to 4)</li>
+
+<li>Select Kruskal-Wallis H</li>
+
+<li>Click OK</li>
+
+</ul>
+
+<p><b>Interpretation</b></p>
+
+<table>
+
+<tr>
+<th>Sig.</th>
+<th>Decision</th>
+</tr>
+
+<tr>
+<td><= 0.05</td>
+<td>Reject H0. There is a significant difference.</td>
+</tr>
+
+<tr>
+<td>> 0.05</td>
+<td>Fail to reject H0. There is no significant difference.</td>
+</tr>
+
+</table>
+
+<div class="note">
+
+<b>Professor's Note</b>
+
+<p>
+The Kruskal-Wallis H Test is the nonparametric equivalent of the One-Way ANOVA.
+</p>
+
+</div>
+
+</div>
+
+
+
+<a name="np4"></a>
+
+<div class="card">
+
+<h2>Nonparametric Analysis - Question 8</h2>
+
+<h3>Is there a Significant Relationship Between Mathematical Ability and English Proficiency?</h3>
+
+<p><b>Statistical Test:</b> Spearman Rank Correlation (Spearman rho)</p>
+
+<p><b>Purpose</b></p>
+
+<p>
+Determines whether Mathematical Ability and English Proficiency are significantly related when the data are not normally distributed.
+</p>
+
+<p><b>Hypotheses</b></p>
+
+<div class="codebox">
+H0: There is no significant relationship between Mathematical Ability and English Proficiency.
+
+H1: There is a significant relationship between Mathematical Ability and English Proficiency.
+</div>
+
+<p><b>SPSS Procedure</b></p>
+
+<div class="step">
+Analyze -> Correlate -> Bivariate
+</div>
+
+<ul>
+
+<li>Select Mathematical Ability and English Proficiency</li>
+
+<li>Check Spearman</li>
+
+<li>Uncheck Pearson if necessary</li>
+
+<li>Click OK</li>
+
+</ul>
+
+<p><b>Interpretation</b></p>
+
+<p>
+Look at two values:
+</p>
+
+<ul>
+
+<li>Spearman rho - indicates the strength and direction of the relationship.</li>
+
+<li>Sig. (2-tailed) - determines whether the relationship is statistically significant.</li>
+
+</ul>
+
+<table>
+
+<tr>
+<th>Sig.</th>
+<th>Decision</th>
+</tr>
+
+<tr>
+<td><= 0.05</td>
+<td>Reject H0. There is a significant relationship.</td>
+</tr>
+
+<tr>
+<td>> 0.05</td>
+<td>Fail to reject H0. There is no significant relationship.</td>
+</tr>
+
+</table>
+
+<div class="note">
+
+<b>Professor's Note</b>
+
+<p>
+Spearman rho is the nonparametric equivalent of the Pearson Product-Moment Correlation.
+Interpret the direction using the rho value and determine significance using the Sig. value.
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="card">
+
+<h2>Quick Reference Guide</h2>
+
+<p>
+Use this table to quickly identify the appropriate statistical test for each research question.
+</p>
+
+<table>
+
+<tr>
+<th>Question</th>
+<th>Statistical Test</th>
+<th>SPSS Menu</th>
+</tr>
+
+<tr>
+<td>Frequency Distribution</td>
+<td>Frequencies</td>
+<td>Analyze -> Descriptive Statistics -> Frequencies</td>
+</tr>
+
+<tr>
+<td>Mean, Median, Mode</td>
+<td>Frequencies</td>
+<td>Analyze -> Descriptive Statistics -> Frequencies</td>
+</tr>
+
+<tr>
+<td>Standard Deviation, Variance, Range</td>
+<td>Frequencies</td>
+<td>Analyze -> Descriptive Statistics -> Frequencies</td>
+</tr>
+
+<tr>
+<td>Skewness and Kurtosis</td>
+<td>Frequencies</td>
+<td>Analyze -> Descriptive Statistics -> Frequencies</td>
+</tr>
+
+<tr>
+<td>Frequency According to Another Variable</td>
+<td>Crosstabs</td>
+<td>Analyze -> Descriptive Statistics -> Crosstabs</td>
+</tr>
+
+<tr>
+<td>Mean According to Groups</td>
+<td>Means</td>
+<td>Analyze -> Compare Means -> Means</td>
+</tr>
+
+<tr>
+<td>Difference Between Two Independent Groups</td>
+<td>Independent Samples t-test</td>
+<td>Analyze -> Compare Means -> Independent-Samples T Test</td>
+</tr>
+
+<tr>
+<td>Difference Between Two Related Variables</td>
+<td>Paired Samples t-test</td>
+<td>Analyze -> Compare Means -> Paired-Samples T Test</td>
+</tr>
+
+<tr>
+<td>Difference Among Three or More Groups</td>
+<td>One-Way ANOVA</td>
+<td>Analyze -> Compare Means -> One-Way ANOVA</td>
+</tr>
+
+<tr>
+<td>Relationship Between Two Variables</td>
+<td>Pearson Correlation</td>
+<td>Analyze -> Correlate -> Bivariate</td>
+</tr>
+
+<tr>
+<td>Difference Between Two Independent Groups (Nonparametric)</td>
+<td>Mann-Whitney U</td>
+<td>Analyze -> Nonparametric Tests -> Legacy Dialogs -> 2 Independent Samples</td>
+</tr>
+
+<tr>
+<td>Difference Between Two Related Variables (Nonparametric)</td>
+<td>Wilcoxon Signed-Ranks Test</td>
+<td>Analyze -> Nonparametric Tests -> Legacy Dialogs -> 2 Related Samples</td>
+</tr>
+
+<tr>
+<td>Difference Among Three or More Groups (Nonparametric)</td>
+<td>Kruskal-Wallis H</td>
+<td>Analyze -> Nonparametric Tests -> Legacy Dialogs -> K Independent Samples</td>
+</tr>
+
+<tr>
+<td>Relationship Between Two Variables (Nonparametric)</td>
+<td>Spearman rho</td>
+<td>Analyze -> Correlate -> Bivariate</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h2>Decision Guide</h2>
+
+<table>
+
+<tr>
+<th>If the Question Asks...</th>
+<th>Use...</th>
+</tr>
+
+<tr>
+<td>Describe one variable</td>
+<td>Descriptive Statistics</td>
+</tr>
+
+<tr>
+<td>Compare two independent groups</td>
+<td>Independent Samples t-test or Mann-Whitney U</td>
+</tr>
+
+<tr>
+<td>Compare two related scores</td>
+<td>Paired Samples t-test or Wilcoxon Signed-Ranks Test</td>
+</tr>
+
+<tr>
+<td>Compare three or more groups</td>
+<td>One-Way ANOVA or Kruskal-Wallis H</td>
+</tr>
+
+<tr>
+<td>Determine a relationship</td>
+<td>Pearson r or Spearman rho</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h2>Decision Rule for Hypothesis Testing</h2>
+
+<table>
+
+<tr>
+<th>P-value (Sig.)</th>
+<th>Decision</th>
+<th>Conclusion</th>
+</tr>
+
+<tr>
+<td><= 0.05</td>
+<td>Reject the Null Hypothesis (H0)</td>
+<td>There is a significant difference or relationship.</td>
+</tr>
+
+<tr>
+<td>> 0.05</td>
+<td>Fail to Reject the Null Hypothesis (H0)</td>
+<td>There is no significant difference or relationship.</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+
+
+<div class="footer">
+
+<h3>SPSS Statistics Reviewer</h3>
+
+<p>
+Prepared as a reviewer based on the classroom discussion and SPSS laboratory exercises.
+</p>
+
+<p>
+This reviewer summarizes the procedures, interpretation, and statistical tests used to answer the assignment questions in SPSS.
+</p>
+
+<p>
+End of Reviewer
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
