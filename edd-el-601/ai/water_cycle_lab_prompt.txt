@@ -1,0 +1,127 @@
+Create a complete, interactive single-file HTML/CSS/JavaScript educational simulation called "Water Cycle Lab" that teaches students how temperature, humidity, wind speed, and altitude affect the water cycle.
+
+
+
+VISUAL LAYOUT (reference the attached design)
+
+Build a full-screen scene with:
+
+1. A dark blue-to-purple gradient sky background (day/dusk atmosphere), with a glowing sun in the upper right.
+
+2. A layered mountain range silhouette across the middle-lower portion of the screen (3-4 overlapping mountain peaks in varying shades of blue-grey for depth).
+
+3. A body of water (lake/ocean) filling the bottom-left portion of the screen, with a visible waterline.
+
+4. Green tree silhouettes scattered along the base of the mountains and near the water's edge.
+
+5. Animated clouds near the top of the screen that visually grow/shrink and move based on humidity and wind speed values.
+
+6. A brown/earth-toned ground strip along the very bottom.
+
+
+
+CONTROL PANEL (top-left corner)
+
+Create a semi-transparent dark rounded panel titled "WATER CYCLE LAB" with subtitle "Interactive simulation — adjust variables below," containing four sliders:
+
+1. Temperature: range -10°C to 45°C, default 25°C, styled with an orange-to-yellow gradient track.
+
+2. Humidity: range 0% to 100%, default 50%, styled with a blue gradient track.
+
+3. Wind Speed: range 0 to 20 m/s, default 3 m/s, styled with a grey gradient track.
+
+4. Altitude Factor: range 0.5x to 3.0x, default 1.0x, styled with a light gradient track.
+
+
+
+Each slider must show a live numeric readout next to its label (updating in real time as dragged).
+
+
+
+Below the sliders, add three quick-preset buttons: "Rain," "Evap: Medium," and "Temperate" — each button instantly sets all four sliders to a preset combination of values representing that weather scenario, and triggers the simulation to update accordingly.
+
+
+
+PROCESS RATES PANEL (top-right corner)
+
+Create a matching semi-transparent dark rounded panel titled "PROCESS RATES" listing five processes, each with a label and a horizontal progress-bar-style indicator that dynamically fills based on current slider values:
+
+1. Evaporation (orange/red bar) — increases with higher temperature, decreases with higher humidity (since already-saturated air evaporates less).
+
+2. Condensation (light blue bar) — increases with higher humidity and altitude factor, decreases with high temperature.
+
+3. Precipitation (blue bar) — increases when condensation is high AND temperature drops below a threshold (colder air can't hold as much moisture); also influenced by altitude (higher altitude = cooler = more likely precipitation).
+
+4. Runoff (grey bar) — increases with precipitation amount and wind speed (surface flow), low when precipitation is low.
+
+5. Collection (teal/cyan bar) — gradually increases as runoff accumulates, representing water returning to the lake/ocean.
+
+
+
+Each bar's fill percentage must be computed by a JavaScript function using the slider values as inputs (I'll leave exact formulas to your best educational judgment, but ensure the relationships are directionally correct and produce visible, meaningful changes as sliders move — avoid bars that barely change).
+
+
+
+DYNAMIC SCENE ANIMATION
+
+The background scene itself must visually respond to the process rates in real time:
+
+1. Evaporation: when the rate is high, show animated dotted/dashed lines or small rising particle effects moving upward from the water surface toward the clouds, labeled "EVAPORATION" in glowing text near the water.
+
+2. Condensation: clouds should visibly grow larger, more numerous, or more opaque as condensation rate increases; shrink/fade when it's low.
+
+3. Precipitation: when the rate is high, show animated falling raindrop lines/particles beneath the clouds, labeled "PRECIPITATION" in glowing text; the effect should stop or be minimal when precipitation is low.
+
+4. Runoff: show a subtle animated flow line/particle trail moving from the mountains down toward the lake, labeled "RUNOFF" near the mountain base, that appears/intensifies only when runoff rate is meaningful.
+
+5. Collection: the lake/water body's level should very gradually and subtly rise (a few pixels of animated fill increase) as collection accumulates over time, labeled "COLLECTION" near the shoreline.
+
+6. All process labels should be small, semi-transparent, glowing/uppercase text placed at the relevant location in the scene (near water for evaporation/collection, near clouds for condensation, midair for precipitation, near mountains for runoff) — visible only as light annotations, not overwhelming the visuals.
+
+
+
+LEGEND (bottom-left)
+
+Add a small horizontal legend bar with colored dot icons and labels for: Evaporation, Condensation, Precipitation, Runoff, Collection — matching the color scheme used in the Process Rates panel and scene animations.
+
+
+
+INFO/EXPLANATION BOX (bottom-right)
+
+Add a collapsible info panel (with a small toggle/edit icon) titled "How it works" that displays a short, dynamically updated explanation in plain language based on current slider values — e.g., "Increase temperature to boost evaporation. Higher humidity triggers more clouds and precipitation. Wind moves clouds faster. At low temperatures, rain turns to snow." This text should update contextually (e.g., mention snow/freezing when temperature drops below 0°C, mention drought conditions when humidity and precipitation are both very low).
+
+
+
+EDUCATIONAL REQUIREMENTS
+
+1. All cause-and-effect relationships must be scientifically accurate at a middle/high school level: e.g., higher temperature = more evaporation; cooler temperatures + high humidity = condensation and cloud formation; when clouds become saturated, precipitation occurs; higher altitude = cooler temperatures (simulate a lapse-rate-like effect where altitude factor reduces effective temperature for cloud/precipitation calculations); precipitation leads to runoff and eventually collection back into the water body, completing the cycle.
+
+2. Include a brief on-screen note or tooltip explaining that this is a simplified educational model, not a precise meteorological simulator.
+
+3. Optionally, if temperature drops below 0°C, visually indicate snow instead of rain (e.g., small white dot particles falling more slowly, or a "SNOW" label instead of "PRECIPITATION").
+
+
+
+TECHNICAL REQUIREMENTS
+
+- Single HTML file with embedded CSS and JavaScript, no external dependencies except an optional Google Font for the clean sans-serif UI text seen in the reference (e.g., "Inter" or "Space Grotesk").
+
+- All slider changes must update the process rate bars, scene animations, and explanation text smoothly and immediately (no page reload).
+
+- Use CSS transitions/animations for smooth, continuous visual effects (clouds, particles, water level) rather than abrupt changes.
+
+- Fully responsive layout that works on both desktop and tablet screens (usable in a classroom setting).
+
+- Code should be clean, well-commented, and organized into clear sections (HTML structure, CSS styling, JS simulation logic) so I can review and adjust the underlying formulas later.
+
+- Ensure good color contrast and readable text sizes for the UI panels against the dark background.
+
+
+
+CONTEXT FOR YOU
+
+This is for a science/earth systems classroom demonstration. Prioritize clear visual feedback (students should immediately see cause-and-effect when they move a slider) and scientific accuracy over decorative complexity. The reference image I'm providing shows the target visual style — dark atmospheric sky, glassmorphic dark UI panels, mountain/lake landscape, glowing colored labels for each process.
+
+
+
+Please generate the full working code now. 

@@ -1,0 +1,88 @@
+Create a complete, playable single-file HTML/CSS/JavaScript educational math game called "Math Tug of War" featuring Peppa Pig and George.
+
+
+GAME CONCEPT
+
+A two-player (or player-vs-player, taking turns on the same device) tug-of-war game visualized as a horizontal rope with a flag/knot in the middle. On one end is Peppa Pig (pink color scheme), on the other end is George (light blue color scheme). Players take turns answering simple math problems. A correct answer pulls the flag closer to that player's side; an incorrect answer pushes the flag further away (toward the opponent's side). The game ends when the flag reaches either end of the rope, and that character is declared the winner.
+
+
+
+VISUAL DESIGN
+
+1. Overall theme: playful, colorful, kid-friendly design suitable for young students (ages 6-10).
+
+2. Left side: Peppa Pig's zone — pink color scheme (soft pink background gradient, pink accents, pink buttons/UI elements).
+
+3. Right side: George's zone — light blue color scheme (soft blue background gradient, blue accents, blue buttons/UI elements).
+
+4. Center: A horizontal rope (styled as a thick brown/tan line or SVG rope texture) stretching across the screen, with a flag or knot icon in the middle that visually slides left or right based on progress.
+
+5. Simple, cute character representations for Peppa Pig and George — use CSS shapes, SVG, or simple drawn illustrations (circles, ovals, basic shapes) in the appropriate pink/blue palette rather than copyrighted artwork, since I don't have licensed image assets. Label each side clearly with the character's name.
+
+6. Add a progress indicator showing how close the flag is to each end (e.g., a percentage or number of "pulls" remaining).
+
+7. Use a friendly, rounded font (e.g., Comic Sans MS, or a similar Google Font like "Baloo 2" or "Fredoka") for all text.
+
+
+
+GAMEPLAY MECHANICS
+
+1. Two players alternate turns (Player 1 = Peppa's side, Player 2 = George's side). Display whose turn it is clearly at the top of the screen.
+
+2. Each turn, generate a simple math problem appropriate for elementary students:
+
+   - Addition and subtraction within 20 for easier difficulty
+
+   - Include a difficulty selector at the start (Easy / Medium / Hard) that adjusts number ranges and operations (Easy: addition/subtraction to 10, Medium: addition/subtraction to 20 plus simple multiplication, Hard: multiplication/division facts up to 12).
+
+3. Display the problem as large, clear text with a numeric input field (or multiple-choice buttons — please include multiple-choice buttons as the default, since it's easier for young students) and a "Submit Answer" button.
+
+4. On a correct answer:
+
+   - Show a positive animation/feedback (e.g., a green checkmark, a short "cheer" animation, or confetti) in that player's color.
+
+   - Move the flag/knot on the rope one step (e.g., 10% of the rope's length) toward the answering player's side.
+
+   - Briefly display an encouraging message (e.g., "Great job! Peppa's team pulls ahead!").
+
+5. On an incorrect answer:
+
+   - Show a gentle, non-discouraging feedback (e.g., "Not quite! Try the next one!") — avoid harsh negative language since this is for young learners.
+
+   - Move the flag one step toward the OTHER player's side (i.e., away from the player who answered incorrectly).
+
+   - Reveal the correct answer briefly before moving to the next question.
+
+6. Track and display each player's score (number of correct answers) somewhere visible but secondary to the rope progress.
+
+7. The game ends immediately when the flag reaches either end of the rope (fully at Peppa's side or fully at George's side).
+
+8. On game end, show a clear "Winner" screen with the winning character's name and color scheme, celebratory animation (e.g., confetti, bouncing icon), and a "Play Again" button that resets the game (rope back to center, new problems, score reset).
+
+
+
+TECHNICAL REQUIREMENTS
+
+- Single HTML file with embedded CSS and JavaScript (no external dependencies except optionally a Google Font link).
+
+- Fully responsive — should work well on both desktop browsers and tablets, since this may be used in a classroom setting.
+
+- Use CSS transitions/animations for smooth flag movement along the rope (not instant jumps).
+
+- Include a simple start screen with a title, brief instructions, difficulty selector, and a "Start Game" button before the game begins.
+
+- Add sound effect placeholders using the Web Audio API or simple beep tones for correct/incorrect answers (optional but appreciated) — keep these light and non-intrusive, with a mute toggle.
+
+- Code should be clean, well-commented, and organized into clear sections (HTML structure, CSS styling, JS game logic) so I can review and modify it later if needed.
+
+- Ensure math problems don't repeat back-to-back and that answer choices (if multiple choice) are randomized in position each time.
+
+
+
+CONTEXT FOR YOU
+
+This is for elementary classroom use / a demonstration in an educational leadership context, so please prioritize clarity, encouragement, accessibility, and a "gentle" difficulty curve — the goal is confidence-building through fun, not stress or punishment for wrong answers.
+
+
+
+Please generate the full working code now.

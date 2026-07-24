@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Tug of War - Peppa & George</title>
+    <!-- Tailwind CSS for modern responsive utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font "Fredoka" for rounded, friendly, kid-centric typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
+            background: #bce6ff; /* Soft sky blue fallback */
+            overflow-x: hidden;
+        }
+        
+        /* Floating cloud animations for atmospheric Peppa-like sky */
+        @keyframes floatCloud {
+            0% { transform: translateX(-10%); }
+            100% { transform: translateX(110vw); }
+        }
+        .cloud-slow {
+            animation: floatCloud 35s linear infinite;
+        }
+        .cloud-fast {
+            animation: floatCloud 25s linear infinite;
+        }
+        
+        /* Gently bouncing animation for idle pigs */
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.02); }
+        }
+        .bounce-idle {
+            animation: gentleBounce 3s ease-in-out infinite;
+        }
+        
+        /* Winning jump animation */
+        @keyframes celebrateJump {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+        .jump-celebrate {
+            animation: celebrateJump 0.8s ease-in-out infinite;
+        }
+
+        /* Pulling animation when winning a step */
+        @keyframes pullLeft {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-15deg) translateX(-10px); }
+        }
+        @keyframes pullRight {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg) translateX(10px); }
+        }
+        .pull-left-anim {
+            animation: pullLeft 0.5s ease;
+        }
+        .pull-right-anim {
+            animation: pullRight 0.5s ease;
+        }
+
+        /* Smooth flag sliding indicator */
+        .rope-flag {
+            transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative bg-gradient-to-b from-[#b3e5fc] via-[#e1f5fe] to-[#c8e6c9] select-none">
+
+    <!-- Ambient clouds -->
+    <div class="absolute top-10 left-[-150px] cloud-slow opacity-80 pointer-events-none z-0">
+        <svg class="w-24 h-12 text-white fill-current" viewBox="0 0 100 50">
+            <path d="M10,40 Q25,25 40,35 Q55,15 75,30 Q90,20 95,40 Z" />
+        </svg>
+    </div>
+    <div class="absolute top-24 left-[-250px] cloud-fast opacity-90 pointer-events-none z-0" style="animation-delay: -10s;">
+        <svg class="w-36 h-16 text-white fill-current" viewBox="0 0 100 50">
+            <path d="M10,40 Q25,20 45,30 Q65,10 85,30 Q95,25 98,40 Z" />
+        </svg>
+    </div>
+
+    <!-- Background Hills inspired by Peppa Pig aesthetic -->
+    <div class="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-0 overflow-hidden">
+        <svg class="absolute bottom-0 w-full h-full text-[#81c784] fill-current" preserveAspectRatio="none" viewBox="0 0 1000 100">
+            <path d="M0,80 Q250,20 500,70 T1000,60 L1000,100 L0,100 Z" />
+        </svg>
+        <svg class="absolute bottom-0 w-full h-36 text-[#a5d6a7] fill-current opacity-80" preserveAspectRatio="none" viewBox="0 0 1000 100">
+            <path d="M0,60 Q300,90 600,40 T1000,80 L1000,100 L0,100 Z" />
+        </svg>
+    </div>
+
+    <!-- Main Game Container -->
+    <header class="w-full max-w-5xl mx-auto px-4 pt-4 flex justify-between items-center z-10">
+        <div class="flex items-center space-x-3">
+            <span class="text-4xl">🐷</span>
+            <h1 class="text-2xl md:text-3xl font-bold text-pink-600 drop-shadow-sm tracking-wide">Math Tug of War</h1>
+        </div>
+        <!-- Right side tools -->
+        <div class="flex items-center space-x-2">
+            <!-- Mute button -->
+            <button id="btn-mute" class="bg-white/90 border-2 border-amber-400 p-2 rounded-full shadow-md hover:bg-amber-50 active:scale-95 transition-all text-xl" title="Toggle Sound">
+                🔊
+            </button>
+            <!-- Rules Help Icon -->
+            <button id="btn-help" class="bg-white/90 border-2 border-blue-400 p-2 px-3 rounded-full shadow-md hover:bg-blue-50 active:scale-95 transition-all font-bold text-blue-600">
+                Help
+            </button>
+        </div>
+    </header>
+
+    <!-- START MODAL / PRE-GAME OVERLAY -->
+    <div id="start-overlay" class="fixed inset-0 bg-blue-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-3xl border-8 border-pink-300 max-w-md w-full p-6 text-center shadow-2xl relative overflow-hidden">
+            <!-- Background pink/blue splash inside overlay -->
+            <div class="absolute -top-12 -left-12 w-24 h-24 bg-pink-100 rounded-full opacity-50"></div>
+            <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-blue-100 rounded-full opacity-50"></div>
+
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-pink-500 mb-2 drop-shadow-sm">🐷 Tug of War 🦖</h2>
+                <p class="text-slate-600 text-sm md:text-base mb-6 font-semibold">
+                    Take turns solving math questions! A correct answer pulls the flag towards your side. Incorrect answers push it away. First side to pull the flag home wins!
+                </p>
+
+                <!-- Difficulty Selectors -->
+                <div class="mb-6">
+                    <label class="block text-slate-700 font-bold mb-2 text-md">Choose Play Level:</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" onclick="selectDifficulty('easy')" id="diff-easy" class="diff-btn border-4 border-emerald-400 bg-emerald-100 text-emerald-800 p-2.5 rounded-2xl font-bold transition-all hover:bg-emerald-200">
+                            ⭐<br>Easy<br><span class="text-xs font-normal">Add/Sub to 10</span>
+                        </button>
+                        <button type="button" onclick="selectDifficulty('medium')" id="diff-medium" class="diff-btn border-4 border-amber-300 bg-white text-amber-700 p-2.5 rounded-2xl font-bold transition-all hover:bg-amber-100">
+                            ⭐⭐<br>Medium<br><span class="text-xs font-normal">To 20 & Mult</span>
+                        </button>
+                        <button type="button" onclick="selectDifficulty('hard')" id="diff-hard" class="diff-btn border-4 border-rose-300 bg-white text-rose-700 p-2.5 rounded-2xl font-bold transition-all hover:bg-rose-100">
+                            ⭐⭐⭐<br>Hard<br><span class="text-xs font-normal">Mult & Div</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game Setup: Customizing character names or using defaults -->
+                <div class="space-y-3 text-left mb-6">
+                    <div>
+                        <label class="block text-pink-600 font-bold text-xs mb-1">Player 1 (Left Side)</label>
+                        <input type="text" id="p1-name" value="Peppa Pig" class="w-full px-3 py-2 border-2 border-pink-200 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-pink-400 text-pink-700">
+                    </div>
+                    <div>
+                        <label class="block text-blue-500 font-bold text-xs mb-1">Player 2 (Right Side)</label>
+                        <input type="text" id="p2-name" value="George" class="w-full px-3 py-2 border-2 border-blue-200 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-blue-400 text-blue-700">
+                    </div>
+                </div>
+
+                <!-- Play Button -->
+                <button onclick="startGame()" class="w-full bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-extrabold text-2xl py-3 px-6 rounded-2xl shadow-lg border-b-4 border-black/20 hover:scale-[1.02] active:scale-95 transition-all">
+                    Let's Play! 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HELP MODAL -->
+    <div id="help-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-3xl border-4 border-amber-400 max-w-md w-full p-6 text-center shadow-2xl relative">
+            <h3 class="text-2xl font-bold text-amber-600 mb-3">How to Play? 📖</h3>
+            <ul class="text-left space-y-2 text-slate-700 font-semibold text-sm md:text-base mb-6">
+                <li>🎯 <strong>Two players take turns</strong> on the same device. Watch the top screen banner to see whose turn it is.</li>
+                <li>🧠 Solve the math puzzle by tapping on the correct multiple choice button!</li>
+                <li>💪 <strong>A correct answer</strong> pulls the central flag closer to your side by 1 step!</li>
+                <li>⚠️ <strong>An incorrect answer</strong> allows the opposite side to pull the flag toward themselves!</li>
+                <li>🏆 Pull the flag fully into your colored home zone to win the game!</li>
+            </ul>
+            <button onclick="toggleHelp()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-xl transition-colors">
+                Got it!
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN INTERFACE -->
+    <main class="w-full max-w-5xl mx-auto px-4 flex-grow flex flex-col justify-around z-10">
+
+        <!-- Scoreboard and Turn Indicator -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl border-4 border-amber-300 p-3 md:p-4 text-center max-w-xl w-full mx-auto shadow-md">
+            <div id="turn-banner" class="text-xl md:text-2xl font-bold bg-pink-100 text-pink-600 px-4 py-2 rounded-xl transition-all duration-300 inline-block mb-2">
+                🌸 Peppa Pig's Turn!
+            </div>
+            
+            <!-- Quick score indicators -->
+            <div class="flex justify-around items-center text-sm md:text-base mt-1">
+                <div class="text-pink-600 font-bold">
+                    💗 <span id="p1-score-label">Peppa</span> Correct Answers: <span id="p1-score" class="text-lg">0</span>
+                </div>
+                <div class="text-slate-400 font-bold px-2">|</div>
+                <div class="text-blue-600 font-bold">
+                    💙 <span id="p2-score-label">George</span> Correct Answers: <span id="p2-score" class="text-lg">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Tug-Of-War Field -->
+        <div class="relative w-full flex flex-col items-center justify-center my-6 md:my-10 bg-white/40 rounded-3xl border-4 border-white/60 p-4 shadow-inner">
+            
+            <!-- Characters + Rope Row -->
+            <div class="w-full flex justify-between items-center relative min-h-[140px] md:min-h-[180px]">
+                
+                <!-- Left Side: Player 1 (Peppa Pig Styled SVG) -->
+                <div id="character-p1-container" class="flex flex-col items-center z-10 w-24 md:w-36 transition-all duration-300 bounce-idle">
+                    <span id="label-char-p1" class="text-xs md:text-sm font-extrabold text-pink-600 bg-pink-100 px-2 py-0.5 rounded-full border border-pink-300 mb-1">Peppa</span>
+                    <!-- Handcrafted Peppa Pig-inspired SVG -->
+                    <svg id="svg-p1" class="w-20 h-20 md:w-32 md:h-32 drop-shadow-md" viewBox="0 0 100 100">
+                        <!-- Dress -->
+                        <path d="M30,85 L70,85 L60,50 L40,50 Z" fill="#ff4d4d" stroke="#e02d2d" stroke-width="2"/>
+                        <!-- Legs -->
+                        <line x1="42" y1="85" x2="42" y2="95" stroke="#ffb6c1" stroke-width="4"/>
+                        <line x1="58" y1="85" x2="58" y2="95" stroke="#ffb6c1" stroke-width="4"/>
+                        <ellipse cx="42" cy="95" rx="5" ry="3" fill="#000"/>
+                        <ellipse cx="58" cy="95" rx="5" ry="3" fill="#000"/>
+                        <!-- Arms holding rope -->
+                        <path d="M40,58 L10,65" stroke="#ffb6c1" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M60,58 L80,62" stroke="#ffb6c1" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Pig Head -->
+                        <ellipse cx="50" cy="35" rx="22" ry="18" fill="#ffb6c1" stroke="#ff94a6" stroke-width="2"/>
+                        <!-- Snout -->
+                        <path d="M65,30 Q80,30 80,38 Q80,44 65,44" fill="#ffb6c1" stroke="#ff94a6" stroke-width="2"/>
+                        <circle cx="74" cy="34" r="1.5" fill="#ff69b4"/>
+                        <circle cx="74" cy="39" r="1.5" fill="#ff69b4"/>
+                        <!-- Ears -->
+                        <ellipse cx="38" cy="20" rx="4" ry="10" fill="#ffb6c1" stroke="#ff94a6" stroke-width="2" transform="rotate(-15 38 20)"/>
+                        <ellipse cx="48" cy="18" rx="4" ry="10" fill="#ffb6c1" stroke="#ff94a6" stroke-width="2" transform="rotate(5 48 18)"/>
+                        <!-- Eye -->
+                        <circle cx="56" cy="28" r="3.5" fill="#fff"/>
+                        <circle cx="56" cy="28" r="1.5" fill="#000"/>
+                        <!-- Cheek -->
+                        <circle cx="44" cy="38" r="5" fill="#ff69b4" opacity="0.6"/>
+                        <!-- Smile -->
+                        <path d="M52,44 Q60,48 64,42" fill="none" stroke="#ff69b4" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <!-- The Rope -->
+                <div class="absolute left-16 right-16 top-1/2 -translate-y-1/2 h-4 bg-[#d7ccc8] rounded-full border-t-2 border-b-2 border-amber-900/40 shadow-sm z-0 flex items-center">
+                    <!-- Textures / Grooves on rope -->
+                    <div class="w-full h-1 bg-[repeating-linear-gradient(45deg,#8d6e63,#8d6e63_10px,#a1887f_10px,#a1887f_20px)] rounded-full"></div>
+                </div>
+
+                <!-- The Flag/Knot -->
+                <div id="rope-flag" class="rope-flag absolute top-1/2 -translate-y-1/2 w-10 h-14 z-20 flex flex-col items-center" style="left: 50%; transform: translate(-50%, -50%);">
+                    <!-- Beautiful Red Ribbon SVG -->
+                    <svg class="w-full h-full drop-shadow-md animate-pulse" viewBox="0 0 40 50">
+                        <!-- Flag Bow knot -->
+                        <path d="M10,20 Q20,10 30,20 Q40,30 30,40 Q20,50 10,40 Q0,30 10,20 Z" fill="#e53935" stroke="#b71c1c" stroke-width="1.5"/>
+                        <!-- Left ribbon string -->
+                        <path d="M15,30 Q10,42 5,48" fill="none" stroke="#e53935" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Right ribbon string -->
+                        <path d="M25,30 Q30,42 35,48" fill="none" stroke="#e53935" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Center Gold/Yellow Tie -->
+                        <circle cx="20" cy="30" r="4.5" fill="#fdd835" stroke="#f57f17" stroke-width="1"/>
+                    </svg>
+                    <!-- Small Pointer showing progress -->
+                    <div class="w-2 h-2 bg-rose-600 rotate-45 mt-1"></div>
+                </div>
+
+                <!-- Right Side: Player 2 (George Pig Styled SVG) -->
+                <div id="character-p2-container" class="flex flex-col items-center z-10 w-24 md:w-36 transition-all duration-300 bounce-idle">
+                    <span id="label-char-p2" class="text-xs md:text-sm font-extrabold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full border border-blue-300 mb-1">George</span>
+                    <!-- Handcrafted George-inspired SVG -->
+                    <svg id="svg-p2" class="w-20 h-20 md:w-32 md:h-32 drop-shadow-md" viewBox="0 0 100 100">
+                        <!-- Dress (Blue) -->
+                        <path d="M30,85 L70,85 L60,50 L40,50 Z" fill="#29b6f6" stroke="#0288d1" stroke-width="2"/>
+                        <!-- Legs -->
+                        <line x1="42" y1="85" x2="42" y2="95" stroke="#ffb6c1" stroke-width="4"/>
+                        <line x1="58" y1="85" x2="58" y2="95" stroke="#ffb6c1" stroke-width="4"/>
+                        <ellipse cx="42" cy="95" rx="5" ry="3" fill="#000"/>
+                        <ellipse cx="58" cy="95" rx="5" ry="3" fill="#000"/>
+                        <!-- Arms holding rope -->
+                        <path d="M40,58 L20,62" stroke="#ffb6c1" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M60,58 L90,65" stroke="#ffb6c1" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Pig Head (George is slightly smaller than Peppa) -->
+                        <ellipse cx="50" cy="38" rx="20" ry="16" fill="#ffb6c1" stroke="#ff94a6" stroke-width="2"/>
+                        <!-- Snout -->
+                        <path d="M35,33 Q20,33 20,41 Q20,47 35,47" fill="#ffb6c1" stroke="#ff94a6" stroke-width="2"/>
+                        <circle cx="26" cy="37" r="1.5" fill="#ff69b4"/>
+                        <circle cx="26" cy="42" r="1.5" fill="#ff69b4"/>
+                        <!-- Ears -->
+                        <ellipse cx="62" cy="24" rx="4" ry="9" fill="#ffb6c1" stroke="#ff94a6" stroke-width="2" transform="rotate(15 62 24)"/>
+                        <ellipse cx="52" cy="22" rx="4" ry="9" fill="#ffb6c1" stroke="#ff94a6" stroke-width="2" transform="rotate(-5 52 22)"/>
+                        <!-- Eye -->
+                        <circle cx="44" cy="31" r="3.2" fill="#fff"/>
+                        <circle cx="44" cy="31" r="1.5" fill="#000"/>
+                        <!-- Cheek -->
+                        <circle cx="54" cy="41" r="4.5" fill="#ff69b4" opacity="0.6"/>
+                        <!-- Smile -->
+                        <path d="M48,46 Q40,49 36,44" fill="none" stroke="#ff69b4" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+            </div>
+
+            <!-- Step Indicators and Zone Markings -->
+            <div class="w-full flex justify-between px-16 mt-2 text-xs md:text-sm font-bold text-slate-500">
+                <span class="text-pink-500">💖 Peppa's Safety Zone</span>
+                <span id="step-metric-lbl">Middle Point</span>
+                <span class="text-blue-500">George's Safety Zone 💙</span>
+            </div>
+            
+            <!-- Progress Line markers with mini flag steps -->
+            <div class="w-full px-16 mt-1 flex justify-between select-none opacity-40">
+                <span class="w-1.5 h-3 bg-pink-500 rounded-full"></span>
+                <span class="w-1 h-2 bg-slate-400 rounded-full"></span>
+                <span class="w-1 h-2 bg-slate-400 rounded-full"></span>
+                <span class="w-1 h-2 bg-slate-400 rounded-full"></span>
+                <span class="w-1 h-2 bg-slate-400 rounded-full"></span>
+                <span class="w-1.5 h-4 bg-amber-500 rounded-full"></span>
+                <span class="w-1 h-2 bg-slate-400 rounded-full"></span>
+                <span class="w-1 h-2 bg-slate-400 rounded-full"></span>
+                <span class="w-1 h-2 bg-slate-400 rounded-full"></span>
+                <span class="w-1 h-2 bg-slate-400 rounded-full"></span>
+                <span class="w-1.5 h-3 bg-blue-500 rounded-full"></span>
+            </div>
+        </div>
+
+        <!-- MATH AREA -->
+        <div id="math-station" class="w-full max-w-xl mx-auto bg-white/90 backdrop-blur-md rounded-3xl border-8 border-pink-200 p-6 md:p-8 shadow-xl text-center z-10 transition-all duration-300 transform scale-100">
+            
+            <!-- Turn Header Indicator within Station -->
+            <div class="text-sm font-bold tracking-widest text-slate-400 uppercase mb-2">
+                Problem For <span id="current-player-name" class="text-pink-500">Peppa</span>
+            </div>
+
+            <!-- Equation Display -->
+            <div id="equation" class="text-5xl md:text-6xl font-extrabold text-slate-800 my-4 tracking-wide drop-shadow-sm">
+                4 + 5 = ?
+            </div>
+
+            <p class="text-slate-500 font-semibold mb-6 text-sm">Choose the correct flower basket to pull the rope!</p>
+
+            <!-- Choice Buttons Grid (4 Options) -->
+            <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto">
+                <button onclick="checkAnswer(0)" id="choice-0" class="choice-btn group bg-[#fce4ec] hover:bg-pink-100 text-pink-700 border-4 border-pink-300 p-4 rounded-2xl font-bold text-2xl md:text-3xl shadow-md transition-all active:scale-95 flex flex-col items-center justify-center space-y-1">
+                    <span class="text-3xl group-hover:animate-bounce">🌸</span>
+                    <span id="choice-0-txt">9</span>
+                </button>
+                <button onclick="checkAnswer(1)" id="choice-1" class="choice-btn group bg-[#fce4ec] hover:bg-pink-100 text-pink-700 border-4 border-pink-300 p-4 rounded-2xl font-bold text-2xl md:text-3xl shadow-md transition-all active:scale-95 flex flex-col items-center justify-center space-y-1">
+                    <span class="text-3xl group-hover:animate-bounce">🌹</span>
+                    <span id="choice-1-txt">7</span>
+                </button>
+                <button onclick="checkAnswer(2)" id="choice-2" class="choice-btn group bg-[#fce4ec] hover:bg-pink-100 text-pink-700 border-4 border-pink-300 p-4 rounded-2xl font-bold text-2xl md:text-3xl shadow-md transition-all active:scale-95 flex flex-col items-center justify-center space-y-1">
+                    <span class="text-3xl group-hover:animate-bounce">🌻</span>
+                    <span id="choice-2-txt">12</span>
+                </button>
+                <button onclick="checkAnswer(3)" id="choice-3" class="choice-btn group bg-[#fce4ec] hover:bg-pink-100 text-pink-700 border-4 border-pink-300 p-4 rounded-2xl font-bold text-2xl md:text-3xl shadow-md transition-all active:scale-95 flex flex-col items-center justify-center space-y-1">
+                    <span class="text-3xl group-hover:animate-bounce">🌷</span>
+                    <span id="choice-3-txt">6</span>
+                </button>
+            </div>
+            
+            <!-- Live Action Feedback Sub-card -->
+            <div id="feedback-alert" class="mt-6 h-10 flex items-center justify-center font-bold text-lg text-emerald-600 transition-all scale-0">
+                Correct! Peppa's team pulls ahead! 🎉
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER / WATERMARK -->
+    <footer class="w-full max-w-5xl mx-auto px-4 py-4 text-center text-slate-600 text-xs font-semibold z-10 flex flex-col sm:flex-row justify-between items-center bg-white/20 backdrop-blur-sm rounded-t-xl">
+        <span>Designed for young learners • Encouraging Math Growth Confidence</span>
+        <span class="mt-1 sm:mt-0">Inspired by childhood favorites • Educational Sandbox Demonstration</span>
+    </footer>
+
+    <!-- WINNER CELEBRATION MODAL -->
+    <div id="winner-overlay" class="fixed inset-0 bg-[#0d47a1]/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
+        <canvas id="confetti-canvas" class="absolute inset-0 pointer-events-none z-10"></canvas>
+        
+        <div id="winner-card" class="bg-white rounded-3xl border-8 border-yellow-300 max-w-lg w-full p-8 text-center shadow-2xl relative z-20 overflow-hidden scale-90 transition-transform duration-500">
+            <h2 class="text-4xl font-extrabold text-amber-500 mb-2">🎉 WE HAVE A WINNER! 🎉</h2>
+            <div id="winner-hero" class="w-full flex justify-center my-6">
+                <!-- Winning character placeholder will be injected here dynamic styling -->
+            </div>
+            <h3 id="winner-name-lbl" class="text-3xl font-extrabold text-pink-500 mb-3">Peppa Pig Wins!</h3>
+            <p class="text-slate-600 font-semibold mb-6">Excellent job showing off your super-duper math powers! Let's play another round together!</p>
+            
+            <button onclick="resetGame()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold text-2xl py-4 px-10 rounded-2xl shadow-lg border-b-4 border-black/20 hover:scale-[1.03] active:scale-95 transition-all">
+                Play Again! 🔄
+            </button>
+        </div>
+    </div>
+
+    <!-- AUDIO SOUND EFFECTS SETUP VIA WEB AUDIO API -->
+    <script>
+        let audioCtx = null;
+        let isMuted = false;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        // Play positive math sound (happy beep arpeggio)
+        function playSoundCorrect() {
+            if (isMuted) return;
+            initAudio();
+            const now = audioCtx.currentTime;
+            
+            // Oscillator 1 (Warm Triangle)
+            const osc1 = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc1.type = 'triangle';
+            osc1.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            // Fast cheerful arpeggio
+            osc1.frequency.setValueAtTime(392.00, now); // G4
+            osc1.frequency.setValueAtTime(523.25, now + 0.08); // C5
+            osc1.frequency.setValueAtTime(659.25, now + 0.16); // E5
+            osc1.frequency.setValueAtTime(1046.50, now + 0.24); // C6
+            
+            gainNode.gain.setValueAtTime(0.2, now);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+            
+            osc1.start(now);
+            osc1.stop(now + 0.45);
+        }
+
+        // Play wrong answer buzzer sound (soft sliding slide-down sound)
+        function playSoundIncorrect() {
+            if (isMuted) return;
+            initAudio();
+            const now = audioCtx.currentTime;
+            
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            // Gentle sad descending curve
+            osc.frequency.setValueAtTime(220.00, now); // A3
+            osc.frequency.linearRampToValueAtTime(146.83, now + 0.35); // D3
+            
+            gainNode.gain.setValueAtTime(0.12, now);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+            
+            osc.start(now);
+            osc.stop(now + 0.38);
+        }
+
+        // Play win celebration chimes
+        function playSoundVictory() {
+            if (isMuted) return;
+            initAudio();
+            const now = audioCtx.currentTime;
+            
+            const freqs = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+            freqs.forEach((f, idx) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.frequency.setValueAtTime(f, now + (idx * 0.12));
+                gain.gain.setValueAtTime(0.15, now + (idx * 0.12));
+                gain.gain.exponentialRampToValueAtTime(0.001, now + (idx * 0.12) + 0.6);
+                
+                osc.start(now + (idx * 0.12));
+                osc.stop(now + (idx * 0.12) + 0.6);
+            });
+        }
+
+        // Handle Mute Button Interface Toggle
+        document.getElementById('btn-mute').addEventListener('click', () => {
+            isMuted = !isMuted;
+            document.getElementById('btn-mute').textContent = isMuted ? '🔇' : '🔊';
+            document.getElementById('btn-mute').classList.toggle('border-slate-300', isMuted);
+            document.getElementById('btn-mute').classList.toggle('bg-slate-200', isMuted);
+        });
+
+        // Toggle rules modal overlay
+        function toggleHelp() {
+            const overlay = document.getElementById('help-overlay');
+            overlay.classList.toggle('hidden');
+            overlay.classList.toggle('flex');
+        }
+        document.getElementById('btn-help').addEventListener('click', toggleHelp);
+    </script>
+
+    <!-- CORE GAME LOGIC & STATE ENGINE -->
+    <script>
+        // Core game parameters and states
+        const MIN_STEP = 0; // Peppa Pig completely wins
+        const MAX_STEP = 10; // George completely wins
+        const START_STEP = 5; // Perfect dead-center on rope
+
+        let p1Name = "Peppa Pig";
+        let p2Name = "George";
+        
+        let flagPosition = START_STEP; // Begins in center (5)
+        let activePlayer = 1; // 1 = Peppa, 2 = George
+        let difficulty = 'easy'; // 'easy' | 'medium' | 'hard'
+        
+        let p1Score = 0;
+        let p2Score = 0;
+        
+        let currentCorrectAnswer = 0;
+        let lastQuestions = []; // FIFO to avoid immediate repetitions
+
+        // Configuration mapping for dynamic math problem generator based on play level
+        const difficulties = {
+            easy: {
+                rangeMin: 1,
+                rangeMax: 10,
+                operations: ['+', '-']
+            },
+            medium: {
+                rangeMin: 1,
+                rangeMax: 20,
+                operations: ['+', '-', '*'],
+                maxMult: 5
+            },
+            hard: {
+                rangeMin: 1,
+                rangeMax: 100,
+                operations: ['+', '-', '*', '/'],
+                maxMult: 12,
+                maxDiv: 12
+            }
+        };
+
+        // UI Difficulty button highlight toggler
+        function selectDifficulty(selected) {
+            difficulty = selected;
+            document.querySelectorAll('.diff-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-100', 'bg-amber-100', 'bg-rose-100', 'border-emerald-400', 'border-amber-300', 'border-rose-300');
+                btn.classList.add('bg-white');
+            });
+            
+            const btn = document.getElementById(`diff-${selected}`);
+            if (selected === 'easy') {
+                btn.classList.add('bg-emerald-100', 'border-emerald-400');
+            } else if (selected === 'medium') {
+                btn.classList.add('bg-amber-100', 'border-amber-300');
+            } else if (selected === 'hard') {
+                btn.classList.add('bg-rose-100', 'border-rose-300');
+            }
+        }
+
+        // Main game initialize
+        function startGame() {
+            // Retrieve customized participant labels
+            const p1Input = document.getElementById('p1-name').value.trim();
+            const p2Input = document.getElementById('p2-name').value.trim();
+            p1Name = p1Input !== "" ? p1Input : "Peppa Pig";
+            p2Name = p2Input !== "" ? p2Input : "George";
+
+            // Map configured names to appropriate displays across dashboard elements
+            document.getElementById('p1-score-label').textContent = p1Name;
+            document.getElementById('p2-score-label').textContent = p2Name;
+            document.getElementById('label-char-p1').textContent = p1Name;
+            document.getElementById('label-char-p2').textContent = p2Name;
+
+            // Reset engine status
+            flagPosition = START_STEP;
+            p1Score = 0;
+            p2Score = 0;
+            activePlayer = 1; // Left/Peppa starts first
+
+            updateUI();
+            nextTurn();
+
+            // Slide out the entry overlay
+            document.getElementById('start-overlay').classList.add('hidden');
+        }
+
+        // Smart Math Equation Generator
+        function generateMathProblem() {
+            const config = difficulties[difficulty];
+            let num1, num2, op, questionStr, ans;
+
+            // Choose valid operation based on difficulty
+            const opIdx = Math.floor(Math.random() * config.operations.length);
+            op = config.operations[opIdx];
+
+            // Prevent repetitive equation formulas back to back
+            let attempts = 0;
+            do {
+                if (op === '+') {
+                    // Addition
+                    num1 = Math.floor(Math.random() * (config.rangeMax - config.rangeMin + 1)) + config.rangeMin;
+                    num2 = Math.floor(Math.random() * (config.rangeMax - config.rangeMin + 1)) + config.rangeMin;
+                    ans = num1 + num2;
+                    questionStr = `${num1} + ${num2}`;
+                } else if (op === '-') {
+                    // Subtraction (Ensure no negative results for younger players)
+                    num1 = Math.floor(Math.random() * (config.rangeMax - config.rangeMin + 1)) + config.rangeMin;
+                    num2 = Math.floor(Math.random() * (num1 - config.rangeMin + 1)) + config.rangeMin;
+                    ans = num1 - num2;
+                    questionStr = `${num1} - ${num2}`;
+                } else if (op === '*') {
+                    // Multiplication (Limit values depending on level configuration)
+                    const maxFactor = difficulty === 'medium' ? config.maxMult : 12;
+                    num1 = Math.floor(Math.random() * (maxFactor - 2 + 1)) + 2;
+                    num2 = Math.floor(Math.random() * (maxFactor - 2 + 1)) + 2;
+                    ans = num1 * num2;
+                    questionStr = `${num1} × ${num2}`;
+                } else if (op === '/') {
+                    // Division (Designed to always cleanly divide without float residues)
+                    const maxFactor = config.maxDiv;
+                    num2 = Math.floor(Math.random() * (maxFactor - 2 + 1)) + 2; // Divisor
+                    ans = Math.floor(Math.random() * (maxFactor - 1 + 1)) + 1; // Answer
+                    num1 = num2 * ans; // Dividend
+                    questionStr = `${num1} ÷ ${num2}`;
+                }
+                attempts++;
+            } while (lastQuestions.includes(questionStr) && attempts < 10);
+
+            // Keep track of recent equations
+            lastQuestions.push(questionStr);
+            if (lastQuestions.length > 5) lastQuestions.shift();
+
+            // Prepare answer alternatives
+            let choices = new Set();
+            choices.add(ans);
+
+            // Loop to produce reasonable, near-miss distractors
+            while (choices.size < 4) {
+                let offset = Math.floor(Math.random() * 7) - 3; // -3 to +3
+                // For multiplication, maybe tweak factor answers occasionally
+                if (op === '*' && Math.random() > 0.5) {
+                    offset = Math.floor(Math.random() * 3) - 1; // tweak by 1 times another number
+                    offset = offset * num1;
+                }
+                let fakeAns = ans + offset;
+                if (fakeAns >= 0 && fakeAns !== ans) {
+                    choices.add(fakeAns);
+                }
+            }
+
+            return {
+                question: questionStr,
+                answer: ans,
+                options: Array.from(choices).sort(() => Math.random() - 0.5)
+            };
+        }
+
+        // Manage turn cycle transitions
+        function nextTurn() {
+            // Select styling schemes for the interactive active-player UI element card
+            const station = document.getElementById('math-station');
+            const turnBanner = document.getElementById('turn-banner');
+            const activePlayerNameLabel = document.getElementById('current-player-name');
+
+            // Apply contextual background color based on whose turn it is
+            if (activePlayer === 1) {
+                station.className = "w-full max-w-xl mx-auto bg-white/95 backdrop-blur-md rounded-3xl border-8 border-pink-300 p-6 md:p-8 shadow-xl text-center z-10 transition-all duration-300 transform scale-100";
+                turnBanner.className = "text-xl md:text-2xl font-bold bg-pink-100 text-pink-600 px-4 py-2 rounded-xl transition-all duration-300 inline-block mb-2";
+                turnBanner.textContent = `🌸 ${p1Name}'s Turn!`;
+                activePlayerNameLabel.textContent = p1Name;
+                activePlayerNameLabel.className = "text-pink-500 font-extrabold";
+            } else {
+                station.className = "w-full max-w-xl mx-auto bg-white/95 backdrop-blur-md rounded-3xl border-8 border-blue-300 p-6 md:p-8 shadow-xl text-center z-10 transition-all duration-300 transform scale-100";
+                turnBanner.className = "text-xl md:text-2xl font-bold bg-blue-100 text-blue-600 px-4 py-2 rounded-xl transition-all duration-300 inline-block mb-2";
+                turnBanner.textContent = `🦕 ${p2Name}'s Turn!`;
+                activePlayerNameLabel.textContent = p2Name;
+                activePlayerNameLabel.className = "text-blue-500 font-extrabold";
+            }
+
+            // Create new equation set
+            const problem = generateMathProblem();
+            currentCorrectAnswer = problem.answer;
+
+            // Render text
+            document.getElementById('equation').textContent = `${problem.question} = ?`;
+
+            // Draw option selection buttons contextually
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`choice-${i}`);
+                const txt = document.getElementById(`choice-${i}-txt`);
+                txt.textContent = problem.options[i];
+                btn.disabled = false;
+
+                // Colorize the flower buttons appropriately per player turn
+                if (activePlayer === 1) {
+                    btn.className = "choice-btn group bg-[#fce4ec] hover:bg-pink-100 text-pink-700 border-4 border-pink-300 p-4 rounded-2xl font-bold text-2xl md:text-3xl shadow-md transition-all active:scale-95 flex flex-col items-center justify-center space-y-1";
+                } else {
+                    btn.className = "choice-btn group bg-[#e3f2fd] hover:bg-blue-100 text-blue-700 border-4 border-blue-300 p-4 rounded-2xl font-bold text-2xl md:text-3xl shadow-md transition-all active:scale-95 flex flex-col items-center justify-center space-y-1";
+                }
+            }
+        }
+
+        // Evaluate the player's tap/click on answer choice
+        function checkAnswer(choiceIdx) {
+            // Avoid duplicate fast-tapping
+            document.querySelectorAll('.choice-btn').forEach(b => b.disabled = true);
+
+            const selectedValue = parseInt(document.getElementById(`choice-${choiceIdx}-txt`).textContent);
+            const feedbackAlert = document.getElementById('feedback-alert');
+            const isCorrect = (selectedValue === currentCorrectAnswer);
+
+            feedbackAlert.classList.remove('scale-0');
+            feedbackAlert.classList.add('scale-100');
+
+            if (isCorrect) {
+                // Correct path
+                playSoundCorrect();
+
+                if (activePlayer === 1) {
+                    p1Score++;
+                    flagPosition--; // Pulls towards Left (0 is Peppa's end)
+                    feedbackAlert.textContent = `🎉 Correct! ${p1Name} pulls the rope!`;
+                    feedbackAlert.className = "mt-6 h-10 flex items-center justify-center font-bold text-lg text-emerald-600 transition-all";
+                    
+                    // Trigger pulling movement bounce on left side SVG container
+                    const char = document.getElementById('character-p1-container');
+                    char.classList.add('pull-left-anim');
+                    setTimeout(() => char.classList.remove('pull-left-anim'), 500);
+                } else {
+                    p2Score++;
+                    flagPosition++; // Pulls towards Right (10 is George's end)
+                    feedbackAlert.textContent = `🎉 Correct! ${p2Name} pulls the rope!`;
+                    feedbackAlert.className = "mt-6 h-10 flex items-center justify-center font-bold text-lg text-emerald-600 transition-all";
+                    
+                    // Trigger pulling movement bounce on right side SVG container
+                    const char = document.getElementById('character-p2-container');
+                    char.classList.add('pull-right-anim');
+                    setTimeout(() => char.classList.remove('pull-right-anim'), 500);
+                }
+            } else {
+                // Incorrect path
+                playSoundIncorrect();
+
+                if (activePlayer === 1) {
+                    flagPosition++; // Opposite team pulls closer as penalty
+                    feedbackAlert.textContent = `💭 Not quite! Correct was ${currentCorrectAnswer}. George pulls!`;
+                    feedbackAlert.className = "mt-6 h-10 flex items-center justify-center font-bold text-lg text-rose-500 transition-all";
+                    
+                    const char = document.getElementById('character-p2-container');
+                    char.classList.add('pull-right-anim');
+                    setTimeout(() => char.classList.remove('pull-right-anim'), 500);
+                } else {
+                    flagPosition--; // Opposite team pulls closer as penalty
+                    feedbackAlert.textContent = `💭 Not quite! Correct was ${currentCorrectAnswer}. Peppa pulls!`;
+                    feedbackAlert.className = "mt-6 h-10 flex items-center justify-center font-bold text-lg text-rose-500 transition-all";
+                    
+                    const char = document.getElementById('character-p1-container');
+                    char.classList.add('pull-left-anim');
+                    setTimeout(() => char.classList.remove('pull-left-anim'), 500);
+                }
+            }
+
+            // Sync visual positioning of the rope and counts
+            updateUI();
+
+            // Hold brief pause for visual response validation then proceed
+            setTimeout(() => {
+                feedbackAlert.classList.add('scale-0');
+                feedbackAlert.classList.remove('scale-100');
+
+                // Evaluate whether flag reaches absolute endpoints (0 or 10)
+                if (flagPosition <= MIN_STEP) {
+                    declareWinner(1);
+                } else if (flagPosition >= MAX_STEP) {
+                    declareWinner(2);
+                } else {
+                    // Switch turn to the next player
+                    activePlayer = activePlayer === 1 ? 2 : 1;
+                    nextTurn();
+                }
+            }, 2500);
+        }
+
+        // Sync layout coordinates
+        function updateUI() {
+            // Update score counts
+            document.getElementById('p1-score').textContent = p1Score;
+            document.getElementById('p2-score').textContent = p2Score;
+
+            // Map flag positions smoothly (0 to 10 mapped to percentage range 16% to 84%)
+            // We reserve padding so flag doesn't visually fly completely off the rope line layout boundaries
+            const minPct = 16;
+            const maxPct = 84;
+            const calculatedPct = minPct + ((flagPosition / MAX_STEP) * (maxPct - minPct));
+            
+            const flag = document.getElementById('rope-flag');
+            flag.style.left = `${calculatedPct}%`;
+
+            // Adjust numerical distance indicator label
+            const distanceLabel = document.getElementById('step-metric-lbl');
+            const stepsRemaining = Math.abs(5 - flagPosition);
+            if (flagPosition === 5) {
+                distanceLabel.textContent = "Middle Point";
+                distanceLabel.className = "text-slate-500 font-bold text-sm";
+            } else if (flagPosition < 5) {
+                distanceLabel.textContent = `← ${p1Name} leading by ${stepsRemaining}!`;
+                distanceLabel.className = "text-pink-600 font-bold text-sm animate-pulse";
+            } else {
+                distanceLabel.textContent = `George leading by ${stepsRemaining}! →`;
+                distanceLabel.className = "text-blue-600 font-bold text-sm animate-pulse";
+            }
+        }
+
+        // Winner screen rendering
+        function declareWinner(winnerIndex) {
+            playSoundVictory();
+            
+            const winnerOverlay = document.getElementById('winner-overlay');
+            const winnerHero = document.getElementById('winner-hero');
+            const winnerLabel = document.getElementById('winner-name-lbl');
+            const winnerCard = document.getElementById('winner-card');
+
+            // Copy winning character SVG into victory frame overlay with playful bouncing animations
+            if (winnerIndex === 1) {
+                winnerLabel.textContent = `${p1Name} Wins! 🏆`;
+                winnerLabel.className = "text-4xl font-extrabold text-pink-500 mb-3";
+                winnerHero.innerHTML = `
+                    <div class="jump-celebrate">
+                        ${document.getElementById('svg-p1').outerHTML}
+                    </div>
+                `;
+                winnerCard.className = "bg-white rounded-3xl border-8 border-pink-400 max-w-lg w-full p-8 text-center shadow-2xl relative z-20 scale-100 transition-transform duration-500";
+            } else {
+                winnerLabel.textContent = `${p2Name} Wins! 🏆`;
+                winnerLabel.className = "text-4xl font-extrabold text-blue-500 mb-3";
+                winnerHero.innerHTML = `
+                    <div class="jump-celebrate">
+                        ${document.getElementById('svg-p2').outerHTML}
+                    </div>
+                `;
+                winnerCard.className = "bg-white rounded-3xl border-8 border-blue-400 max-w-lg w-full p-8 text-center shadow-2xl relative z-20 scale-100 transition-transform duration-500";
+            }
+
+            winnerOverlay.classList.remove('hidden');
+            winnerOverlay.classList.add('flex');
+
+            // Trigger visual Confetti cascade
+            initConfetti();
+        }
+
+        // Reset game to default settings and show configuration overlay
+        function resetGame() {
+            // Stop confetti loops if active
+            stopConfetti();
+            
+            // Hide win modal
+            document.getElementById('winner-overlay').classList.add('hidden');
+            document.getElementById('winner-overlay').classList.remove('flex');
+            
+            // Re-show setup overlay
+            document.getElementById('start-overlay').classList.remove('hidden');
+        }
+    </script>
+
+    <!-- CELEBRATION CONFETTI SCRIPT -->
+    <script>
+        let canvas = null;
+        let ctx = null;
+        let animationFrameId = null;
+        let particles = [];
+        let confettiActive = false;
+
+        function initConfetti() {
+            canvas = document.getElementById('confetti-canvas');
+            ctx = canvas.getContext('2d');
+            resizeConfettiCanvas();
+            
+            window.addEventListener('resize', resizeConfettiCanvas);
+            
+            particles = [];
+            confettiActive = true;
+            
+            // Spawn 100 colorful falling paper particles
+            for (let i = 0; i < 120; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 8 + 6,
+                    color: `hsl(${Math.random() * 360}, 90%, 65%)`,
+                    speedX: Math.random() * 3 - 1.5,
+                    speedY: Math.random() * 4 + 2,
+                    rotation: Math.random() * 360,
+                    rotationSpeed: Math.random() * 4 - 2
+                });
+            }
+            
+            animateConfetti();
+        }
+
+        function resizeConfettiCanvas() {
+            if (canvas) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        }
+
+        function animateConfetti() {
+            if (!confettiActive) return;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach((p) => {
+                p.y += p.speedY;
+                p.x += p.speedX;
+                p.rotation += p.rotationSpeed;
+                
+                // Wrap around at base of canvas
+                if (p.y > canvas.height) {
+                    p.y = -20;
+                    p.x = Math.random() * canvas.width;
+                }
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                ctx.restore();
+            });
+
+            animationFrameId = requestAnimationFrame(animateConfetti);
+        }
+
+        function stopConfetti() {
+            confettiActive = false;
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            if (ctx && canvas) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            window.removeEventListener('resize', resizeConfettiCanvas);
+        }
+    </script>
+</body>
+</html>

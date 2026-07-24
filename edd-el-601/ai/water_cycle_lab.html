@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Cycle Lab - Interactive Simulation</title>
+    <!-- Inter Google Font for ultra-clean UI typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        /* Ambient glowing labels in the landscape */
+        .ambient-label {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(56, 189, 248, 0.4);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* Custom sliders styling */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        input[type="range"]:focus {
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid #0f172a;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+            margin-top: -6px;
+            transition: transform 0.15s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.25);
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 6px;
+            border-radius: 3px;
+        }
+
+        /* Sun Pulse Animation */
+        @keyframes sun-pulsate {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(253, 224, 71, 0.6)); }
+            50% { transform: scale(1.06); filter: drop-shadow(0 0 50px rgba(253, 224, 71, 0.9)); }
+        }
+        .sun-glow {
+            animation: sun-pulsate 10s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        /* Cloud Floating Dynamics */
+        @keyframes drift {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating-cloud {
+            animation: drift 8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 overflow-hidden font-sans h-screen w-screen select-none">
+
+    <div class="relative w-full h-full flex flex-col md:flex-row overflow-hidden">
+        
+        <!-- ========================================== -->
+        <!-- SIMULATION STAGE (BACKGROUNDS & GRAPHICS) -->
+        <!-- ========================================== -->
+        <div id="stage-container" class="absolute inset-0 w-full h-full z-0 overflow-hidden">
+            <!-- Sky Gradient Atmospheric Backdrop -->
+            <div id="sky-backdrop" class="absolute inset-0 transition-colors duration-1000 bg-gradient-to-b from-slate-950 via-indigo-950 to-slate-900"></div>
+            
+            <!-- Radiant Glowing Sun -->
+            <div class="absolute top-[8%] right-[10%] z-10 pointer-events-none">
+                <svg width="220" height="220" viewBox="0 0 100 100" class="sun-glow">
+                    <circle cx="50" cy="50" r="28" fill="url(#sunGrad)" />
+                    <defs>
+                        <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#ffffff" />
+                            <stop offset="35%" stop-color="#fef08a" />
+                            <stop offset="100%" stop-color="#eab308" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <!-- Complex Vector SVG Layer for Mountains, Lakes, and Rivers -->
+            <svg id="landscape-svg" class="absolute inset-0 w-full h-full pointer-events-none z-10" preserveAspectRatio="none">
+                <defs>
+                    <!-- Soft Haze Filter for Atmospheric Depth -->
+                    <linearGradient id="hazeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0" />
+                        <stop offset="100%" stop-color="#020617" stop-opacity="0.5" />
+                    </linearGradient>
+
+                    <!-- Mountain Fill Gradients -->
+                    <linearGradient id="mountFar" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#1e1b4b" />
+                        <stop offset="100%" stop-color="#0f172a" />
+                    </linearGradient>
+                    <linearGradient id="mountMid" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#0f172a" />
+                        <stop offset="100%" stop-color="#090d16" />
+                    </linearGradient>
+                    <linearGradient id="mountFore" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#090d16" />
+                        <stop offset="100%" stop-color="#020617" />
+                    </linearGradient>
+
+                    <!-- Water Gradient -->
+                    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.8" />
+                        <stop offset="40%" stop-color="#0284c7" stop-opacity="0.9" />
+                        <stop offset="100%" stop-color="#075985" stop-opacity="0.95" />
+                    </linearGradient>
+
+                    <!-- Runoff Neon Glow Effect -->
+                    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+
+                <!-- 1. Layered Procedural Mountains -->
+                <path id="mountain-layer-far" fill="url(#mountFar)" opacity="0.5" />
+                <path id="mountain-layer-mid" fill="url(#mountMid)" opacity="0.8" />
+                <path id="mountain-layer-fore" fill="url(#mountFore)" />
+
+                <!-- 2. Dynamic Temperature-Controlled Snow Caps -->
+                <g id="snow-caps-group"></g>
+
+                <!-- 3. Dynamic Real-Time Runoff Flow Contour Lines -->
+                <g id="runoff-streams-group" filter="url(#neon-glow)"></g>
+
+                <!-- 4. Background Haze Overlay -->
+                <rect width="100%" height="100%" fill="url(#hazeGrad)" />
+
+                <!-- 5. Vegetation Group (Procedural Trees) -->
+                <g id="trees-group"></g>
+
+                <!-- 6. Lake Body (Adaptive height baseline) -->
+                <path id="lake-polygon" fill="url(#waterGrad)" />
+            </svg>
+
+            <!-- Animated Flying Clouds Layer -->
+            <div id="clouds-viewport" class="absolute top-[4%] left-0 w-full h-[35%] z-20 pointer-events-none">
+                <!-- Cloud Node 1 -->
+                <div id="cloud-1" class="absolute floating-cloud transition-all duration-1000 ease-out" style="left: 10%; top: 10%;">
+                    <svg width="240" height="130" viewBox="0 0 200 100" fill="#f8fafc" class="drop-shadow-2xl opacity-80 transition-all duration-1000">
+                        <path d="M 30,75 A 25,25 0 0,1 55,45 A 35,35 0 0,1 120,35 A 30,30 0 0,1 170,60 A 25,25 0 0,1 160,95 L 40,95 A 25,25 0 0,1 30,75 Z" />
+                    </svg>
+                </div>
+                <!-- Cloud Node 2 -->
+                <div id="cloud-2" class="absolute floating-cloud transition-all duration-1000 ease-out" style="left: 42%; top: 5%; animation-delay: -2s;">
+                    <svg width="340" height="170" viewBox="0 0 200 100" fill="#f1f5f9" class="drop-shadow-2xl opacity-90 transition-all duration-1000">
+                        <path d="M 30,75 A 25,25 0 0,1 55,45 A 35,35 0 0,1 120,35 A 30,30 0 0,1 170,60 A 25,25 0 0,1 160,95 L 40,95 A 25,25 0 0,1 30,75 Z" />
+                    </svg>
+                </div>
+                <!-- Cloud Node 3 -->
+                <div id="cloud-3" class="absolute floating-cloud transition-all duration-1000 ease-out" style="left: 72%; top: 16%; animation-delay: -4.5s;">
+                    <svg width="210" height="110" viewBox="0 0 200 100" fill="#cbd5e1" class="drop-shadow-xl opacity-75 transition-all duration-1000">
+                        <path d="M 30,75 A 25,25 0 0,1 55,45 A 35,35 0 0,1 120,35 A 30,30 0 0,1 170,60 A 25,25 0 0,1 160,95 L 40,95 A 25,25 0 0,1 30,75 Z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Core Particle & Physical FX Render Overlay -->
+            <canvas id="stage-canvas" class="absolute inset-0 w-full h-full z-20 pointer-events-none"></canvas>
+
+            <!-- Bottom Terrain Strip -->
+            <div id="terrain-floor" class="absolute bottom-0 left-0 w-full h-4 bg-gradient-to-t from-[#1b120c] to-[#3b2314] border-t border-amber-950/20 z-30"></div>
+
+            <!-- Dynamic Scientific Annotation Labels -->
+            <div id="scene-annotations" class="absolute inset-0 z-25 pointer-events-none w-full h-full font-bold uppercase tracking-widest text-[11px] select-none">
+                <!-- Evaporation -->
+                <div id="label-evaporation" class="absolute ambient-label text-orange-400 opacity-0 flex flex-col items-center gap-0.5" style="left: 18%; bottom: 18%;">
+                    <span class="bg-slate-950/80 px-2.5 py-1 rounded-lg border border-orange-500/30">Evaporation</span>
+                    <span class="text-base animate-bounce">↑</span>
+                </div>
+                <!-- Condensation -->
+                <div id="label-condensation" class="absolute ambient-label text-sky-300 opacity-0 flex flex-col items-center" style="left: 48%; top: 32%;">
+                    <span class="bg-slate-950/80 px-2.5 py-1 rounded-lg border border-sky-400/30">Condensation</span>
+                </div>
+                <!-- Precipitation -->
+                <div id="label-precipitation" class="absolute ambient-label text-blue-400 opacity-0 flex flex-col items-center gap-0.5" style="left: 65%; top: 48%;">
+                    <span id="label-precipitation-text" class="bg-slate-950/80 px-2.5 py-1 rounded-lg border border-blue-500/30">Precipitation</span>
+                    <span class="text-base animate-bounce">↓</span>
+                </div>
+                <!-- Runoff -->
+                <div id="label-runoff" class="absolute ambient-label text-cyan-400 opacity-0 flex flex-col items-center" style="left: 45%; bottom: 42%;">
+                    <span class="bg-slate-950/80 px-2.5 py-1 rounded-lg border border-cyan-500/30">Runoff Flow</span>
+                </div>
+                <!-- Collection -->
+                <div id="label-collection" class="absolute ambient-label text-teal-300 opacity-0 flex flex-col items-center" style="left: 36%; bottom: 10%;">
+                    <span class="bg-slate-950/80 px-2.5 py-1 rounded-lg border border-teal-400/30">Collection</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- CONTROL PANEL HUD (LEFT COLUMN)            -->
+        <!-- ========================================== -->
+        <div class="relative z-30 w-full md:w-[380px] p-4 flex flex-col gap-4 shrink-0 overflow-y-auto max-h-screen pointer-events-none">
+            <div class="pointer-events-auto bg-slate-950/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 shadow-2xl flex flex-col gap-5">
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-400 via-blue-200 to-indigo-300 bg-clip-text text-transparent">WATER CYCLE LAB</h1>
+                    <p class="text-[11px] text-slate-400 mt-1">Interactive simulation — adjust variables below</p>
+                </div>
+
+                <!-- Sliders Section -->
+                <div class="flex flex-col gap-4.5">
+                    <!-- Temperature -->
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-semibold flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)]"></span> Temperature
+                            </span>
+                            <span id="val-temp" class="text-orange-400 font-bold font-mono bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">25°C</span>
+                        </div>
+                        <input id="slider-temp" type="range" min="-10" max="45" value="25" class="w-full h-1.5 rounded-lg appearance-none cursor-pointer" style="background: linear-gradient(to right, #3b82f6, #eab308, #ef4444);">
+                    </div>
+
+                    <!-- Humidity -->
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-semibold flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.6)]"></span> Humidity
+                            </span>
+                            <span id="val-humidity" class="text-sky-400 font-bold font-mono bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">50%</span>
+                        </div>
+                        <input id="slider-humidity" type="range" min="0" max="100" value="50" class="w-full h-1.5 rounded-lg appearance-none cursor-pointer" style="background: linear-gradient(to right, #1e293b, #0ea5e9);">
+                    </div>
+
+                    <!-- Wind Speed -->
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-semibold flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-slate-400 shadow-[0_0_8px_rgba(148,163,184,0.6)]"></span> Wind Speed
+                            </span>
+                            <span id="val-wind" class="text-slate-300 font-bold font-mono bg-slate-500/10 px-2 py-0.5 rounded border border-slate-500/20">3 m/s</span>
+                        </div>
+                        <input id="slider-wind" type="range" min="0" max="20" value="3" class="w-full h-1.5 rounded-lg appearance-none cursor-pointer" style="background: linear-gradient(to right, #0f172a, #94a3b8);">
+                    </div>
+
+                    <!-- Altitude -->
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-semibold flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]"></span> Altitude Factor
+                            </span>
+                            <span id="val-altitude" class="text-purple-400 font-bold font-mono bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">1.0x</span>
+                        </div>
+                        <input id="slider-altitude" type="range" min="0.5" max="3.0" step="0.1" value="1.0" class="w-full h-1.5 rounded-lg appearance-none cursor-pointer" style="background: linear-gradient(to right, #0f172a, #a855f7);">
+                    </div>
+                </div>
+
+                <!-- Presets Scenario Section -->
+                <div class="border-t border-slate-800 pt-4">
+                    <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">Scenarios</span>
+                    <div class="grid grid-cols-3 gap-2 mt-2">
+                        <button onclick="applyPreset('rain')" class="px-2 py-2 bg-blue-600/20 hover:bg-blue-600/45 border border-blue-500/30 rounded-xl text-xs font-semibold text-blue-200 transition-all hover:scale-[1.03] active:scale-[0.97]">
+                            🌧️ Rain
+                        </button>
+                        <button onclick="applyPreset('evap')" class="px-2 py-2 bg-orange-600/20 hover:bg-orange-600/45 border border-orange-500/30 rounded-xl text-xs font-semibold text-orange-200 transition-all hover:scale-[1.03] active:scale-[0.97]">
+                            ☀️ Evap: Med
+                        </button>
+                        <button onclick="applyPreset('temperate')" class="px-2 py-2 bg-teal-600/20 hover:bg-teal-600/45 border border-teal-500/30 rounded-xl text-xs font-semibold text-teal-200 transition-all hover:scale-[1.03] active:scale-[0.97]">
+                            🍃 Temperate
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Legend Overlay (Bottom Left Layout Placement) -->
+            <div class="pointer-events-auto bg-slate-950/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 shadow-2xl flex flex-col gap-2.5">
+                <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase">Visual Legend</span>
+                <div class="grid grid-cols-2 gap-2 text-xs text-slate-300">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-orange-500 border border-orange-300/20 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></span>
+                        <span>Evaporation</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-sky-300 border border-sky-100/20 shadow-[0_0_6px_rgba(125,211,252,0.5)]"></span>
+                        <span>Condensation</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 border border-blue-300/20 shadow-[0_0_6px_rgba(59,130,246,0.5)]"></span>
+                        <span>Precipitation</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 border border-cyan-200/20 shadow-[0_0_6px_rgba(34,211,238,0.5)]"></span>
+                        <span>Runoff Flow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PROCESS RATES & DYNAMIC EXPLANATION PANEL   -->
+        <!-- ========================================== -->
+        <div class="relative z-30 w-full md:w-[380px] p-4 ml-auto flex flex-col gap-4 shrink-0 overflow-y-auto max-h-screen pointer-events-none">
+            
+            <!-- Process Rates HUD -->
+            <div class="pointer-events-auto bg-slate-950/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 shadow-2xl flex flex-col gap-4">
+                <div>
+                    <h2 class="text-sm font-extrabold tracking-wider text-slate-300 uppercase">Process Rates</h2>
+                    <p class="text-[11px] text-slate-400">Dynamic cycle feedback loop metrics</p>
+                </div>
+
+                <!-- Rates Display Stack -->
+                <div class="flex flex-col gap-3.5">
+                    <!-- Evaporation -->
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-medium">Evaporation Rate</span>
+                            <span id="rate-text-evap" class="font-mono text-orange-400 font-extrabold">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-950 rounded-full border border-slate-800/80 overflow-hidden">
+                            <div id="bar-evap" class="h-full bg-gradient-to-r from-orange-600 to-amber-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Condensation -->
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-medium">Condensation Rate</span>
+                            <span id="rate-text-cond" class="font-mono text-sky-400 font-extrabold">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-950 rounded-full border border-slate-800/80 overflow-hidden">
+                            <div id="bar-cond" class="h-full bg-gradient-to-r from-sky-600 to-sky-300 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Precipitation -->
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-medium">Precipitation Rate</span>
+                            <span id="rate-text-precip" class="font-mono text-blue-400 font-extrabold">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-950 rounded-full border border-slate-800/80 overflow-hidden">
+                            <div id="bar-precip" class="h-full bg-gradient-to-r from-blue-700 to-blue-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Runoff -->
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-medium">Runoff Rate</span>
+                            <span id="rate-text-runoff" class="font-mono text-cyan-400 font-extrabold">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-950 rounded-full border border-slate-800/80 overflow-hidden">
+                            <div id="bar-runoff" class="h-full bg-gradient-to-r from-cyan-600 to-cyan-300 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Collection -->
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-300 font-medium">Collection Rate</span>
+                            <span id="rate-text-collec" class="font-mono text-teal-400 font-extrabold">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-950 rounded-full border border-slate-800/80 overflow-hidden">
+                            <div id="bar-collec" class="h-full bg-gradient-to-r from-teal-600 to-emerald-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collapsible Info / Educational Box -->
+            <div class="pointer-events-auto bg-slate-950/80 backdrop-blur-xl border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300">
+                <button onclick="toggleInfoPanel()" class="w-full p-4 flex justify-between items-center text-left hover:bg-slate-900/40 transition-colors">
+                    <div class="flex items-center gap-2">
+                        <span class="text-indigo-400 text-sm">💡</span>
+                        <h2 class="text-xs font-bold tracking-wider text-slate-300 uppercase">How It Works</h2>
+                    </div>
+                    <svg id="chevron-icon" class="w-4 h-4 text-slate-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                
+                <div id="info-drawer" class="px-4 pb-4 flex flex-col gap-3 max-h-[220px] overflow-y-auto text-xs text-slate-300 border-t border-slate-900/60 pt-3 transition-all duration-300">
+                    <p id="context-explanation" class="leading-relaxed"></p>
+                    <div class="p-2.5 bg-indigo-950/40 rounded-lg border border-indigo-500/20 text-[11px] leading-relaxed text-indigo-200">
+                        <span class="font-semibold block mb-0.5">🎓 Scientific Concept</span>
+                        Lapse rates describe atmospheric cooling as altitude increases, accelerating condensation and precipitation when moist air rises.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Disclaimer Card -->
+            <div class="text-[10px] text-slate-400/80 text-center px-4 leading-normal select-none">
+                Note: This is a simplified educational laboratory model illustrating fundamental Thermodynamic concepts, not a meteorological simulator.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- CORE SIMULATION ENGINE JAVASCRIPT          -->
+    <!-- ========================================== -->
+    <script>
+        // Inputs
+        const sliderTemp = document.getElementById('slider-temp');
+        const sliderHumidity = document.getElementById('slider-humidity');
+        const sliderWind = document.getElementById('slider-wind');
+        const sliderAltitude = document.getElementById('slider-altitude');
+
+        // Numeric Readouts
+        const valTemp = document.getElementById('val-temp');
+        const valHumidity = document.getElementById('val-humidity');
+        const valWind = document.getElementById('val-wind');
+        const valAltitude = document.getElementById('val-altitude');
+
+        // Progress Metric Bars
+        const barEvap = document.getElementById('bar-evap');
+        const barCond = document.getElementById('bar-cond');
+        const barPrecip = document.getElementById('bar-precip');
+        const barRunoff = document.getElementById('bar-runoff');
+        const barCollec = document.getElementById('bar-collec');
+
+        const rateTextEvap = document.getElementById('rate-text-evap');
+        const rateTextCond = document.getElementById('rate-text-cond');
+        const rateTextPrecip = document.getElementById('rate-text-precip');
+        const rateTextRunoff = document.getElementById('rate-text-runoff');
+        const rateTextCollec = document.getElementById('rate-text-collec');
+
+        // Scene Element Labels
+        const labelEvap = document.getElementById('label-evaporation');
+        const labelCond = document.getElementById('label-condensation');
+        const labelPrecip = document.getElementById('label-precipitation');
+        const labelPrecipText = document.getElementById('label-precipitation-text');
+        const labelRunoff = document.getElementById('label-runoff');
+        const labelCollec = document.getElementById('label-collection');
+
+        // Cloud Visual DOM nodes
+        const cloudNodes = [
+            document.getElementById('cloud-1'),
+            document.getElementById('cloud-2'),
+            document.getElementById('cloud-3')
+        ];
+
+        // Explanations drawer elements
+        const infoDrawer = document.getElementById('info-drawer');
+        const chevronIcon = document.getElementById('chevron-icon');
+        const contextExplanation = document.getElementById('context-explanation');
+
+        // Canvas Setup
+        const canvas = document.getElementById('stage-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Global responsive dims
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        // Dynamic State Registers
+        let isInfoOpen = true;
+        let currentWaterLevelOffset = 0; // Cumulative lake elevation shift
+
+        // Flow delays & accumulation modeling variables
+        let precipTimer = 0.0;
+        let runoffTimer = 0.0;
+        let lastTime = performance.now();
+
+        // Smoothed process states (for delayed animations & smooth HUD metrics transitions)
+        let smoothedRates = {
+            evaporation: 0,
+            condensation: 0,
+            precipitation: 0,
+            runoff: 0,
+            collection: 0
+        };
+
+        // Static Mountains coordinate buffers to align runoff streams precisely
+        let foregroundMountainPoints = [];
+
+        // Particle System Buffers
+        const particles = {
+            evaporation: [],
+            precipitation: []
+        };
+
+        // Presets profiles definitions
+        const presets = {
+            rain: { temp: 12, humidity: 95, wind: 5, altitude: 1.8 },
+            evap: { temp: 38, humidity: 10, wind: 12, altitude: 0.7 },
+            temperate: { temp: 22, humidity: 50, wind: 3, altitude: 1.0 }
+        };
+
+        // Cloud Horizontal Drift positions
+        let cloudOffsets = [10, 42, 72];
+
+        window.onload = function() {
+            setupSliders();
+            generateAllMountainLayers();
+            createTreeSilhouettes();
+            updateSimulation();
+            requestAnimationFrame(animationLoop);
+        };
+
+        window.onresize = function() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            generateAllMountainLayers();
+            createTreeSilhouettes();
+        };
+
+        function toggleInfoPanel() {
+            isInfoOpen = !isInfoOpen;
+            if (isInfoOpen) {
+                infoDrawer.classList.remove('hidden');
+                chevronIcon.classList.remove('rotate-180');
+            } else {
+                infoDrawer.classList.add('hidden');
+                chevronIcon.classList.add('rotate-180');
+            }
+        }
+
+        function applyPreset(presetType) {
+            const p = presets[presetType];
+            if (!p) return;
+            animateSliderToValue(sliderTemp, p.temp);
+            animateSliderToValue(sliderHumidity, p.humidity);
+            animateSliderToValue(sliderWind, p.wind);
+            animateSliderToValue(sliderAltitude, p.altitude);
+        }
+
+        function animateSliderToValue(slider, targetVal) {
+            let startVal = parseFloat(slider.value);
+            let diff = targetVal - startVal;
+            let steps = 15;
+            let stepNum = 0;
+            
+            function step() {
+                stepNum++;
+                slider.value = startVal + (diff * (stepNum / steps));
+                slider.dispatchEvent(new Event('input'));
+                if (stepNum < steps) {
+                    requestAnimationFrame(step);
+                }
+            }
+            step();
+        }
+
+        function setupSliders() {
+            const eventHandler = () => {
+                valTemp.textContent = `${sliderTemp.value}°C`;
+                valHumidity.textContent = `${sliderHumidity.value}%`;
+                valWind.textContent = `${sliderWind.value} m/s`;
+                valAltitude.textContent = `${parseFloat(sliderAltitude.value).toFixed(1)}x`;
+                updateSimulation();
+            };
+
+            sliderTemp.addEventListener('input', eventHandler);
+            sliderHumidity.addEventListener('input', eventHandler);
+            sliderWind.addEventListener('input', eventHandler);
+            sliderAltitude.addEventListener('input', eventHandler);
+        }
+
+        function seededRandom(seed) {
+            let x = Math.sin(seed) * 10000;
+            return x - Math.floor(x);
+        }
+
+        // ========================================================
+        // MOUNTAIN RENDERING ENGINE
+        // ========================================================
+        function generateMountainRange(numPoints, yBaseFactor, varianceFactor, seed) {
+            let points = [];
+            points.push({ x: 0, y: height });
+            points.push({ x: 0, y: height * yBaseFactor });
+
+            for (let i = 1; i < numPoints; i++) {
+                let x = (i / numPoints) * width;
+                let r = seededRandom(seed + i);
+                let y = height * (yBaseFactor - (r * varianceFactor));
+                points.push({ x: x, y: y });
+            }
+
+            points.push({ x: width, y: height * yBaseFactor });
+            points.push({ x: width, y: height });
+            return points;
+        }
+
+        function buildSVGPath(points) {
+            let path = `M ${points[0].x},${points[0].y}`;
+            for (let i = 1; i < points.length; i++) {
+                path += ` L ${points[i].x},${points[i].y}`;
+            }
+            path += " Z";
+            return path;
+        }
+
+        function generateAllMountainLayers() {
+            // Far mountains
+            let farPoints = generateMountainRange(8, 0.65, 0.20, 100);
+            document.getElementById('mountain-layer-far').setAttribute('d', buildSVGPath(farPoints));
+
+            // Mid mountains
+            let midPoints = generateMountainRange(10, 0.72, 0.18, 200);
+            document.getElementById('mountain-layer-mid').setAttribute('d', buildSVGPath(midPoints));
+
+            // Foreground mountains
+            foregroundMountainPoints = generateMountainRange(12, 0.80, 0.16, 300);
+            document.getElementById('mountain-layer-fore').setAttribute('d', buildSVGPath(foregroundMountainPoints));
+
+            // Regrow snow caps & reconstruct streams dynamically on layout configuration
+            drawSnowCaps();
+            setupRunoffPaths();
+            updateLakeShape();
+        }
+
+        function drawSnowCaps() {
+            const snowGroup = document.getElementById('snow-caps-group');
+            snowGroup.innerHTML = '';
+
+            // Find logical peaks on foreground mountain vertices
+            for (let i = 2; i < foregroundMountainPoints.length - 2; i++) {
+                let prev = foregroundMountainPoints[i - 1];
+                let curr = foregroundMountainPoints[i];
+                let next = foregroundMountainPoints[i + 1];
+
+                // If curr vertex is peak point (Y is closer to top, i.e. smaller)
+                if (curr.y < prev.y && curr.y < next.y) {
+                    let cap = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+                    
+                    // Base points of snow caps
+                    let leftBaseX = prev.x + (curr.x - prev.x) * 0.45;
+                    let leftBaseY = prev.y + (curr.y - prev.y) * 0.45;
+
+                    let rightBaseX = curr.x + (next.x - curr.x) * 0.55;
+                    let rightBaseY = curr.y + (next.y - curr.y) * 0.45;
+
+                    cap.setAttribute('points', `${curr.x},${curr.y} ${rightBaseX},${rightBaseY} ${leftBaseX},${leftBaseY}`);
+                    cap.setAttribute('fill', '#ffffff');
+                    cap.setAttribute('class', 'snow-cap-node transition-opacity duration-700');
+                    snowGroup.appendChild(cap);
+                }
+            }
+            adjustSnowCapsOpacity();
+        }
+
+        function adjustSnowCapsOpacity() {
+            const temp = parseFloat(sliderTemp.value);
+            const caps = document.getElementsByClassName('snow-cap-node');
+            
+            // Snow Cap Volume Calculation: Max size at <= 0°C, dissolves entirely at >= 15°C
+            let opacity = 0;
+            if (temp <= 0) {
+                opacity = 1.0;
+            } else if (temp < 15) {
+                opacity = 1.0 - (temp / 15);
+            }
+
+            for (let cap of caps) {
+                cap.setAttribute('opacity', opacity.toFixed(2));
+            }
+        }
+
+        // ========================================================
+        // RUNOFF CONTOUR MATCHING ENGINE
+        // ========================================================
+        function setupRunoffPaths() {
+            const runoffGroup = document.getElementById('runoff-streams-group');
+            runoffGroup.innerHTML = '';
+
+            // Map 3 distinct paths flowing directly along the slopes of our foreground mountain range
+            // Paths follow peak to valley indices of foregroundMountainPoints
+            const pathsPointsIdx = [
+                [2, 3, 4], // Stream 1: Peak 2 to valley 4
+                [5, 6, 7], // Stream 2: Peak 5 to valley 7
+                [8, 9, 10] // Stream 3: Peak 8 to valley 10
+            ];
+
+            pathsPointsIdx.forEach((idxArray, pathIndex) => {
+                let pathD = `M ${foregroundMountainPoints[idxArray[0]].x},${foregroundMountainPoints[idxArray[0]].y}`;
+                for (let i = 1; i < idxArray.length; i++) {
+                    let pt = foregroundMountainPoints[idxArray[i]];
+                    pathD += ` L ${pt.x},${pt.y}`;
+                }
+                
+                // Curve slightly at baseline directly into collection lake zone
+                let lastPt = foregroundMountainPoints[idxArray[idxArray.length - 1]];
+                pathD += ` Q ${lastPt.x - (width * 0.05)},${lastPt.y + (height * 0.02)} ${lastPt.x - (width * 0.1)},${height * 0.85}`;
+
+                let pathNode = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                pathNode.setAttribute('d', pathD);
+                pathNode.setAttribute('id', `runoff-path-${pathIndex}`);
+                pathNode.setAttribute('fill', 'none');
+                pathNode.setAttribute('stroke', '#22d3ee');
+                pathNode.setAttribute('stroke-width', '2.5');
+                pathNode.setAttribute('stroke-linecap', 'round');
+                pathNode.setAttribute('stroke-linejoin', 'round');
+                pathNode.setAttribute('stroke-dasharray', '8 16');
+                pathNode.setAttribute('stroke-opacity', '0'); // start invisible
+                
+                runoffGroup.appendChild(pathNode);
+            });
+        }
+
+        function createTreeSilhouettes() {
+            const treeGroup = document.getElementById('trees-group');
+            treeGroup.innerHTML = '';
+
+            // Base locations near mountain roots and shorelines
+            const treePositions = [
+                { x: width * 0.05, y: height * 0.76, scale: 0.7 },
+                { x: width * 0.12, y: height * 0.74, scale: 0.95 },
+                { x: width * 0.22, y: height * 0.75, scale: 0.65 },
+                { x: width * 0.35, y: height * 0.64, scale: 0.5 },
+                { x: width * 0.38, y: height * 0.68, scale: 0.7 },
+                { x: width * 0.52, y: height * 0.73, scale: 0.6 },
+                { x: width * 0.68, y: height * 0.77, scale: 0.8 },
+                { x: width * 0.74, y: height * 0.75, scale: 0.55 },
+                { x: width * 0.86, y: height * 0.67, scale: 0.7 },
+                { x: width * 0.92, y: height * 0.74, scale: 0.9 }
+            ];
+
+            treePositions.forEach(pos => {
+                const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+                const stem = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+
+                const h = 40 * pos.scale;
+                const w = 20 * pos.scale;
+
+                // Canopy Coordinates
+                poly.setAttribute('points', `
+                    ${pos.x},${pos.y - h} 
+                    ${pos.x - w/2},${pos.y - h/3} 
+                    ${pos.x - w/3},${pos.y - h/3} 
+                    ${pos.x - w},${pos.y} 
+                    ${pos.x + w},${pos.y} 
+                    ${pos.x + w/3},${pos.y - h/3} 
+                    ${pos.x + w/2},${pos.y - h/3}
+                `);
+                poly.setAttribute('fill', '#064e3b'); // Deep pine green
+
+                // Trunk
+                stem.setAttribute('x', pos.x - (2.5 * pos.scale));
+                stem.setAttribute('y', pos.y);
+                stem.setAttribute('width', 5 * pos.scale);
+                stem.setAttribute('height', 10 * pos.scale);
+                stem.setAttribute('fill', '#2d1a0f');
+
+                treeGroup.appendChild(stem);
+                treeGroup.appendChild(poly);
+            });
+        }
+
+        function updateLakeShape() {
+            const lakePoly = document.getElementById('lake-polygon');
+            const activeWaterY = (height * 0.84) - currentWaterLevelOffset;
+
+            // Fluid bottom-left shoreline curve mapping
+            lakePoly.setAttribute('d', `
+                M 0,${height} 
+                L 0,${activeWaterY} 
+                Q ${width * 0.22},${activeWaterY + (height * 0.05)} ${width * 0.45},${activeWaterY + (height * 0.02)} 
+                Q ${width * 0.50},${activeWaterY + (height * 0.12)} ${width * 0.35},${height} 
+                Z
+            `);
+        }
+
+        // ========================================================
+        // THERMODYNAMIC PHYSICAL EQUATIONS
+        // ========================================================
+        function updateSimulation() {
+            const temp = parseFloat(sliderTemp.value);
+            const humidity = parseFloat(sliderHumidity.value);
+            const wind = parseFloat(sliderWind.value);
+            const altitude = parseFloat(sliderAltitude.value);
+
+            // 1. Altitude Lapse Rate Model (Effective cooler air temperature in cloud layer)
+            // standard lapse rate: air temperature drops ~6.5°C per factor altitude unit
+            const effectiveTemp = temp - (altitude - 1.0) * 6.5;
+
+            // 2. Scientific Evaporation calculation
+            // Directly increases with temperature and wind vectors, dampens strongly as humidity approaches saturation point
+            let humFactor = Math.max(0.05, 1.0 - (humidity / 100));
+            let evapTarget = (temp + 15) * 1.65 * humFactor * (1.0 + (wind * 0.05));
+            evapTarget = Math.max(0, Math.min(100, evapTarget));
+
+            // 3. Scientific Condensation calculation
+            // Proportional to existing humidity levels and altitude factors, optimized at low lapse temp
+            let coolingFactor = Math.max(0.1, 1.0 - (effectiveTemp / 42));
+            let condTarget = (humidity * 1.1) * coolingFactor * (0.6 + (altitude * 0.2));
+            condTarget = Math.max(0, Math.min(100, condTarget));
+
+            // 4. Scientific Precipitation calculation
+            // Triggered only once condensation rate crosses saturated air volume threshold (e.g. 35%)
+            let precipTarget = 0;
+            if (condTarget > 35) {
+                // colder atmosphere holds less mass, thus precipitates faster
+                let coldDeposition = effectiveTemp < 0 ? 1.3 : 1.1 - (effectiveTemp / 45);
+                precipTarget = ((condTarget - 35) / 65) * 100 * coldDeposition;
+            }
+            precipTarget = Math.max(0, Math.min(100, precipTarget));
+
+            // Calculate the other state variables dynamically inside animation loop to model delays.
+            adjustSnowCapsOpacity();
+            generateScientificExplanations(temp, humidity, wind, altitude, effectiveTemp, evapTarget, condTarget, precipTarget);
+        }
+
+        // ========================================================
+        // DELAYED WATER LIFECYCLE CHRONOLOGY ENGINE
+        // ========================================================
+        function computeTimeLags(dt) {
+            const temp = parseFloat(sliderTemp.value);
+            const humidity = parseFloat(sliderHumidity.value);
+            const wind = parseFloat(sliderWind.value);
+            const altitude = parseFloat(sliderAltitude.value);
+            const effectiveTemp = temp - (altitude - 1.0) * 6.5;
+
+            // Re-calculate target baseline rates
+            let humFactor = Math.max(0.05, 1.0 - (humidity / 100));
+            let targetEvap = Math.max(0, Math.min(100, (temp + 15) * 1.65 * humFactor * (1.0 + (wind * 0.05))));
+            let coolingFactor = Math.max(0.1, 1.0 - (effectiveTemp / 42));
+            let targetCond = Math.max(0, Math.min(100, (humidity * 1.1) * coolingFactor * (0.6 + (altitude * 0.2))));
+            
+            let targetPrecip = 0;
+            if (targetCond > 35) {
+                let coldDeposition = effectiveTemp < 0 ? 1.3 : 1.1 - (effectiveTemp / 45);
+                targetPrecip = Math.max(0, Math.min(100, ((targetCond - 35) / 65) * 100 * coldDeposition));
+            }
+
+            // A: Smooth evaporation, condensation, precipitation toward targets instantly
+            smoothedRates.evaporation += (targetEvap - smoothedRates.evaporation) * 0.05;
+            smoothedRates.condensation += (targetCond - smoothedRates.condensation) * 0.05;
+            smoothedRates.precipitation += (targetPrecip - smoothedRates.precipitation) * 0.05;
+
+            // B: Flow Lag 1 (Runoff delay trigger)
+            // Runoff only triggers if precipitation is > 20% AND has been active for ~1.5s
+            if (smoothedRates.precipitation > 20) {
+                precipTimer += dt;
+            } else {
+                precipTimer -= dt * 1.8; // Recede quickly
+                if (precipTimer < 0) precipTimer = 0;
+            }
+
+            let canRunoff = precipTimer > 1.5;
+            // Formula: runoffRate = precipitationRate * (0.6 + windSpeed/20 * 0.4)
+            let targetRunoff = canRunoff ? (smoothedRates.precipitation * (0.6 + (wind / 20) * 0.4)) : 0;
+            smoothedRates.runoff += (targetRunoff - smoothedRates.runoff) * 0.04; // Dampened ease models mountain friction
+
+            // C: Flow Lag 2 (Collection delay trigger)
+            // Collection only triggers if Runoff has been flowing down the contours for ~1.2s
+            if (smoothedRates.runoff > 10) {
+                runoffTimer += dt;
+            } else {
+                runoffTimer -= dt * 1.5;
+                if (runoffTimer < 0) runoffTimer = 0;
+            }
+
+            let canCollect = runoffTimer > 1.2;
+            let targetCollec = canCollect ? (smoothedRates.runoff * 0.95) : 0;
+            smoothedRates.collection += (targetCollec - smoothedRates.collection) * 0.03; // Slower ease models gravity returns
+
+            // D: Subtly elevate lake height from collection accumulation
+            // Accumulates lake volume relative to Collection versus Evaporation rates
+            let balance = (smoothedRates.collection * 0.15) - (smoothedRates.evaporation * 0.08);
+            currentWaterLevelOffset += balance * dt * 0.3;
+            // Cap lake shifts within beautiful bounds
+            currentWaterLevelOffset = Math.max(-10, Math.min(45, currentWaterLevelOffset));
+
+            // Sync visual HUD metrics
+            updateMetricsHUD(effectiveTemp);
+            updateInteractiveVisualElements();
+        }
+
+        function updateMetricsHUD(effTemp) {
+            const format = (r) => `${Math.round(r)}%`;
+
+            // Progress fills
+            barEvap.style.width = format(smoothedRates.evaporation);
+            barCond.style.width = format(smoothedRates.condensation);
+            barPrecip.style.width = format(smoothedRates.precipitation);
+            barRunoff.style.width = format(smoothedRates.runoff);
+            barCollec.style.width = format(smoothedRates.collection);
+
+            // Readouts
+            rateTextEvap.textContent = format(smoothedRates.evaporation);
+            rateTextCond.textContent = format(smoothedRates.condensation);
+            rateTextPrecip.textContent = format(smoothedRates.precipitation);
+            rateTextRunoff.textContent = format(smoothedRates.runoff);
+            rateTextCollec.textContent = format(smoothedRates.collection);
+
+            // Rename label if snowing
+            if (effTemp < 0) {
+                labelPrecipText.textContent = "Deposition (Snow)";
+                labelPrecip.classList.add('text-slate-100');
+                labelPrecip.classList.remove('text-blue-400');
+            } else {
+                labelPrecipText.textContent = "Precipitation";
+                labelPrecip.classList.add('text-blue-400');
+                labelPrecip.classList.remove('text-slate-100');
+            }
+        }
+
+        function updateInteractiveVisualElements() {
+            // 1. Cloud Dimensions & Darkness based on Condensation
+            const scale = 0.5 + (smoothedRates.condensation / 100) * 0.8;
+            const opacity = 0.2 + (smoothedRates.condensation / 100) * 0.8;
+
+            cloudNodes.forEach((node) => {
+                if (node) {
+                    node.style.transform = `scale(${scale})`;
+                    node.style.opacity = opacity;
+                    
+                    const path = node.querySelector('path');
+                    if (path) {
+                        // Dark storm colors at high condensation rates
+                        if (smoothedRates.condensation > 75) {
+                            path.setAttribute('fill', '#475569'); // dark grey slate
+                        } else if (smoothedRates.condensation > 45) {
+                            path.setAttribute('fill', '#94a3b8'); // soft storm cloud
+                        } else {
+                            path.setAttribute('fill', '#f1f5f9'); // crisp bright mist
+                        }
+                    }
+                }
+            });
+
+            // 2. Adjust active Runoff SVG Streams
+            // Visual trigger threshold > 5%
+            const activePaths = Math.min(3, Math.ceil((smoothedRates.runoff / 100) * 3));
+            for (let i = 0; i < 3; i++) {
+                let streamNode = document.getElementById(`runoff-path-${i}`);
+                if (streamNode) {
+                    if (smoothedRates.runoff > 5 && i < activePaths) {
+                        streamNode.setAttribute('stroke-opacity', '0.8');
+                        // Speed of flow scales with rate
+                        let flowSpeed = 2.0 + (smoothedRates.runoff / 100) * 4;
+                        streamNode.style.animation = `flowAnimation ${2 / flowSpeed}s linear infinite`;
+                    } else {
+                        streamNode.setAttribute('stroke-opacity', '0');
+                        streamNode.style.animation = 'none';
+                    }
+                }
+            }
+
+            // 3. Sync Glowing Annotation Label Visibility thresholds
+            const toggleLabel = (el, val) => {
+                if (val > 10) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'scale(1)';
+                } else {
+                    el.style.opacity = '0';
+                    el.style.transform = 'scale(0.8)';
+                }
+            };
+
+            toggleLabel(labelEvap, smoothedRates.evaporation);
+            toggleLabel(labelCond, smoothedRates.condensation);
+            toggleLabel(labelPrecip, smoothedRates.precipitation);
+            toggleLabel(labelRunoff, smoothedRates.runoff);
+            toggleLabel(labelCollec, smoothedRates.collection);
+        }
+
+        // ========================================================
+        // CONTEXT-AWARE DYNAMIC CLASSROOM EXPLANATIONS
+        // ========================================================
+        function generateScientificExplanations(temp, humidity, wind, altitude, effTemp, evap, cond, precip) {
+            let log = "";
+
+            // A: Heat effects
+            if (temp >= 35) {
+                log += "<strong>High Heat Index:</strong> Extreme solar energy fuels intensive kinetic motion in surface water molecules, driving massive rates of <strong>Evaporation</strong>. ";
+            } else if (temp <= 0) {
+                log += "<strong>Freezing Thresholds:</strong> Near-freezing surface levels limit solar thermal kinetic transfers, capping active evaporation. ";
+            } else {
+                log += "<strong>Stable Thermal energy:</strong> Moderate solar radiation heats the basin, driving a balanced upward cycle of evaporation. ";
+            }
+
+            // B: Saturated air capacity
+            if (humidity > 80) {
+                log += "The atmosphere is heavily saturated with vapor, making it easy to condense but limiting the air's capability to take on more evaporate. ";
+            } else if (humidity < 20) {
+                log += "With dry atmospheric parameters, the dry breeze easily absorbs rising vapor, but there is not enough moisture to condense. ";
+            }
+
+            // C: High altitude lapse rates
+            if (altitude > 2.0) {
+                log += `The soaring <strong>Altitude Factor</strong> triggers rapid thermodynamic cooling (${Math.round(effTemp)}°C at peak), making condensation easily achievable. `;
+            }
+
+            // D: Condensation & Clouds
+            if (cond > 75) {
+                log += "<strong>Dense Saturated Formations:</strong> Rapid atmospheric condensation merges vapor into dark, dense storm clouds. ";
+            } else if (cond > 30) {
+                log += "Subtle cooling stabilizes gentle cloud formations across the valley. ";
+            } else {
+                log += "No active condensation is occurring due to warm altitudes or zero relative moisture, yielding clear skies. ";
+            }
+
+            // E: Winter dep/Precipitation mechanics
+            if (precip > 60) {
+                if (effTemp < 0) {
+                    log += "With high saturation levels below the freezing point, droplets crystalize instantly, precipitating down as <strong>Heavy Snowfall</strong>. ";
+                } else {
+                    log += "Coalescence causes dense liquid droplets to overcome warm drafts and precipitate as <strong>Torrential Rain</strong>. ";
+                }
+            }
+
+            // F: Runoff flow sequence
+            if (smoothedRates.runoff > 50) {
+                log += "<strong>Soil Saturation:</strong> Heavy falling moisture saturates mountain basins, triggering rapid gravity-driven <strong>Runoff</strong> down the rocky slopes into the lake. ";
+            } else if (smoothedRates.runoff > 10) {
+                log += "Water droplets collect at mountain base paths, forming small runoff streams. ";
+            }
+
+            // Drought disclaimer
+            if (humidity < 15 && precip === 0) {
+                log += "<br><br><span class='text-amber-400 font-semibold'>⚠️ Drought Warning:</span> Extremely low moisture and high evaporation indexes have desiccated local air cells, halting condensation.";
+            }
+
+            contextExplanation.innerHTML = log;
+        }
+
+        // ========================================================
+        // CANVAS PERFORMANCE GRAPHICS ANIMATION ENGINE
+        // ========================================================
+        function drawCanvasParticles(dt, wind, effTemp) {
+            ctx.clearRect(0, 0, width, height);
+
+            // A. UPDATE & DRAW EVAPORATION PARTICLES (Amber golden vapor bubbles)
+            const waterY = (height * 0.84) - currentWaterLevelOffset;
+            
+            // Limit emission rate
+            if (Math.random() < (smoothedRates.evaporation / 100) * 0.7) {
+                particles.evaporation.push({
+                    x: Math.random() * (width * 0.42),
+                    y: waterY + (Math.random() * (height * 0.05)),
+                    size: 1 + Math.random() * 2.5,
+                    opacity: 0.9,
+                    velY: 0.5 + Math.random() * 1.5,
+                    driftX: (Math.random() - 0.5) * 0.5 + (wind * 0.05)
+                });
+            }
+
+            for (let i = particles.evaporation.length - 1; i >= 0; i--) {
+                let p = particles.evaporation[i];
+                p.y -= p.velY;
+                p.x += p.driftX;
+                p.opacity -= 0.003 * p.velY;
+
+                if (p.opacity <= 0 || p.y < height * 0.2) {
+                    particles.evaporation.splice(i, 1);
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(249, 115, 22, ${p.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            // B. UPDATE & DRAW PRECIPITATION PARTICLES (Rain or Snow)
+            if (Math.random() < (smoothedRates.precipitation / 100) * 2.0) {
+                let isSnow = effTemp < 0;
+                particles.precipitation.push({
+                    x: Math.random() * width,
+                    y: height * (0.1 + Math.random() * 0.2), // Emit from cloud height range
+                    size: isSnow ? 2.0 + Math.random() * 3.5 : 1.2 + Math.random() * 0.8,
+                    length: isSnow ? 0 : 8 + Math.random() * 12,
+                    velY: isSnow ? 1.0 + Math.random() * 1.5 : 9 + Math.random() * 7,
+                    velX: (wind * 0.45) + (isSnow ? (Math.random() - 0.5) * 1.0 : 0) // snow drifts more with air turbulence
+                });
+            }
+
+            for (let i = particles.precipitation.length - 1; i >= 0; i--) {
+                let p = particles.precipitation[i];
+                p.y += p.velY;
+                p.x += p.velX;
+
+                if (p.y > height * 0.88 || p.x < 0 || p.x > width) {
+                    particles.precipitation.splice(i, 1);
+                } else {
+                    ctx.beginPath();
+                    if (p.length === 0) {
+                        // Drawing Snowflakes
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+                        ctx.fill();
+                    } else {
+                        // Drawing Rain streaks
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p.x + (p.velX * 0.2), p.y + p.length);
+                        ctx.strokeStyle = "rgba(14, 165, 233, 0.65)";
+                        ctx.lineWidth = p.size;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animationLoop(timeNow) {
+            let dt = (timeNow - lastTime) / 1000;
+            lastTime = timeNow;
+
+            // Constrain dt to handle browser pausing
+            if (dt > 0.1) dt = 0.1;
+
+            const wind = parseFloat(sliderWind.value);
+            const temp = parseFloat(sliderTemp.value);
+            const altitude = parseFloat(sliderAltitude.value);
+            const effectiveTemp = temp - (altitude - 1.0) * 6.5;
+
+            // 1. Float/Drift clouds slowly left-to-right relative to active wind parameters
+            for (let i = 0; i < 3; i++) {
+                cloudOffsets[i] += wind * 0.03;
+                if (cloudOffsets[i] > 115) {
+                    cloudOffsets[i] = -35; // wrap around screen edge smoothly
+                }
+                cloudNodes[i].style.left = `${cloudOffsets[i]}%`;
+            }
+
+            // 2. Compute sequence delays
+            computeTimeLags(dt);
+
+            // 3. Render Canvas Overlays
+            drawCanvasParticles(dt, wind, effectiveTemp);
+
+            // 4. Update Lake Shape
+            updateLakeShape();
+
+            requestAnimationFrame(animationLoop);
+        }
+    </script>
+
+    <!-- Global inline animation helpers for SVG Dash arrays -->
+    <style>
+        @keyframes flowAnimation {
+            from {
+                stroke-dashoffset: 0;
+            }
+            to {
+                stroke-dashoffset: -24;
+            }
+        }
+    </style>
+</body>
+</html>
