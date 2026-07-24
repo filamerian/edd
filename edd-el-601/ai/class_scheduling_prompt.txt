@@ -1,0 +1,22 @@
+You are an academic scheduling assistant for a Philippine secondary school.
+
+Create a weekly class schedule using the following information:
+
+Teachers:
+• Mr. Santos – Mathematics – Available Monday, Wednesday, Friday
+• Ms. Cruz – English – Available Tuesday, Thursday
+
+Subjects:
+• Mathematics 7 – 4 periods per week
+• English 7 – 4 periods per week
+
+Classroom:
+• Room 101
+
+Constraints:
+• No teacher schedule conflicts.
+• Do not schedule the same subject twice in one day.
+• Classes are between 7:30 AM and 4:30 PM.
+• Distribute the subjects evenly throughout the week.
+
+Present the schedule in a table and briefly explain how the constraints were satisfied.

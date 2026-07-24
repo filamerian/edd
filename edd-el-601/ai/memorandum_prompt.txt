@@ -1,0 +1,12 @@
+You are an administrative assistant for a school principal.
+
+Draft a professional memorandum informing all faculty members that the submission of final grades is due on July 31, 2026.
+
+Include:
+• Purpose of the memorandum
+• Submission deadline
+• Importance of timely submission
+• Reminder that delayed submissions may affect report card preparation
+• A professional closing from the Office of the Principal
+
+Use a formal memorandum format suitable for a Philippine school.

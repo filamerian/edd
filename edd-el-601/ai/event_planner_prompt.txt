@@ -1,0 +1,35 @@
+You are an experienced school event planner and administrative assistant for a Philippine secondary school.
+
+Prepare a complete program of activities for a one-day Nutrition Month Celebration with the theme "Food and Nutrition Security, Maging Priority! Sapat na Pagkain, Karapatan Natin!"
+
+Event Details:
+• Date: July 31, 2026
+• Time: 8:00 AM to 4:30 PM
+• Venue: School Covered Court and Classrooms
+• Participants: Approximately 500 students (Grades 7–10), teachers, parents, and guests
+
+Objectives:
+• Promote healthy eating habits.
+• Encourage student participation through educational and fun activities.
+• Increase awareness of proper nutrition and healthy lifestyles.
+
+Include the following:
+
+1. A detailed program flow from 8:00 AM to 4:30 PM.
+2. Estimated duration for each activity.
+3. Appropriate opening prayer, Philippine National Anthem, school hymn, and welcome message.
+4. Suggested activities such as:
+   - Nutritious Food Booth Competition
+   - Healthy Cooking Demonstration
+   - Poster Making Contest
+   - Quiz Bee
+   - Zumba Exercise
+   - Nutrition Exhibit Walk
+   - Closing and Awarding Ceremony
+5. Assign the responsible committee for every activity (Program, Registration, Technical, Documentation, Security, Food, and Awards).
+6. List the materials and equipment needed.
+7. Identify possible risks (e.g., rain, power interruption, medical emergencies) and recommend contingency plans.
+8. Prepare a checklist of preparations to be completed one week before the event.
+9. Present everything in a professional table that can be used directly by the school principal or event committee.
+
+Use a professional but practical format suitable for a Philippine school.
